@@ -1,0 +1,1 @@
+const Category = require('../schemas/categorySchema')
