@@ -5,7 +5,7 @@ const router = express.Router();
 router.post('/create-recipe', createRecipe)
 // router.post('/save-recipe')
 router.get('/recipe', getAllRecipes)
-router.delete('/recipe/:id', deleteRecipe)
-router.put('/recipe/:id',editRecipe)
+router.delete('/recipe', deleteRecipe)
+router.put('/recipe',editRecipe)
 
 module.exports = router;

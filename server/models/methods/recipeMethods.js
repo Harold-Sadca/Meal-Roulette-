@@ -22,7 +22,7 @@ exports.createOne = async(req) => {
 }
 
 exports.editOne = async(req) => {
-  const _id = req.params.id;
+  const {_id} = req.body;
   try{
     const recipe = await Recipe.findOneAndUpdate({_id}, {...req.body});
     return recipe
@@ -32,8 +32,7 @@ exports.editOne = async(req) => {
 }
 
 exports.deleteOne = async(req) => {
-  const _id = req.params.id;
-  console.log(_id)
+  const {_id} = req.body;
   try{
     const res = await Recipe.deleteOne({_id})
     return res;
