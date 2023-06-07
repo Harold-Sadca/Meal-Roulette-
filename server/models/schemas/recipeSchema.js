@@ -5,13 +5,13 @@ const recipeSchema = new Schema({
   name:String,
   ingredients: [String],
   steps:String,
-  categories: [{type: Schema.Types.ObjectId, ref: 'Category'}],
+  categories: [{type: Schema.Types.ObjectId, ref: 'Category', default: 'None'}],
   author: {
     type: String,
     default:'Anonymous'
   }
 });
 
-const Recipe = mongoose.Model('Recipe', recipeSchema)
+const Recipe = mongoose.model('Recipe', recipeSchema)
 
 module.exports = Recipe;

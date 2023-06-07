@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = 3001;
-const router = require('./router')
 var cors = require('cors')
 const bodyParser = require('body-parser')
+const recipeRoutes = require('./routes/mainRoutes')
 
 app
   .use(cors({
     origin: '*'
 }))
   .use(bodyParser.json())
-  .use(router)
+  .use(recipeRoutes)
 
 
   app.listen(PORT, () => {

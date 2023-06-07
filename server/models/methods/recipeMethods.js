@@ -1,21 +1,43 @@
 const Recipe = require('../schemas/recipeSchema')
 
-exports.createRecipe = async(req, res) => {
-  try{
-    const newRecipe = await new Recipe(req.body)
-    await newRecipe.save()
-    res.status(201).send(newRecipe)
+exports.findAll = async() => {
+  try {
+    const recipes = await Recipe.find({});
+    return recipes;
   } catch(e) {
-    res.status(400).send('Bad Request')
+    console.log('Dude you screwed up while getting all the recipes dumbass.');
   }
 }
 
-exports.editRecipe = async(req, res) => {
-  const {_id} = req.body
+exports.createOne = async(req) => {
+  console.log(req.body)
+  const {name, ingredients, steps} = req.body
   try{
-    const recipe = await Recipe.findOneAndUpdate({_id}, {...req.body})
-    res.status(201).send(recipe)
+    const newRecipe = await new Recipe({name, ingredients, steps});
+    await newRecipe.save();
+    return newRecipe;
   } catch(e) {
-    res.status(400).send('Bad Request')
+    console.log('Dude you screwed up while creating a recipe dumbass.');
+  }
+}
+
+exports.editOne = async(req) => {
+  const _id = req.params.id;
+  try{
+    const recipe = await Recipe.findOneAndUpdate({_id}, {...req.body});
+    return recipe
+  } catch(e) {
+    console.log('Dude you screwed up while updating a recipe dumbass.');
+  }
+}
+
+exports.deleteOne = async(req) => {
+  const _id = req.params.id;
+  console.log(_id)
+  try{
+    const res = await Recipe.deleteOne({_id})
+    return res;
+  } catch(e) {
+    console.log('Dude you screwed up while deleting a recipe dumbass.');
   }
 }

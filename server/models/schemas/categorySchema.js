@@ -6,6 +6,6 @@ const categorySchema = new Schema({
   recipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
 });
 
-const Category = mongoose.Model('Category', categorySchema)
+const Category = mongoose.model('Category', categorySchema)
 
 module.exports = Category;
