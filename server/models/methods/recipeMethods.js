@@ -13,7 +13,7 @@ exports.findAll = async() => {
 exports.createOne = async(req) => {
   const {name, instructions} = req.body
   try{
-    const newRecipe = await new Recipe({name, instructions});
+    const newRecipe = await new Recipe({name, instructions, author:req.user.username});
     await newRecipe.save();
     return newRecipe;
   } catch(e) {
