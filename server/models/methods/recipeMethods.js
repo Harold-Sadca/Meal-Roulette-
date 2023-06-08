@@ -11,10 +11,9 @@ exports.findAll = async() => {
 }
 
 exports.createOne = async(req) => {
-  console.log(req.body)
-  const {name, ingredients, steps} = req.body
+  const {name, instructions} = req.body
   try{
-    const newRecipe = await new Recipe({name, ingredients, steps});
+    const newRecipe = await new Recipe({name, instructions});
     await newRecipe.save();
     return newRecipe;
   } catch(e) {

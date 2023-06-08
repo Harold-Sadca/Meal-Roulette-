@@ -13,7 +13,7 @@ const userSchema = new Schema({
   // },
   email:{
     type: String,
-    required: [true, 'Please provide a valid email.'],
+    required: true,
     unique:true
   },
   favourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],

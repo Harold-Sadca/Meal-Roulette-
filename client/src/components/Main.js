@@ -21,6 +21,9 @@ function Main () {
       setSelected(res[2])
     })
   }, [])
+  if(selected) {
+    console.log(selected.name)
+  }
 
   function logout () {
     services.logoutUser().then((res) => {
