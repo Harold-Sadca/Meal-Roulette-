@@ -10,7 +10,7 @@ exports.findAll = async() => {
 }
 
 exports.createOne = async(req) => {
-  console.log(req.body)
+  // console.log(req.body)
   const {email, username, password} = req.body
   try{
     const newUser = new User({email, username});
@@ -19,6 +19,16 @@ exports.createOne = async(req) => {
     return registeredUser
   } catch(e) {
     console.log('Dude you screwed up while registering a user dumbass.');
+  }
+}
+
+exports.getUser = async(req) => {
+  const {id} = req.params;
+  try{
+    const user = await User.find({_id:id});
+    return user;
+  } catch(e) {
+    console.log('Dude you screwed up while getting a user dumbass.');
   }
 }
 

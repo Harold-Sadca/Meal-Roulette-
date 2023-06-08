@@ -2,7 +2,8 @@ const {editOne, createOne, deleteOne, findAll} = require('../models/methods/reci
 
 exports.getAllRecipes = async (req, res) => {
   try {
-    const result = findAll();
+    const result = await findAll();
+    console.log(result)
     res.status(201).send(result);
   } catch(e) {
     res.status(400).send('Bad Request')

@@ -17,7 +17,6 @@ app
 }))
   .use(bodyParser.json())
   .use(recipeRoutes)
-  .use(userRoutes)
   .use(session({
     secret: secretWord,
     resave: false,
@@ -29,6 +28,7 @@ app
       maxAge: 6000000 }}))
   .use(passport.initialize())
   .use(passport.session())
+  .use(userRoutes)
 
 //this is saying, user the LocalStrategy to authenticate and that authenticate is inside the User model.
 //the authenticate is not something we created, it was provided by passport.

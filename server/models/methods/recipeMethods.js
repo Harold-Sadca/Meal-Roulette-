@@ -1,6 +1,7 @@
 const Recipe = require('../schemas/recipeSchema')
 
 exports.findAll = async() => {
+  console.log('methods')
   try {
     const recipes = await Recipe.find({});
     return recipes;

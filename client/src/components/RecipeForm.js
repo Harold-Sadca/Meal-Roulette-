@@ -17,16 +17,16 @@ function RecipeForm () {
     }
   }
 
-  function makeRecipe(e) {
-    e.preventDefault();
+  function makeRecipe() {
     if(!name || !ingredients || !steps) {
       alert('Cant do that son!')
     } else {
       const newRecipe = {
-        name: name,
-        ingredients: ingredients,
-        steps: steps
+        name,
+        ingredients: ingredients.split('\n'),
+        steps
       }
+      console.log(newRecipe)
       services.addRecipe(newRecipe).then((res) => {
         console.log(res)
       })
@@ -39,21 +39,21 @@ function RecipeForm () {
   return (
     <div className="form-container">
       <div className="header">Add New Recipe</div>
-      <form className="form" onSubmit={makeRecipe}>
+      <div className="form">
         <label className="name-input">
         <span>Recipe Name:</span>
           <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Insert a name...' />
         </label>
         <div className="ingredients-input">
           <span>Ingredients:</span>
-          <input id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Insert ingredients...' />
+          <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Insert ingredients...'></textarea>
         </div>
         <label className="steps-input">
         <span>Steps:</span>
-          <input id="steps" value={steps} onChange={(event) => {valSetter(event)}} type="text" name="steps" placeholder='Insert steps' />
+          <textarea id="steps" value={steps} onChange={(event) => {valSetter(event)}} type="text" name="steps" placeholder='Insert steps'></textarea>
         </label>
-        <input className="create" type="submit" value="Create" />
-      </form>
+        <button className="create-recipe" onClick={makeRecipe}>Submit Recipe</button>
+      </div>
     </div>
   )
 }
