@@ -2,3 +2,39 @@
   text-align: center;
 }
 
+.instructions-input {
+  height: 500px;
+
+}
+
+.recipe-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: auto;
+}
+
+.create-recipe {
+  margin-top: 50px;
+}
+
+/* .recipe-form-container {
+  width: 50%;
+  height: 50vh;
+  border: 1px solid black;
+  margin: auto;
+  align-items: center;
+}
+
+.recipe-form {
+  width: 90%;
+  height: 100%;
+  border: 1px solid black;
+  margin: auto;
+}
+
+.name-input, .ingredients-input, .steps-input {
+  width: 100%;
+  margin-top: 45px;
+  border: 1px solid black;
+} */

@@ -27,7 +27,7 @@ function LoginForm () {
       services.loginUser(user).then((res) => {
         setUsername('')
         setPassword('')
-        console.log('logged in')
+        console.log(res)
       })
     }
   }

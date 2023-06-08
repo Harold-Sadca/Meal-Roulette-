@@ -8,7 +8,7 @@ import {
   NavBtn,
   NavBtnLink,
 } from './NavbarElements';
-  
+//TODO:redo  
 const Navbar = () => {
   return (
     <>

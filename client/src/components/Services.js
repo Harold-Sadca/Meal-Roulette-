@@ -59,13 +59,23 @@ function loginUser (user) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
+function logoutUser () {
+  return fetch(`${PORT}/logout`, {
+    method: "GET",
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
 const services = {
   fetchRecipes,
   addRecipe,
   deleteRecipe,
   editRecipe,
   registerUser,
-  loginUser
+  loginUser,
+  logoutUser
 }
 
 export default services

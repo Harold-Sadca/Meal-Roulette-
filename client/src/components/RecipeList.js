@@ -1,16 +1,14 @@
 import ShowRecipe from "./ShowRecipe"
-
-function RecipeList ({recipes}) {
-
-  function clickHandler (e) {
-    console.log(e.target.id);
-  }
+import { useNavigate } from "react-router-dom";
+import Preview from "./Preview";
+//TODO:styling, add link to open recipe details
+function RecipeList ({recipes, setSelected}) {
 
   // recipeList = recipes
   return (
     <>
       {recipes.map((recipe) => {
-      return <div id = {recipe._id} onClick={(e) => { clickHandler(e)}} className="recipe-link">{recipe.name}</div>
+      return <Preview recipe={recipe} setSelected={setSelected}/>
     })}
     </>
 
