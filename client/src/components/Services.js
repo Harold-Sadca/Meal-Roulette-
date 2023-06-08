@@ -2,7 +2,10 @@ const PORT = 'http://localhost:3001'
 
 
 function fetchRecipes () {
-  return fetch(`${PORT}/recipe`)
+  return fetch(`${PORT}/recipe`,{
+    method: "GET",
+    credentials: "include"
+  })
           .then(res => res.json())
           .then(parsedRes => parsedRes)
 }
@@ -14,6 +17,7 @@ function addRecipe(recipe) {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
+    credentials: "include"
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
@@ -23,7 +27,8 @@ function editRecipe(recipe) {
     body: JSON.stringify(recipe),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
-    }
+    },
+    credentials: "include"
   }
   return fetch(`${PORT}/recipe`, method)
 }
@@ -34,7 +39,8 @@ function deleteRecipe(recipe) {
     body: JSON.stringify(recipe),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
-    }
+    },
+    credentials: "include"
   }
   return fetch(`${PORT}/recipe`, method)
 }
@@ -46,6 +52,7 @@ function registerUser (user) {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
+    credentials: "include"
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
@@ -56,6 +63,7 @@ function loginUser (user) {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
+    credentials: "include"
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
@@ -65,6 +73,7 @@ function logoutUser () {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
+    credentials: "include"
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 

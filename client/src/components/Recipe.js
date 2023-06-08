@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function Recipe ({recipe}) {
   const [current, setCurrent] = useState(recipe)
-  console.log(recipe, current, recipe == current)
+  // console.log(recipe, current, recipe == current)
   if (recipe != current) {
     setCurrent(recipe)
   }
