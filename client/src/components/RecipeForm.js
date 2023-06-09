@@ -2,11 +2,13 @@ import { useState } from "react";
 import services from "./Services";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
+import { useDispatch, useSelector } from "react-redux";
 //TODO:styling
 function RecipeForm () {
   const [name, setName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [ingredients, setIngredients] = useState('')
+  const recipesR = useSelector(state => state.recipesR)
 
   function valSetter (e) {
     const id = e.target.id
@@ -37,6 +39,7 @@ function RecipeForm () {
       setIngredients('')
     }
   }
+  console.log(recipesR,'form')
 
   return (
     <div className="recipe-form-container">

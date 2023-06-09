@@ -9,29 +9,40 @@ import services from "./Services";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Footer from "./Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, add, remove } from "../redux/actions";
 
 
 
 function Main () {
+  const recipesR = useSelector(state => state.recipesR)
   const [recipes, setRecipes] = useState([])
   const[selected, setSelected] = useState()
+  const [surprise, setSurprise] = useState()
   const[isAuthenticated, setIsAuthenticated] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     services.fetchRecipes().then((res) => {
+      dispatch(add(res))
       setRecipes(res)
-      setSelected(res[2])
+      const idx = Math.floor(Math.random()*res.length)
+      setSelected(res[idx])
+      setSurprise(res[idx])
     })
   }, [])
   if(selected) {
-    console.log(selected.name)
+    // console.log(selected.name)
   }
+  // console.log(surprise)
 
   function logout () {
     services.logoutUser().then((res) => {
-      console.log(res)
+      // console.log(res)
     })
   }
+
+  console.log(recipesR, 'main')
   return (
     <>
     <Router>
@@ -41,17 +52,11 @@ function Main () {
         <Route path='/login' element={<LoginForm />} />
         <Route path='/create-recipe' element={<RecipeForm />} />
         <Route path='/recipe' element={<Recipe recipe={selected}/>} />
-        <Route path=''/>
+        <Route path='surprise-me' element={<Recipe recipe={selected}/>}/>
         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
-        {/* <Route path='/blogs' component={Blogs} /> */}
         <Route path='/sign-up' element={<SignUp />} />
       </Routes>
-    </Router>
-    {/* <Footer /> */}
-      {/* <RecipeForm /> */}
-      {/* <LoginForm /> */}
-      {/* <SignUp /> */}
-      
+    </Router>   
     </>
   )
 }

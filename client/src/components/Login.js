@@ -60,9 +60,9 @@ function LoginForm () {
   //   </Router>
   // )
   return (
-    <div className="form-container">
+    <div className="login-form-container">
       <div className="header">Login</div>
-      <form className="form" onSubmit={(e) => {login(e)}}>
+      <form className="login-form" onSubmit={(e) => {login(e)}}>
         <label className="username-input">
         <span>Username:</span>
           <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
@@ -71,7 +71,7 @@ function LoginForm () {
           <span>Password:</span>
           <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
         </div>
-        <button className="create" type="submit"> Login </button>
+        <button className="login btn-submit" type="submit"> Login </button>
       </form>
     </div>
   )

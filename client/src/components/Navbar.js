@@ -12,17 +12,17 @@ import {
 } from './NavbarElements';
 //TODO:redo  
 const Navbar = () => {
-  const [surprise, setSurprise] = useState()
-  const navigate = useNavigate();
+  // const [surprise, setSurprise] = useState()
+  // const navigate = useNavigate();
 
-  function generateSurprise() {
-    services.fetchRecipes().then((res) => {
-      const idx = Math.floor(Math.random()*res.length)
-      setSurprise(res[idx])
-      console.log(surprise)
-      navigate(`/surprise-me/${surprise._id}`)
-    })
-  }
+  // function generateSurprise() {
+  //   services.fetchRecipes().then((res) => {
+  //     const idx = Math.floor(Math.random()*res.length)
+  //     setSurprise(res[idx])
+  //     console.log(surprise)
+  //     navigate(`/surprise-me/${surprise._id}`)
+  //   })
+  // }
 
   // function clickHandler (e) {
   //   setSelected(recipe)
@@ -43,7 +43,7 @@ const Navbar = () => {
           <NavLink to='/recipe' activeStyle>
             Recipe
           </NavLink>
-          <NavLink to='/surprise-me' onClick={generateSurprise} surprise={surprise} activeStyle>
+          <NavLink to='/surprise-me'  activeStyle>
             Surprise Me
           </NavLink>
           <NavLink to='/recipes' activeStyle>
