@@ -275,3 +275,76 @@
   background-color: rgb(156, 255, 165);
   border-radius: 5px;
 }
+
+/* <div className="signup-container">
+<div className="header">Sign Up</div>
+<form className="signup-form" onSubmit={(e) => {submitUser(e)}}>
+  <label className="username-input">
+  <span>Username:</span>
+    <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
+  </label>
+  <div className="password-input">
+    <span>Password:</span>
+    <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
+  </div>
+  <div className="email-input">
+    <span>Email:</span>
+    <input id="email" value={email} onChange={(event) => {valSetter(event)}} type="Email" name="Email" placeholder='Email...' />
+  </div>
+  <button className="create" type="submit"> Sign Up </button>
+</form>
+</div> */
+
+/* Sign Up CSS */
+.signup-container {
+  width: 25%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  height: 30em;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {}
+
+.signup-form {
+  padding: 10px;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.username-input, .password-input, .email-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.username-input span, .password-input span, .email-input span {
+  font-size: 1.5em;
+  font-weight: 500;
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+}
+
+#username, #password, #email {
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+}
+
+.password-input {}
+
+.password-input span {}
+
+#password {}
+
+.email-input {}
+
+.email-input span {}
+
+#email {}

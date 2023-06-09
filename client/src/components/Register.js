@@ -19,18 +19,22 @@ function SignUp () {
 
 	function submitUser (e) {
     e.preventDefault()
-		const newUser = {username, password, email}
-    services.registerUser(newUser).then((res) => {
-      setUsername('')
-      setPassword('')
-      setEmail('')
-    })
+    if (!username || !password || !email) {
+      alert('Cant do that son, are you stupid or just stupid???')
+    } else {
+      const newUser = {username, password, email}
+      services.registerUser(newUser).then((res) => {
+        setUsername('')
+        setPassword('')
+        setEmail('')
+      })
+    }
 	}
 
   return (
     <div className="signup-container">
       <div className="header">Sign Up</div>
-      <form className="form" onSubmit={(e) => {submitUser(e)}}>
+      <form className="signup-form" onSubmit={(e) => {submitUser(e)}}>
         <label className="username-input">
         <span>Username:</span>
           <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
@@ -43,7 +47,7 @@ function SignUp () {
           <span>Email:</span>
           <input id="email" value={email} onChange={(event) => {valSetter(event)}} type="Email" name="Email" placeholder='Email...' />
         </div>
-        <button className="create" type="submit"> Sign Up </button>
+        <button className="submit-signup btn-submit" type="submit"> Sign Up </button>
       </form>
     </div>
   )

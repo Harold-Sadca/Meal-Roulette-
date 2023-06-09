@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useRoutes } from "react-router-dom";
 import LoginForm from './Login';
 import services from './Services';
 import {
@@ -12,14 +13,21 @@ import {
 //TODO:redo  
 const Navbar = () => {
   const [surprise, setSurprise] = useState()
+  const navigate = useNavigate();
 
   function generateSurprise() {
     services.fetchRecipes().then((res) => {
       const idx = Math.floor(Math.random()*res.length)
       setSurprise(res[idx])
       console.log(surprise)
+      navigate(`/surprise-me/${surprise._id}`)
     })
   }
+
+  // function clickHandler (e) {
+  //   setSelected(recipe)
+  //   navigate(`/recipe/${recipe._id}`)
+  // }
   return (
     <>
       <Nav>
