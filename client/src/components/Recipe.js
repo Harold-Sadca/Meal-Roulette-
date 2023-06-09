@@ -1,42 +1,70 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import services from "./Services"
 
 function Recipe ({recipe}) {
   const [current, setCurrent] = useState(recipe)
-  // console.log(recipe, current, recipe == current)
+  const [comment, setComment] = useState('')
+  const [comments, setComments] = useState([])
+
   if (recipe != current) {
     setCurrent(recipe)
   }
+
+  function commentHandler(e) {
+    setComment(e.target.value)
+  }
+
+  useEffect(() => {
+    if(current){
+      const id = current._id;
+      services.getComments(id).then((res) => {
+        console.log(res)
+        setComments([...comments, ...res])
+      })
+    }
+  }, [current])
+
+  function postComment() {
+    const newComment = {
+      comment:comment,
+      recipe: recipe._id
+    }
+    
+    services.postComment(newComment).then((res) => {
+      setComments([...comments, res])
+      setComment('')
+    })
+  }
+  console.log(comments)
   if(current) {
     return (
-      <div className="recipe-container">
-        <div className="recipe-name">{recipe.name}</div>
-        <div className="instructions-label">Instructions:
-        <div>{recipe.instructions}
+      <>
+        <div className="display-recipe-container">
+          <div className="display-recipe-name">{recipe.name}</div>
+          <div className="display-recipe-ingredients">
+            <span className="display-ingredients-label">Ingredients:</span>
+            <div className="display-ingredient-list">{recipe.ingredients.map(ing => <span>{ing}</span>)}</div>
+          </div>
+          <div className="display-instructions">
+            <span className="display-instructions-label">Instructions:</span>
+            <div>{recipe.instructions}</div>
+          </div>
         </div>
+        <div className="comment-form-container">
+          <textarea value={comment} onChange={(e) => {commentHandler(e)}} className="comment-input"></textarea>
+          <button onClick={postComment} className="post-comment btn-submit">Post</button>
         </div>
-      </div>
+        <div className="comments-list">
+          {comments.length > 0 && comments.map((com) => {
+            return <div className="comment-list-container">
+              <p className="comment">{com.comment}</p>
+              <span className="comment-author">{com.author}</span>
+            </div>
+          })}
+        </div>
+      </>
     )
   }
 }
 
 export default Recipe
-
-{/* <div className="recipe-container">
-<div className="recipe-name">Beetroot Hummus</div>
-<div className="ingredients-label">Ingredients:
-  <ul className="ingredients">
-    <li>5kg Carrots</li>
-    <li>100g Cumin Seeds</li>
-    <li>100g Coriander Seeds</li>
-    <li>50g Fennel Seeds</li>
-    <li>50g Maldon Salt</li>
-    <li>25g Cracked Black Pepper</li>
-  </ul>
-</div>
-<div className="instructions-label">Instructions:
-<div>Mix all together with olive oil and Roast at 180'c for around 45 minutes, till the beetroot are cooked and nicely coloured.
-  Once cooked blend with the spices from the tray in the Robot coupe.Into the same blender add 500g Raw Tahini and 100ml Water, 
-  50ml Lemon Juice and Season to taste. Mix all together, add a little more tahini If its a bit runny."
-</div>
-</div>
-</div> */}

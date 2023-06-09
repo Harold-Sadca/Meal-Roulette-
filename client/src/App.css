@@ -1,11 +1,21 @@
 .App {
   text-align: center;
+  background-image: url("../public/images/1412206.jpg");
+  min-height: 100vh;
+  animation: Appscroll 60s linear infinite;
 }
 
-.instructions-input {
-  height: 500px;
-
+@keyframes Appscroll {
+  0% {
+    background-position : 0px 0px
+  }
+  100% {
+    background-position : 0px -808px
+  }
 }
+
+/* Create Recipe Form CSS */
+
 
 .recipe-form-container {
   display: flex;
@@ -15,26 +25,253 @@
 }
 
 .create-recipe {
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
-/* .recipe-form-container {
-  width: 50%;
-  height: 50vh;
-  border: 1px solid black;
-  margin: auto;
-  align-items: center;
+.header {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 2em;
+  font-weight: 600;
 }
 
 .recipe-form {
-  width: 90%;
-  height: 100%;
-  border: 1px solid black;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
 }
 
-.name-input, .ingredients-input, .steps-input {
+.name-input {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin-top: 45px;
-  border: 1px solid black;
-} */
+  align-items: flex-start;
+}
+
+.name-input span {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.name-input input {
+  width: 100%;
+  height: 2em;
+  border-radius: 5px;
+  background-color: rgb(152, 152, 152);
+}
+
+.ingredients-input {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  align-items: flex-start;
+}
+
+.ingredients-input textarea {
+  width: 100%;
+  height: 90%;
+  border-radius: 5px;
+  resize: none;
+  background-color: rgb(152, 152, 152);
+}
+
+.ingredients-input span {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.instructions-input {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70%;
+  align-items: flex-start;
+  margin-left: 15px;
+}
+
+.instructions-input span {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.instructions-input textarea {
+  width: 100%;
+  resize: none;
+  border-radius: 5px;
+  height: 90%;
+  background-color: rgb(152, 152, 152);
+}
+
+.ingredients-instructions {
+  display: flex;
+  height: 500px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Buttons CSS */
+
+.btn-submit {
+  padding: 10px;
+  font-size: 20px;
+  color: whitesmoke;
+  font-weight: bold;
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  background-color: rgb(20, 162, 187);
+  transition: 0.5s;
+}
+
+.btn-submit:hover{
+  color: rgb(41, 163, 185);
+  background-color: white;
+  border:1px solid rgb(0, 157, 255);
+  box-shadow: 0 0 15px rgb(1, 122, 143);
+  transition: 0.5s;
+  border-radius: 15px;
+}
+
+
+/* Recipe Details Display */
+.display-recipe-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(147, 147, 147);
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  height: 750px;
+  align-items: flex-start;
+  border-radius: 10px;
+}
+
+.display-recipe-name {
+  padding: 10px;
+  align-self: center;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.display-recipe-ingredients {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.display-instructions {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.display-instructions-label, .display-ingredients-label {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.display-ingredient-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* <div className="comment-container">
+<textarea className="comment-input"></textarea>
+<button className="post-comment">Post</button>
+</div> */
+/* Comments CSS */
+.comment-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  height: 250px;
+  align-items: flex-start;
+  border-radius: 10px;
+}
+
+.comment-input {
+  width: 100%;
+  resize: none;
+  border-radius: 5px;
+  height: 250px;
+  background-color: rgb(255, 255, 255);
+}
+
+.post-comment {
+  width: 250px;
+  margin: 20px 0;
+  align-self: flex-end;
+}
+
+/* Preview CSS */
+
+.recipe-preview {
+  font-size: 2em;
+  font-weight: 500;
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+
+}
+
+/* <div className="comments-list">
+{comments.map((com) => {
+  return <div>
+    <p className="comment">{com.comment}</p>
+    <span className="comment-author">{com.author}</span>
+  </div>
+})}
+</div> */
+
+/* Comment CSS */
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.comment-list-container {
+  margin-bottom: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.comment {
+  align-self: flex-start;
+}
+
+.comment-author {
+  align-self: flex-end;
+}
+
+.comment-list-container:nth-child(even) {
+  background-color: lightyellow;
+  border-radius: 5px;
+}
+
+.comment-list-container:nth-child(odd) {
+  background-color: rgb(156, 255, 165);
+  border-radius: 5px;
+}

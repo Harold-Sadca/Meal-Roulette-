@@ -9,7 +9,7 @@ function fetchRecipes () {
           .then(res => res.json())
           .then(parsedRes => parsedRes)
 }
-
+// JSON.stringify(recipe)
 function addRecipe(recipe) {
   return fetch(`${PORT}/create-recipe`, {
     method: "POST",
@@ -77,6 +77,27 @@ function logoutUser () {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
+function getComments (id) {
+  return fetch(`${PORT}/${id}/comments`, {
+    method: "GET",
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: "include"
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
+function postComment (comment) {
+  return fetch(`${PORT}/post-comment`, {
+    method: "POST",
+    body: JSON.stringify(comment),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: "include"
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
 const services = {
   fetchRecipes,
   addRecipe,
@@ -84,7 +105,9 @@ const services = {
   editRecipe,
   registerUser,
   loginUser,
-  logoutUser
+  logoutUser,
+  getComments,
+  postComment
 }
 
 export default services

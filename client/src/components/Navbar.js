@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LoginForm from './Login';
+import services from './Services';
 import {
   Nav,
   NavLink,
@@ -10,6 +11,15 @@ import {
 } from './NavbarElements';
 //TODO:redo  
 const Navbar = () => {
+  const [surprise, setSurprise] = useState()
+
+  function generateSurprise() {
+    services.fetchRecipes().then((res) => {
+      const idx = Math.floor(Math.random()*res.length)
+      setSurprise(res[idx])
+      console.log(surprise)
+    })
+  }
   return (
     <>
       <Nav>
@@ -17,7 +27,7 @@ const Navbar = () => {
   
         <NavMenu>
           <NavLink to='/home' activeStyle>
-            About
+            Home
           </NavLink>
           <NavLink to='/create-recipe' activeStyle>
             Add Recipe
@@ -25,8 +35,8 @@ const Navbar = () => {
           <NavLink to='/recipe' activeStyle>
             Recipe
           </NavLink>
-          <NavLink to='/team' activeStyle>
-            Teams
+          <NavLink to='/surprise-me' onClick={generateSurprise} surprise={surprise} activeStyle>
+            Surprise Me
           </NavLink>
           <NavLink to='/recipes' activeStyle>
             Recipes

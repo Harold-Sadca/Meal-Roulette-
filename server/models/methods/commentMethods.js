@@ -23,24 +23,6 @@ exports.createOne = async(req) => {
   }
 }
 
-// module.exports.showCampground = async (req, res,) => {
-//   const campground = await Campground.findById(req.params.id).populate({
-//       path: 'reviews',
-//       populate: {
-//           path: 'author'
-//       }
-//   }).populate('author');
-//   if (!campground) {
-//       req.flash('error', 'Cannot find that campground!');
-//       return res.redirect('/campgrounds');
-//   }
-//   res.render('campgrounds/show', { campground });
-// }
-
-// module.exports.index = async (req, res) => {
-//   const campgrounds = await Campground.find({}).populate('popupText');
-//   res.render('campgrounds/index', { campgrounds })
-// }
 
 // exports.editOne = async(req) => {
 //   const {_id} = req.body;
