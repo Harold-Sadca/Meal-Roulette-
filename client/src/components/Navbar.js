@@ -10,24 +10,11 @@ import {
   NavBtn,
   NavBtnLink,
 } from './NavbarElements';
+import { useDispatch, useSelector } from "react-redux";
 //TODO:redo  
 const Navbar = () => {
-  // const [surprise, setSurprise] = useState()
-  // const navigate = useNavigate();
+  const authenticated = useSelector(state => state.authenticated)
 
-  // function generateSurprise() {
-  //   services.fetchRecipes().then((res) => {
-  //     const idx = Math.floor(Math.random()*res.length)
-  //     setSurprise(res[idx])
-  //     console.log(surprise)
-  //     navigate(`/surprise-me/${surprise._id}`)
-  //   })
-  // }
-
-  // function clickHandler (e) {
-  //   setSelected(recipe)
-  //   navigate(`/recipe/${recipe._id}`)
-  // }
   return (
     <>
       <Nav>
@@ -55,9 +42,11 @@ const Navbar = () => {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        <NavBtn>
+        {!authenticated && 
+          <NavBtn>
           <NavBtnLink to='/login'>Sign In</NavBtnLink>
-        </NavBtn>
+          </NavBtn>
+          }
       </Nav>
     </>
   );

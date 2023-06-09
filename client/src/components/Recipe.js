@@ -35,7 +35,7 @@ function Recipe ({recipe}) {
       setComment('')
     })
   }
-  console.log(comments)
+
   if(current) {
     return (
       <>

@@ -1,4 +1,4 @@
-
+import Profile from "./Profile"
 function Home({isAuthenticated}) {
   
   if(isAuthenticated) {
@@ -22,7 +22,9 @@ function Home({isAuthenticated}) {
           and let it dry out in a hot area. Once dry, whip it in a machine with the butter before
           adding the confit garlic oil then check it for seasoning.
           Serve it with garlic chives
+          <img src="../../public/images/Memento_poster.jpg" alt=""></img>
         </div>
+        <Profile />
       </div>
     )
   }

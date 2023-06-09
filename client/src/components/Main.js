@@ -15,26 +15,34 @@ import { login, logout, add, remove } from "../redux/actions";
 
 
 function Main () {
-  const recipesR = useSelector(state => state.recipesR)
-  const [recipes, setRecipes] = useState([])
+  const recipes = useSelector(state => state.recipes)
+  const authenticated = useSelector(state => state.authenticated)
+  // const [recipes, setRecipes] = useState([])
   const[selected, setSelected] = useState()
   const [surprise, setSurprise] = useState()
-  const[isAuthenticated, setIsAuthenticated] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
     services.fetchRecipes().then((res) => {
       dispatch(add(res))
-      setRecipes(res)
       const idx = Math.floor(Math.random()*res.length)
       setSelected(res[idx])
       setSurprise(res[idx])
+    })
+    services.getUser().then((res) => {
+      //TODO: response will be changed to return the user instead
+      //so check if there is a user or not then send a dispatch
+      //setting the user to the response
+      //then check if there is a user instead of checking if its authenticated
+      if(res == "Successfully Authenticated") {
+        dispatch(login())
+      }
     })
   }, [])
   if(selected) {
     // console.log(selected.name)
   }
-  // console.log(surprise)
+  console.log(authenticated)
 
   function logout () {
     services.logoutUser().then((res) => {
@@ -42,13 +50,13 @@ function Main () {
     })
   }
 
-  console.log(recipesR, 'main')
+  // console.log(recipesR, 'main')
   return (
     <>
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/home' element={<Home isAuthenticated={isAuthenticated}/>} />
+        <Route path='/home' element={<Home />} />
         <Route path='/login' element={<LoginForm />} />
         <Route path='/create-recipe' element={<RecipeForm />} />
         <Route path='/recipe' element={<Recipe recipe={selected}/>} />

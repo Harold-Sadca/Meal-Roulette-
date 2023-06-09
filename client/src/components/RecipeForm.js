@@ -8,7 +8,7 @@ function RecipeForm () {
   const [name, setName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [ingredients, setIngredients] = useState('')
-  const recipesR = useSelector(state => state.recipesR)
+  const recipes = useSelector(state => state.recipes)
 
   function valSetter (e) {
     const id = e.target.id
@@ -39,7 +39,7 @@ function RecipeForm () {
       setIngredients('')
     }
   }
-  console.log(recipesR,'form')
+  // console.log(recipesR,'form')
 
   return (
     <div className="recipe-form-container">

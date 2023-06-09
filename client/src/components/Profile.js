@@ -5,6 +5,7 @@ function Profile({user}) {
 
   return (
     <>
+      <span>PROFILE</span>
       {user && 
         <div className="user-profile">
           <div className="user-name">{user.username}</div>
