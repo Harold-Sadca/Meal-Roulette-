@@ -37,7 +37,7 @@ exports.logoutUser = async (req, res, next) => {
 }
 
 exports.userProfile = async (req, res) => {
-	console.log(req.isAuthenticated())
+	// console.log(req.isAuthenticated())
 	try {
 		const user = await getUser(req);
 		res.status(201).send(user)

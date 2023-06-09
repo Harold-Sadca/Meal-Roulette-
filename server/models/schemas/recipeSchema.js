@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
   name:String,
-  instructions: [String],
+  ingredients :[String],
+  instructions: String,
   categories: [{type: Schema.Types.ObjectId, ref: 'Category', default: 'None'}],
   author: {
     type: String,

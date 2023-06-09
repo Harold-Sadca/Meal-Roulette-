@@ -1,7 +1,7 @@
 const {editOne, createOne, deleteOne, findAll} = require('../models/methods/recipeMethods')
 
 exports.getAllRecipes = async (req, res) => {
-  console.log(req.user.id)
+  // console.log(req.user.id)
   // console.log(req.session.passport)
   try {
     const result = await findAll();
@@ -12,8 +12,8 @@ exports.getAllRecipes = async (req, res) => {
 }
 
 exports.createRecipe = async (req,res) => {
-  console.log(req.user.id)
-  console.log(req.isAuthenticated(),'..')
+  // console.log(req.user.id)
+  // console.log(req.isAuthenticated(),'..')
   // console.log(req.session.passport)
   // console.log(req)
   try {

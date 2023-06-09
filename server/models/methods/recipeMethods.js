@@ -1,7 +1,6 @@
 const Recipe = require('../schemas/recipeSchema')
 
 exports.findAll = async() => {
-  console.log('methods')
   try {
     const recipes = await Recipe.find({});
     return recipes;
@@ -11,9 +10,10 @@ exports.findAll = async() => {
 }
 
 exports.createOne = async(req) => {
-  const {name, instructions} = req.body
+  const {name, instructions, ingredients} = req.body
   try{
-    const newRecipe = await new Recipe({name, instructions, author:req.user.username});
+    const newRecipe = await new Recipe({name, instructions, ingredients});
+    // const newRecipe = await new Recipe({name, instructions, author:req.user.username}); use this after authorization is final
     await newRecipe.save();
     return newRecipe;
   } catch(e) {

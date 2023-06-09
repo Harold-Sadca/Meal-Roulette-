@@ -7,6 +7,7 @@ const session = require('express-session');
 const secret = 'maybe this is a secret';
 const recipeRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/authRoutes')
+const commentRoutes = require('./routes/commentRoutes')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/schemas/userSchema')
@@ -89,6 +90,7 @@ passport.deserializeUser(function(user, cb) {
 app
   .use(userRoutes)
   .use(recipeRoutes)
+  .use(commentRoutes)
 
 app.listen(PORT, () => {
   console.log(`Yo stop chasing me I've ran for ${PORT}km already!`)
