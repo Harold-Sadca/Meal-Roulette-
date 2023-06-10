@@ -20,7 +20,6 @@ function Recipe ({recipe}) {
     if(current){
       const id = current._id;
       services.getComments(id).then((res) => {
-        console.log(res)
         setComments([...comments, ...res])
       })
     }

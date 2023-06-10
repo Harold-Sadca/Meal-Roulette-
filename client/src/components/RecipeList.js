@@ -4,6 +4,7 @@ import ShowRecipe from "./ShowRecipe"
 import { useNavigate } from "react-router-dom";
 import Preview from "./Preview";
 //TODO:styling, add link to open recipe details
+//TODO:make it so it renders when navigating, clicking it 'Recipe' again is not ideal
 function RecipeList ({recipes, setSelected}) {
 
   // recipeList = recipes

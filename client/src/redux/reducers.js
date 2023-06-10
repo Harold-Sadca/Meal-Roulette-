@@ -30,7 +30,18 @@ const authenticated = (state=false, action) => {
 
 const currentUser = (state, action) => {
     switch (action.type) {
-        case 'CHANGE':
+        case 'SET_USER':
+            return action.payload;
+        case 'REMOVE_USER':
+            return null;
+        default:
+            return null;
+    }
+}
+
+const latest = (state, action) => {
+    switch (action.type) {
+        case 'SET_LATEST':
             return action.payload;
         default:
             return null
@@ -40,7 +51,8 @@ const currentUser = (state, action) => {
 const reducers = combineReducers({
     recipes,
     authenticated,
-    currentUser
+    currentUser,
+    latest
 })
 
 export default reducers;

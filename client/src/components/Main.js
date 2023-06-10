@@ -11,14 +11,16 @@ import services from "./Services";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Footer from "./Footer";
+import Profile from "./Profile";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, add, remove, init } from "../redux/actions";
+import { login, logout, add, remove, init, setUser } from "../redux/actions";
 
 
 
 function Main () {
   const recipes = useSelector(state => state.recipes)
   const authenticated = useSelector(state => state.authenticated)
+  const currentUser = useSelector(state => state.currentUser)
   // const [recipes, setRecipes] = useState([])
   const[selected, setSelected] = useState()
   const [surprise, setSurprise] = useState()
@@ -36,22 +38,14 @@ function Main () {
       //so check if there is a user or not then send a dispatch
       //setting the user to the response
       //then check if there is a user instead of checking if its authenticated
-      if(res == "Successfully Authenticated") {
+      if(res.username) {
         dispatch(login())
+        dispatch(setUser(res))
       }
     })
   }, [])
-  if(selected) {
-    // console.log(selected.name)
-  }
-  console.log(authenticated)
 
-  function logout () {
-    services.logoutUser().then((res) => {
-      // console.log(res)
-    })
-  }
-
+  console.log(currentUser,authenticated, 'user')
   // console.log(recipesR, 'main')
   return (
     <>
@@ -65,6 +59,7 @@ function Main () {
         <Route path='surprise-me' element={<Recipe recipe={selected}/>}/>
         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
         <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </Router>   
     </>

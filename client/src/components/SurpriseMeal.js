@@ -7,7 +7,12 @@ import services from "./Services"
 function SurpriseMeal({surprise}) {
 
   if(surprise) {
-    return <Recipe recipe={surprise}/>
+    return(
+      <div className="surprise-meal">
+        <span className="header">Not to your taste? Don't worry I still got you</span>
+        <Recipe recipe={surprise}/>
+      </div>
+    )
   }
 
 }

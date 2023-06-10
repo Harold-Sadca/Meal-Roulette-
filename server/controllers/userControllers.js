@@ -17,22 +17,20 @@ exports.loginUser = async (req, res, next) => {
 		else {
 		  req.logIn(user, (err) => {
 			if (err) throw err;
-			res.redirect('/recipe')
+			// res.redirect('/recipe')
 			// res.send(JSON.stringify("Successfully Authenticated"));
+			res.status(200).send(req.user)
 		  });
 		}
 	  })(req, res, next);
 	}
-// exports.loginUser = async (req, res) => {
-// 	res.status(201).send(req.isAuthenticated())
-// }
 
 exports.logoutUser = async (req, res, next) => {
 	req.logout(function(err) {
 		if(err) {
 			return next(err)
 		}
-		res.status(200).send(JSON.stringify('logged out'))
+		res.status(200).send(JSON.stringify('Logged out'))
 	})
 }
 
