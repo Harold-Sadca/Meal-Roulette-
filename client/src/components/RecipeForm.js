@@ -49,21 +49,24 @@ function RecipeForm () {
       <div className="recipe-form">
         <label className="name-input">
           <span>Recipe Name:</span>
-          <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
-          {/* https://coreui.io/react/docs/components/dropdown/
-          <CDropdown>
-            <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
-            <CDropdownMenu>
-              <CDropdownItem href="#">Action</CDropdownItem>
-              <CDropdownItem href="#">Another action</CDropdownItem>
-              <CDropdownItem href="#">Something else here</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown> */}
+          <div className="name-and-category">
+            <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
+            <select className="category-selection">
+              <option selected>Category</option>
+              <option value="starters">Starter</option>
+              <option value="mains">Mains</option>
+              <option value="desserts">Dessert</option>
+            </select>
+          </div>
         </label>
         <div className="ingredients-instructions">
           <label className="ingredients-input">
             <span>Ingredients:</span>
             <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Ingredients...'></textarea>
+          </label>
+          <label className="description-input">
+            <span>Description:</span>
+            <textarea id="description" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="description" placeholder='Description...'></textarea>
           </label>
           <label className="instructions-input">
             <span>Instructions:</span>

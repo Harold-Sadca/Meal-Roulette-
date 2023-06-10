@@ -1,9 +1,29 @@
 .App {
   text-align: center;
-  background-image: url("../public/images/1412206.jpg");
+  /* background-image: url("../public/images/1412206.jpg"); */
   min-height: 100vh;
+  /* opacity: 0.8; */
+}
+
+.App::before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	background-image: url("../public/images/1412206.jpg");
+	filter: blur(1.5px);
+	z-index: -1;
+  opacity: 0.9;
   animation: Appscroll 60s linear infinite;
 }
+
+/* img{
+  filter: grayscale(50%);
+} */
+
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -32,9 +52,13 @@ body {
 }
 
 .header {
-  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  /* text-shadow: rgb(255, 255, 255) 1px 0 10px; */
   font-size: 2em;
   font-weight: 600;
+  background-image: linear-gradient(to left, #000000, #ffffff);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .recipe-form {
@@ -62,26 +86,40 @@ body {
   width: 100%;
   height: 2em;
   border-radius: 5px;
-  background-color: rgb(152, 152, 152);
+  background-color: rgba(252, 236, 201, .3);
+  font-size: 1.5em;
 }
 
-.ingredients-input {
+.description-input {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 20%;
   height: 100%;
   align-items: flex-start;
 }
 
-.ingredients-input textarea {
+.ingredients-input, .description-input {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  align-items: flex-start;
+}
+
+.description-input {
+  margin-left: 15px;
+}
+
+.ingredients-input textarea, .description-input textarea {
   width: 100%;
   height: 90%;
   border-radius: 5px;
   resize: none;
-  background-color: rgb(152, 152, 152);
+  background-color: rgba(252, 236, 201, .3);
+  font-size: 1.5em;
 }
 
-.ingredients-input span {
+.ingredients-input span, .description-input span {
   text-shadow: rgb(255, 255, 255) 1px 0 10px;
   font-size: 1.5em;
   font-weight: 600;
@@ -92,7 +130,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 70%;
+  width: 60%;
   align-items: flex-start;
   margin-left: 15px;
 }
@@ -109,7 +147,9 @@ body {
   resize: none;
   border-radius: 5px;
   height: 90%;
-  background-color: rgb(152, 152, 152);
+  background-color: rgba(252, 236, 201, .3);
+  font-size: 1.5em;
+  
 }
 
 .ingredients-instructions {
@@ -118,6 +158,24 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
+}
+
+.name-and-category {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.name-and-category input {
+  width: 75%;
+  align-self: flex-start;
+  margin-right: 1em;
+}
+
+.category-selection {
+  width: 25%;
+  border-radius: 5px;
+  text-align: center;
 }
 
 /* Buttons CSS */
@@ -164,6 +222,10 @@ body {
   align-self: center;
   font-size: 1.5em;
   font-weight: 500;
+  background-image: linear-gradient(to left, #000000, #ffffff);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .display-recipe-ingredients {
@@ -442,6 +504,7 @@ body {
 .category-name {
   font-weight: 500;
   font-size: 2em;
+
 }
 
 .category-description {
@@ -457,6 +520,7 @@ body {
 
 .starter {
   background-image: url("../public/images/starter-bg.jfif");
+  filter: grayscale(50%);
 }
 
 .mains {
@@ -477,6 +541,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  cursor: pointer;
 }
 /* Created by http://grohit.com/  */
 footer a,

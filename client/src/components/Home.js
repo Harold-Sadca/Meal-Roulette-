@@ -19,27 +19,33 @@ function Home({isAuthenticated}) {
     return(
       <div className="homepage-container">
         <div className="category-container starter">
-          <div className="category-name">Starters</div>
+        <div class="btn-2">
+            <a><span><div id="starters" onClick={sendCategory} className="category-name">Starters</div></span></a>
+        </div>
           <div className="category-description">
             From simple and delicious soups and salads to more elaborate tarts and terrines,
            be inspired to start your meal with a taste sensation. See all starter recipes.
           </div>
           <div class="btn-1">
-            <a ><span id="starter" onClick={sendCategory}>Check Starters</span></a>
+            <a><span id="starters" onClick={sendCategory}>Check Starters</span></a>
           </div>
         </div>
         <div className="category-container mains">
-          <div className="category-name">Mains</div>
+        <div class="btn-1">
+            <a><span><div className="category-name" id="mains" onClick={sendCategory}>Mains</div></span></a>
+        </div>
           <div className="category-description">
           Hundreds of main dish recipes. Choose from top-rated comfort food, healthy, and vegetarian options.
            Find your dinner star now!
           </div>
           <div class="btn-2">
-            <a href=""><span>Check Mains</span></a>
+            <a><span id="mains" onClick={sendCategory}>Check Mains</span></a>
           </div>
         </div>
         <div className="category-container dessert">
-          <div className="category-name">Desserts</div>
+        <div class="btn-2">
+            <a><span><div className="category-name" id="desserts" onClick={sendCategory}>Desserts</div></span></a>
+        </div>
           <div className="category-description">
             Why stop after the mains?
             Always end it on a high note I always say.
@@ -47,7 +53,7 @@ function Home({isAuthenticated}) {
             {/* Treat yourself to some desserts. */}
           </div>
           <div class="btn-1">
-            <a href=""><span>Check Desserts</span></a>
+            <a><span id="desserts" onClick={sendCategory}>Check Desserts</span></a>
           </div>
         </div>
       </div>
