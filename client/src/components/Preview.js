@@ -1,3 +1,5 @@
+//preview template, shows recipe name and short description
+
 import { useNavigate, useRoutes } from "react-router-dom";
 function Preview ({recipe, setSelected}) {
   const navigate = useNavigate();

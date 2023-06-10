@@ -1,13 +1,18 @@
+//template for login page
 import { useState } from "react";
 import services from "./Services";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, add, remove } from "../redux/actions";
+import { login, logout, add, remove, setUser } from "../redux/actions";
+import { useNavigate, useRoutes } from "react-router-dom";
+
 
 function LoginForm () {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
   const authenticated = useSelector(state => state.authenticated)
+  const currentUser = useSelector(state => state.currentUser)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function valSetter (e) {
     const id = e.target.id
@@ -30,42 +35,16 @@ function LoginForm () {
       services.loginUser(user).then((res) => {
         setUsername('')
         setPassword('')
-        // console.log(res)
         if(res == "Successfully Authenticated") {
           dispatch(login())
-          // dispatch(add(res))
+          dispatch(setUser(res))
+          navigate(`/profile/${res._id}`)
         }
       })
     }
   }
 
-  // return (
-  //   <Router>
-  //     <div className="App">
-  //       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-  //         <div className="container">
-  //           <Link className="navbar-brand" to={'/sign-in'}>
-  //             positronX
-  //           </Link>
-  //           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-  //             <ul className="navbar-nav ml-auto">
-  //               <li className="nav-item">
-  //                 <Link className="nav-link" to={'/sign-in'}>
-  //                   Login
-  //                 </Link>
-  //               </li>
-  //               <li className="nav-item">
-  //                 <Link className="nav-link" to={'/sign-up'}>
-  //                   Sign up
-  //                 </Link>
-  //               </li>
-  //             </ul>
-  //           </div>
-  //         </div>
-  //       </nav>
-  //     </div>
-  //   </Router>
-  // )
+
   return (
     <div className="login-form-container">
       <div className="header">Login</div>

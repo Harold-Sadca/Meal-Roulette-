@@ -1,3 +1,5 @@
+//template for register page
+
 import { useState } from "react";
 import services from "./Services";
 //TODO:styling

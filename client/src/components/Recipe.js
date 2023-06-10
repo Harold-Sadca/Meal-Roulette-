@@ -1,3 +1,5 @@
+//display all recipe details template
+
 import { useState, useEffect } from "react"
 import services from "./Services"
 
@@ -18,8 +20,7 @@ function Recipe ({recipe}) {
     if(current){
       const id = current._id;
       services.getComments(id).then((res) => {
-        console.log(res)
-        setComments([...comments, ...res])
+        setComments([...res])
       })
     }
   }, [current])
