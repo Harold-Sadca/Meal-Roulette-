@@ -328,6 +328,7 @@
   font-size: 1.5em;
   font-weight: 500;
   text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  display: none;
 }
 
 #username, #password, #email {
@@ -335,6 +336,7 @@
   height: 60px;
   border-radius: 5px;
   border: none;
+  font-size: 1em;
 }
 
 .password-input {}
@@ -348,3 +350,43 @@
 .email-input span {}
 
 #email {}
+
+
+/* <div className="login-form-container">
+<div className="header">Login</div>
+<form className="login-form" onSubmit={(e) => {login(e)}}>
+  <label className="username-input">
+  <span>Username:</span>
+    <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
+  </label>
+  <div className="password-input">
+    <span>Password:</span>
+    <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
+  </div>
+  <button className="create" type="submit"> Login </button>
+</form>
+</div> */
+
+/* Login CSS */
+
+.login-form-container {
+  width: 25%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  height: 30em;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  padding: 10px;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* TODO:check parallax */

@@ -43,7 +43,8 @@ const Navbar = () => {
           <NavLink to='/recipe' activeStyle>
             Recipe
           </NavLink>
-          <NavLink to='/surprise-me' onClick={generateSurprise} surprise={surprise} activeStyle>
+          <NavLink to='/surprise-me' activeStyle>
+          {/* <NavLink to='/surprise-me' onClick={generateSurprise} surprise={surprise} activeStyle> */}
             Surprise Me
           </NavLink>
           <NavLink to='/recipes' activeStyle>
