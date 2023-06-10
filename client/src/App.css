@@ -351,33 +351,24 @@
 
 #email {}
 
-
-/* <div className="login-form-container">
-<div className="header">Login</div>
-<form className="login-form" onSubmit={(e) => {login(e)}}>
-  <label className="username-input">
-  <span>Username:</span>
-    <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
-  </label>
-  <div className="password-input">
-    <span>Password:</span>
-    <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
-  </div>
-  <button className="create" type="submit"> Login </button>
-</form>
-</div> */
+/* 
+    <div className="login-form-container">
+      <div className="header">Login</div>
+      <form className="login-form" onSubmit={(e) => {login(e)}}>
+        <label className="username-input">
+        <span>Username:</span>
+          <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
+        </label>
+        <div className="password-input">
+          <span>Password:</span>
+          <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
+        </div>
+        <button className="create" type="submit"> Login </button>
+      </form>
+    </div>
+*/
 
 /* Login CSS */
-
-.login-form-container {
-  width: 25%;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  height: 30em;
-  align-items: center;
-  justify-content: center;
-}
 
 .login-form {
   padding: 10px;
@@ -389,4 +380,12 @@
   justify-content: space-around;
 }
 
-/* TODO:check parallax */
+.login-form-container{
+  width: 25%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  height: 30em;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,3 +1,5 @@
+//display all recipe details template
+
 import { useState, useEffect } from "react"
 import services from "./Services"
 
@@ -35,7 +37,7 @@ function Recipe ({recipe}) {
       setComment('')
     })
   }
-  console.log(comments)
+
   if(current) {
     return (
       <>

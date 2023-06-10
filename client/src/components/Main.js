@@ -1,3 +1,5 @@
+//main template renders navbar, background and all other pages
+
 import RecipeForm from "./RecipeForm";
 import Recipe from "./Recipe";
 import RecipeList from "./RecipeList";
@@ -9,49 +11,62 @@ import services from "./Services";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Footer from "./Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, add, remove, init } from "../redux/actions";
 
 
 
 function Main () {
-  const [recipes, setRecipes] = useState([])
+  const recipes = useSelector(state => state.recipes)
+  const authenticated = useSelector(state => state.authenticated)
+  // const [recipes, setRecipes] = useState([])
   const[selected, setSelected] = useState()
-  const[isAuthenticated, setIsAuthenticated] = useState(false)
+  const [surprise, setSurprise] = useState()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     services.fetchRecipes().then((res) => {
-      setRecipes(res)
-      setSelected(res[2])
+      dispatch(init(res))
+      const idx = Math.floor(Math.random()*res.length)
+      setSelected(res[idx])
+      setSurprise(res[idx])
+    })
+    services.getUser().then((res) => {
+      //TODO: response will be changed to return the user instead
+      //so check if there is a user or not then send a dispatch
+      //setting the user to the response
+      //then check if there is a user instead of checking if its authenticated
+      if(res == "Successfully Authenticated") {
+        dispatch(login())
+      }
     })
   }, [])
   if(selected) {
-    console.log(selected.name)
+    // console.log(selected.name)
   }
+  console.log(authenticated)
 
   function logout () {
     services.logoutUser().then((res) => {
-      console.log(res)
+      // console.log(res)
     })
   }
+
+  // console.log(recipesR, 'main')
   return (
     <>
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/home' element={<Home isAuthenticated={isAuthenticated}/>} />
+        <Route path='/home' element={<Home />} />
         <Route path='/login' element={<LoginForm />} />
         <Route path='/create-recipe' element={<RecipeForm />} />
         <Route path='/recipe' element={<Recipe recipe={selected}/>} />
-        <Route path=''/>
+        <Route path='surprise-me' element={<Recipe recipe={selected}/>}/>
         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
-        {/* <Route path='/blogs' component={Blogs} /> */}
         <Route path='/sign-up' element={<SignUp />} />
       </Routes>
-    </Router>
-    {/* <Footer /> */}
-      {/* <RecipeForm /> */}
-      {/* <LoginForm /> */}
-      {/* <SignUp /> */}
-      
+    </Router>   
     </>
   )
 }

@@ -1,10 +1,14 @@
+//template for login page
 import { useState } from "react";
 import services from "./Services";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, add, remove } from "../redux/actions";
 
 function LoginForm () {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
+  const authenticated = useSelector(state => state.authenticated)
+  const dispatch = useDispatch()
 
   function valSetter (e) {
     const id = e.target.id
@@ -15,7 +19,7 @@ function LoginForm () {
     }
   }
 
-  function login(e) {
+  function loginFunction(e) {
     e.preventDefault();
     if(!username || !password) {
       alert('Cant do that son!')
@@ -27,7 +31,11 @@ function LoginForm () {
       services.loginUser(user).then((res) => {
         setUsername('')
         setPassword('')
-        console.log(res)
+        // console.log(res)
+        if(res == "Successfully Authenticated") {
+          dispatch(login())
+          // dispatch(add(res))
+        }
       })
     }
   }
@@ -62,7 +70,7 @@ function LoginForm () {
   return (
     <div className="login-form-container">
       <div className="header">Login</div>
-      <form className="login-form" onSubmit={(e) => {login(e)}}>
+      <form className="login-form" onSubmit={(e) => {loginFunction(e)}}>
         <label className="username-input">
         <span>Username:</span>
           <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />

@@ -1,3 +1,5 @@
+//template to render multiple recipes, might not be needed
+
 import ShowRecipe from "./ShowRecipe"
 import { useNavigate } from "react-router-dom";
 import Preview from "./Preview";

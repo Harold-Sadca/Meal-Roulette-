@@ -98,6 +98,16 @@ function postComment (comment) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
+function getUser() {
+  return fetch(`${PORT}/user`, {
+    method: "GET",
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: "include"
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
 const services = {
   fetchRecipes,
   addRecipe,
@@ -107,7 +117,8 @@ const services = {
   loginUser,
   logoutUser,
   getComments,
-  postComment
+  postComment,
+  getUser
 }
 
 export default services

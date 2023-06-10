@@ -1,3 +1,5 @@
+//user profile page template
+//contents: user info, user favourites, user recipes
 //TODO:everything
 
 function Profile({user}) {
@@ -5,6 +7,7 @@ function Profile({user}) {
 
   return (
     <>
+      <span>PROFILE</span>
       {user && 
         <div className="user-profile">
           <div className="user-name">{user.username}</div>
