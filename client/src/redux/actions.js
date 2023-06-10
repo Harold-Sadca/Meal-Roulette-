@@ -30,3 +30,8 @@ export const setUser = (user) => ({
 export const removeUser = () => ({
     type: 'REMOVE_USER'
 })
+
+export const setcategory = (recipe) => ({
+    type: 'SET_CATEGORY',
+    payload: recipe
+})

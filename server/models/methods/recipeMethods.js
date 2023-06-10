@@ -10,9 +10,10 @@ exports.findAll = async() => {
 }
 
 exports.createOne = async(req) => {
-  const {name, instructions, ingredients} = req.body
+  const {name, instructions, ingredients, category, description} = req.body
   try{
-    const newRecipe = await new Recipe({name, instructions, ingredients});
+    const newRecipe = await new Recipe(req.body);
+    // const newRecipe = await new Recipe({name, instructions, ingredients, category, description});
     // const newRecipe = await new Recipe({name, instructions, author:req.user.username}); use this after authorization is final
     await newRecipe.save();
     return newRecipe;

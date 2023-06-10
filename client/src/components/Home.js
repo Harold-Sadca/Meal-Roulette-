@@ -1,13 +1,25 @@
 import services from "./Services"
+import { useDispatch, useSelector } from "react-redux";
+import { setcategory } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
+// import { login, logout, add, remove, init, setUser } from "../redux/actions";
+
 
 function Home({isAuthenticated}) {
+  
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const filteredByCat = useSelector(state => state.filteredByCat)
+
+  const recipes = useSelector(state => state.recipes)
 
   function sendCategory (e) {
     const cat = e.target.id
-    console.log(cat)
-    services.fetchRecipeByCat(cat).then((res) => {
-      console.log(res, 'result')
-    })
+    const filteredRecipe = recipes.filter((res) => res.category == cat)
+    dispatch(setcategory(filteredRecipe))
+    navigate(`/${cat}/recipes`)
+
   }
   
   if(isAuthenticated) {

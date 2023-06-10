@@ -23,6 +23,7 @@ function Main () {
   const recipes = useSelector(state => state.recipes)
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
+  const filteredByCat = useSelector(state => state.filteredByCat)
   // const [recipes, setRecipes] = useState([])
   const[selected, setSelected] = useState()
   const [surprise, setSurprise] = useState()
@@ -60,7 +61,8 @@ function Main () {
         <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
         <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/user-profile' element={<Profile />} />
+        <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
       </Routes>
     </Router>   
     </>

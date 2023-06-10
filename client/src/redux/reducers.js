@@ -15,8 +15,7 @@ const recipes = (state=[], action) => {
             return state;
     }
 }
-//TODO: change because you need to save the user instead of a true or false
-//saving the user will make it easier to render profile
+
 const authenticated = (state=false, action) => {
     switch (action.type) {
         case 'LOGIN':
@@ -48,11 +47,21 @@ const latest = (state, action) => {
     }
 }
 
+const filteredByCat = (state, action) => {
+    switch (action.type) {
+        case 'SET_CATEGORY':
+            return [...action.payload];
+        default:
+            return null
+    }
+}
+
 const reducers = combineReducers({
     recipes,
     authenticated,
     currentUser,
-    latest
+    latest,
+    filteredByCat
 })
 
 export default reducers;

@@ -9,6 +9,8 @@ function RecipeForm () {
   const [name, setName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [ingredients, setIngredients] = useState('')
+  const [description, setDescription] = useState('')
+  const [category, setCategory] = useState('')
   const recipes = useSelector(state => state.recipes)
   const dispatch = useDispatch()
 
@@ -20,25 +22,32 @@ function RecipeForm () {
       setInstructions(e.target.value)
     } else if(id == 'ingredients') {
       setIngredients(e.target.value)
+    } else if(id == 'description') {
+      setDescription(e.target.value)
+    } else if(id == 'category-selection'){
+      setCategory(e.target.value)
     }
   }
 
   function makeRecipe() {
-    if(!name || !instructions) {
+    if(!name || !instructions || !ingredients || !description || !category) {
       alert('Cant do that son!')
     } else {
       const newRecipe = {
         name,
         ingredients:ingredients.split('\n'),
-        instructions
+        instructions,
+        description,
+        category
       }
       services.addRecipe(newRecipe).then((res) => {
-        console.log(res)
         dispatch(add(res))
       })
       setName('')
       setInstructions('')
       setIngredients('')
+      setDescription('')
+      setCategory('')
     }
   }
   // console.log(recipesR,'form')
@@ -51,7 +60,7 @@ function RecipeForm () {
           <span>Recipe Name:</span>
           <div className="name-and-category">
             <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
-            <select className="category-selection">
+            <select onChange={(event) => {valSetter(event)}} className="category-selection" id="category-selection" >
               <option selected>Category</option>
               <option value="starters">Starter</option>
               <option value="mains">Mains</option>
@@ -66,7 +75,7 @@ function RecipeForm () {
           </label>
           <label className="description-input">
             <span>Description:</span>
-            <textarea id="description" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="description" placeholder='Description...'></textarea>
+            <textarea id="description" value={description} onChange={(event) => {valSetter(event)}} type="text" name="description" placeholder='Description...'></textarea>
           </label>
           <label className="instructions-input">
             <span>Instructions:</span>

@@ -38,7 +38,7 @@ function LoginForm () {
         if(res == "Successfully Authenticated") {
           dispatch(login())
           dispatch(setUser(res))
-          navigate(`/profile/${res._id}`)
+          navigate(`/user-profile`)
         }
       })
     }
