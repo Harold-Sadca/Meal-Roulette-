@@ -14,6 +14,8 @@ import Footer from "./Footer";
 import Profile from "./Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, add, remove, init, setUser } from "../redux/actions";
+import SurpriseMeal from "./SurpriseMeal";
+import ShowSelected from "./ShowSelected";
 
 
 
@@ -46,7 +48,6 @@ function Main () {
   }, [])
 
   console.log(currentUser,authenticated, 'user')
-  // console.log(recipesR, 'main')
   return (
     <>
     <Router>
@@ -55,8 +56,8 @@ function Main () {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<LoginForm />} />
         <Route path='/create-recipe' element={<RecipeForm />} />
-        <Route path='/recipe' element={<Recipe recipe={selected}/>} />
-        <Route path='surprise-me' element={<Recipe recipe={selected}/>}/>
+        <Route path='/recipe/:id' element={<ShowSelected />} />
+        <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/profile' element={<Profile />} />

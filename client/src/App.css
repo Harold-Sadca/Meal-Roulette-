@@ -4,6 +4,9 @@
   min-height: 100vh;
   animation: Appscroll 60s linear infinite;
 }
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 
 @keyframes Appscroll {
   0% {
@@ -388,4 +391,231 @@
   height: 30em;
   align-items: center;
   justify-content: center;
+}
+
+
+/* <div className="homepage-container">
+<div className="category-container starter">
+  <div className="category-name">Starters</div>
+  <div className="category-description">
+    From simple and delicious soups and salads to more elaborate tarts and terrines,
+   be inspired to start your meal with a taste sensation. See all starter recipes.
+   </div>
+</div>
+<div className="category-container mains">
+  <div className="category-name">Mains</div>
+  <div className="category-description">
+  Hundreds of main dish recipes. Choose from top-rated comfort food, healthy, and vegetarian options.
+   Find your dinner star now!
+  </div>
+</div>
+<div className="category-container desserts">
+  <div className="category-name">Desserts</div>
+  <div className="category-description">
+    Why stop after the mains?
+    Always end it on a high note I always say.
+    You should get your just dessert.
+  </div>
+</div>
+</div> */
+
+/* Homepage CSS */
+
+.homepage-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 90vh;
+  align-items: center;
+}
+
+.category-container {
+  margin: 0 0.5em;
+  height: 40em;
+  width: 33%;
+  background-size: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.category-name {
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.category-description {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.2em;
+  color: #ffffff;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
+
+.starter {
+  background-image: url("../public/images/starter-bg.jfif");
+}
+
+.mains {
+  background-image: url("../public/images/mains-bg.jfif");
+}
+
+.dessert {
+  background-image: url("../public/images/temp-bg.jfif");
+}
+
+/* CSS */
+
+.btn-1,
+.btn-2 {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* Created by http://grohit.com/  */
+footer a,
+.btn-1 a,
+.btn-2 a {
+  text-decoration: none;
+  border: 2px solid #010100;
+  padding: 15px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+span {
+  position: relative;
+  /* z-index coz when we put bg to before and after this span text will not be visible */
+  z-index: 3;
+}
+
+/* Button 1 styles */
+
+.btn-1 a::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  width: calc(100% + 6px);
+  /*100% plus double the times left values*/
+  height: calc(100% - 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+
+.btn-1 a:hover::before,
+.btn-2 a:hover::before {
+  transform: scaleY(0);
+}
+
+.btn-1 a::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: -5px;
+  width: calc(100% - 10px);
+  /*100% plus double the times left values*/
+  height: calc(100% + 10px);
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+/* Created by http://grohit.com/  */
+
+.btn-1 a:hover::after,
+.btn-2 a:hover::after {
+  transform: scaleX(0);
+}
+
+/* Button 2 styles */
+
+.btn-2 a {
+  color: #ffffff;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-2 a:hover {
+  color: #000000;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-2 a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+
+.btn-2 a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+
+
+/* CSS */
+.button-29 {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
 }

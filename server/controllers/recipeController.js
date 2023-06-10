@@ -7,21 +7,27 @@ exports.getAllRecipes = async (req, res) => {
     const result = await findAll();
     res.status(201).send(result);
   } catch(e) {
-    res.status(400).send('Bad Request')
+    res.status(400).send(JSON.stringify('Bad Request'))
   }
 }
 
 exports.createRecipe = async (req,res) => {
-  // console.log(req.user.id)
-  // console.log(req.isAuthenticated(),'..')
-  // console.log(req.session.passport)
-  // console.log(req)
   try {
     const result = await createOne(req)
     res.status(201).send(result)
   } catch(e) {
-    res.status(400).send('Bad Request')
+    res.status(400).send(JSON.stringify('Bad Request'))
   }
+}
+
+exports.getRecipeByCat = async (req, res) => {
+  try {
+    const result = await findByCategory(req)
+    res.status(200).send(result)
+  } catch(e) {
+    res.status(400).send(JSON.stringify('Man you screwed up'))
+  }
+
 }
 
 exports.editRecipe = async (req, res) => {
@@ -29,7 +35,7 @@ exports.editRecipe = async (req, res) => {
     const result = await editOne(req)
     res.status(201).send(result)
   } catch(e) {
-    res.status(400).send('Bad Request')
+    res.status(400).send(JSON.stringify('Bad Request'))
   }
 }
 
@@ -38,6 +44,6 @@ exports.deleteRecipe = async (req, res) => {
     const result = await deleteOne(req)
     res.status(201).send(result)
   } catch(e) {
-    res.status(400).send('Bad Request')
+    res.status(400).send(JSON.stringify('Bad Request'))
   }
 }

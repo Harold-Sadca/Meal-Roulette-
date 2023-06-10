@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 const recipes = (state=[], action) => {
     switch (action.type) {
         case 'ADD':
-            return [...state, ...action.payload];
+            return [...state, action.payload];
         case 'REMOVE':
             return state.filter((el) => {
                 return el._id != action.playload._id;

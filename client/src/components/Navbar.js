@@ -41,9 +41,9 @@ const Navbar = () => {
           <NavLink to='/create-recipe' activeStyle>
             Add Recipe
           </NavLink>
-          <NavLink to='/recipe' activeStyle>
+          {/* <NavLink to='/recipe' activeStyle>
             Recipe
-          </NavLink>
+          </NavLink> */}
           <NavLink to='/surprise-me'  activeStyle>
             Surprise Me
           </NavLink>

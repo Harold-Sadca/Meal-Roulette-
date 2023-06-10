@@ -20,7 +20,7 @@ function Recipe ({recipe}) {
     if(current){
       const id = current._id;
       services.getComments(id).then((res) => {
-        setComments([...comments, ...res])
+        setComments([...res])
       })
     }
   }, [current])

@@ -21,6 +21,16 @@ exports.createOne = async(req) => {
   }
 }
 
+exports.getRecipeByCat = async(req) => {
+  const {category} = req.params
+  try {
+    const recipes = await Recipe.find({category})
+    return recipes
+  } catch(e) {
+    console.log('Ohh man not this one again')
+  }
+}
+
 exports.editOne = async(req) => {
   const {_id} = req.body;
   try{

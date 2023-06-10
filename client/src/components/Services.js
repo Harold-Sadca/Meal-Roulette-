@@ -9,7 +9,16 @@ function fetchRecipes () {
           .then(res => res.json())
           .then(parsedRes => parsedRes)
 }
-// JSON.stringify(recipe)
+
+function fetchRecipeByCat (cat) {
+  return fetch(`${PORT}/get-recipes/${cat}`,{
+    method: "GET",
+    credentials: "include"
+  })
+          .then(res => res.json())
+          .then(parsedRes => parsedRes)
+}
+
 function addRecipe(recipe) {
   return fetch(`${PORT}/create-recipe`, {
     method: "POST",
@@ -118,7 +127,8 @@ const services = {
   logoutUser,
   getComments,
   postComment,
-  getUser
+  getUser,
+  fetchRecipeByCat
 }
 
 export default services

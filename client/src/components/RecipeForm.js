@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import services from "./Services";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'
 import { useDispatch, useSelector } from "react-redux";
+import { login, logout, add, remove, init, setUser } from "../redux/actions";
 //TODO:styling
 function RecipeForm () {
   const [name, setName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [ingredients, setIngredients] = useState('')
   const recipes = useSelector(state => state.recipes)
+  const dispatch = useDispatch()
 
   function valSetter (e) {
     const id = e.target.id
@@ -32,9 +32,9 @@ function RecipeForm () {
         ingredients:ingredients.split('\n'),
         instructions
       }
-      console.log(newRecipe, 'new')
       services.addRecipe(newRecipe).then((res) => {
         console.log(res)
+        dispatch(add(res))
       })
       setName('')
       setInstructions('')
@@ -50,6 +50,15 @@ function RecipeForm () {
         <label className="name-input">
           <span>Recipe Name:</span>
           <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
+          {/* https://coreui.io/react/docs/components/dropdown/
+          <CDropdown>
+            <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+            <CDropdownMenu>
+              <CDropdownItem href="#">Action</CDropdownItem>
+              <CDropdownItem href="#">Another action</CDropdownItem>
+              <CDropdownItem href="#">Something else here</CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown> */}
         </label>
         <div className="ingredients-instructions">
           <label className="ingredients-input">

@@ -3,6 +3,8 @@ import { useState } from "react";
 import services from "./Services";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, add, remove, setUser } from "../redux/actions";
+import { useNavigate, useRoutes } from "react-router-dom";
+
 
 function LoginForm () {
   const [username, setUsername] = useState('');
@@ -10,6 +12,7 @@ function LoginForm () {
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function valSetter (e) {
     const id = e.target.id
@@ -35,6 +38,7 @@ function LoginForm () {
         if(res == "Successfully Authenticated") {
           dispatch(login())
           dispatch(setUser(res))
+          navigate(`/profile/${res._id}`)
         }
       })
     }
