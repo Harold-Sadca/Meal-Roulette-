@@ -17,8 +17,8 @@ exports.loginUser = async (req, res, next) => {
 		else {
 		  req.logIn(user, (err) => {
 			if (err) throw err;
-			res.redirect('/recipe')
-			// res.send(JSON.stringify("Successfully Authenticated"));
+			// res.redirect('/recipe')
+			res.send(JSON.stringify("Successfully Authenticated"));
 		  });
 		}
 	  })(req, res, next);
