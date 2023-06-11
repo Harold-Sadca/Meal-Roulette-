@@ -2,28 +2,70 @@
 import { useState } from "react"
 import Recipe from "./Recipe"
 import services from "./Services"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { setDrink } from "../redux/actions"
+import { useNavigate } from "react-router-dom"
 
 function SurpriseMeal({recipe}) {
   const [random, setRandom] = useState(recipe)
   const recipes = useSelector(state => state.recipes)
+  const drink = useSelector(state => state.changeDrink)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+
   function generateRandom () {
     const idx = Math.floor(Math.random()*recipes.length)
     setRandom(recipes[idx])
   }
 
-  // if(surprise) {
-  //   return(
-  //     <div className="surprise-meal">
-  //       <span className="header">Not to your taste? Don't worry I still got you</span>
-  //       <Recipe recipe={surprise}/>
-  //     </div>
-  //   )
-  // }
+  function extractIng(drink) {
+    const ingredients = []
+    for(let i = 1; i < 16; i++) {
+      if (drink['strMeasure'+i] != null) {
+        const ing = `${drink['strMeasure'+i]} ${drink['strIngredient'+i]}`
+        ingredients.push(ing.replace('\n\r', ''))
+      }
+    }
+    return ingredients
+  }
+
+  function checkNull(ins) {
+    if(ins != null) {
+      return ins
+    } else {
+      return 'Unavailable'
+    }
+  }
+  console.log(drink)
+
+  function getDrink() {
+    services.fetchDrink().then((res) => {
+      const {strAlcoholic, strCategory, strDrink, strInstructions, strInstructionsDE, strInstructionsES, strInstructionsFR, strInstructionsIT} = res.drinks[0]
+      const ingredients = extractIng(res.drinks[0])
+      const drink = {
+        name: strDrink,
+        category: strCategory,
+        ingredients,
+        alcoholic: strAlcoholic,
+        english: strInstructions,
+        deutsch: checkNull(strInstructionsDE),
+        spanish: checkNull(strInstructionsES),
+        french: checkNull(strInstructionsFR),
+        italian: checkNull(strInstructionsIT)
+      }
+      dispatch(setDrink(drink))
+      navigate('/drink')
+    })
+  }
+
     return(
       <div className="surprise-meal">
         <span className="header">Want to leave it to chance?</span>
-        <button className="generate btn-submit" onClick={generateRandom}>Generate Me A Meal!</button>
+        <div className="generate-buttons">
+          <button className="generate btn-submit" onClick={generateRandom}>Generate Me A Random Meal!</button>
+          <button className="generate btn-submit" onClick={getDrink}>Generate Me A Random Drink!</button>
+        </div>
         <Recipe recipe={random}/>
       </div>
     )

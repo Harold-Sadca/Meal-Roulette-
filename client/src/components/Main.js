@@ -1,4 +1,5 @@
 //main template renders navbar, background and all other pages
+//TODO:search bar, profile page, favourite
 
 import RecipeForm from "./RecipeForm";
 import Recipe from "./Recipe";
@@ -16,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, add, remove, init, setUser } from "../redux/actions";
 import SurpriseMeal from "./SurpriseMeal";
 import ShowSelected from "./ShowSelected";
+import Drink from "./Drinks";
 
 
 
@@ -24,7 +26,7 @@ function Main () {
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const filteredByCat = useSelector(state => state.filteredByCat)
-  // const [recipes, setRecipes] = useState([])
+  const drink = useSelector(state => state.changeDrink)
   const[selected, setSelected] = useState()
   const [surprise, setSurprise] = useState()
   const dispatch = useDispatch()
@@ -37,10 +39,6 @@ function Main () {
       setSurprise(res[idx])
     })
     services.getUser().then((res) => {
-      //TODO: response will be changed to return the user instead
-      //so check if there is a user or not then send a dispatch
-      //setting the user to the response
-      //then check if there is a user instead of checking if its authenticated
       if(res.username) {
         dispatch(login())
         dispatch(setUser(res))
@@ -62,6 +60,7 @@ function Main () {
         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/user-profile' element={<Profile />} />
+        <Route path='/drink' element={<Drink drink={drink} />} />
         <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
       </Routes>
     </Router>   

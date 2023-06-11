@@ -4,6 +4,8 @@
   /* background-image: url("../public/images/1412206.jpg");
   min-height: 100vh;
   opacity: 0.8; */
+  width: 80%;
+  margin: auto;
 }
 
 .App::after {
@@ -197,7 +199,7 @@ body {
   text-align: center;
 }
 
-/* Buttons CSS */
+/* Generic Buttons CSS */
 
 .btn-submit {
   padding: 10px;
@@ -220,6 +222,28 @@ body {
   box-shadow: 0 0 15px rgb(1, 122, 143);
   transition: 0.5s;
   border-radius: 15px;
+}
+
+.favourite:focus {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #1892BF;
+  border-color: #1892BF;
+  background: transparent;
+  margin: 0px 3px;
+  padding: 7px 14px;
+  outline: 0;
+  margin-left: 20px;
+}
+
+.unfavorite-text {
+  display: none;
 }
 
 
@@ -744,3 +768,27 @@ span {
 .recipe-preview-description{
   font-size: 1.2em;
 }
+
+/* <div className="surprise-meal">
+<span className="header">Want to leave it to chance?</span>
+<div className="generate-buttons">
+  <button className="generate btn-submit" onClick={generateRandom}>Generate Me A Random Meal!</button>
+  <button className="generate btn-submit" onClick={generateRandom}>Generate Me A Random Drink!</button>
+</div>
+<Recipe recipe={random}/>
+</div> */
+
+/* Surprise Meal CSS */
+
+.generate-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+}
+
+.generate {
+  width: 45%;
+  margin: auto;
+}
+

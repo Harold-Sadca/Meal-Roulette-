@@ -35,3 +35,8 @@ export const setcategory = (recipe) => ({
     type: 'SET_CATEGORY',
     payload: recipe
 })
+
+export const setDrink = (drink) => ({
+    type: 'SET_DRINK',
+    payload: drink
+})
