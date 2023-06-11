@@ -3,10 +3,12 @@ import { useSelector } from "react-redux"
 import { useState } from "react"
 
 
-function Drink({drink}) {
+function Drink() {
 
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
+  const drink = useSelector(state => state.changeDrink)
+  console.log(drink)
   
   const [language, setLanguage] = useState('english')
 

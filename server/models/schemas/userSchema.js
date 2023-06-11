@@ -17,8 +17,7 @@ const userSchema = new Schema({
     unique:true
   },
   foodFavourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
-  drinkFavourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
-  personalRecipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
+  drinkFavourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
 });
 //passportLocalMongoose automatically adds username and password fields and makes sure that the username is unique.
 //it will also add a hash and salt field to store the username, the hashed password and the salt value.

@@ -2,7 +2,7 @@ const Recipe = require('../schemas/recipeSchema')
 
 exports.findAll = async() => {
   try {
-    const recipes = await Recipe.find({});
+    const recipes = await Recipe.find({}).populate('author');
     return recipes;
   } catch(e) {
     console.log('Dude you screwed up while getting all the recipes dumbass.');
@@ -11,7 +11,8 @@ exports.findAll = async() => {
 
 exports.createOne = async(req) => {
   try{
-    const newRecipe = await new Recipe({...req.body, 'author':req.user.username});
+    const newRecipe = await new Recipe(req.body);
+    newRecipe.author = req.user.id;
     await newRecipe.save();
     return newRecipe;
   } catch(e) {

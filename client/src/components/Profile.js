@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 function Profile() {
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
-  console.log(currentUser)
-
 
   return (
     <>{currentUser ? (

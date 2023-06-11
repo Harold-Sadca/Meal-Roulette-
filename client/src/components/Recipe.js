@@ -43,7 +43,7 @@ function Recipe ({recipe}) {
         <div key={recipe._id} className="display-recipe-container">
           <div className="name-author">
             <div className="display-recipe-name">{recipe.name}</div>
-            <div className="author">By: {recipe.author}</div>
+            <div className="author">By: {recipe.author.username}</div>
           </div>
           <div className="display-recipe-ingredients">
             <span className="display-ingredients-label">Ingredients:</span>

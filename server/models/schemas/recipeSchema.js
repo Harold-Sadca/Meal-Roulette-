@@ -9,8 +9,8 @@ const recipeSchema = new Schema({
   description: String,
   // categories: [{type: Schema.Types.ObjectId, ref: 'Category', default: 'None'}],
   author: {
-    type: String,
-    default:'Anonymous'
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 
