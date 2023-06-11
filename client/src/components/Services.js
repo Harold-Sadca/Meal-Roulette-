@@ -124,6 +124,17 @@ function fetchDrink() {
   return fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php').then(res => res.json()).then(parsedRes => parsedRes)
 }
 
+function saveDrink(drink) {
+  return fetch(`${PORT}/drink`, {
+    method: "POST",
+    body: JSON.stringify(drink),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: "include"
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
 const services = {
   fetchRecipes,
   addRecipe,
@@ -136,7 +147,8 @@ const services = {
   postComment,
   getUser,
   fetchRecipeByCat,
-  fetchDrink
+  fetchDrink,
+  saveDrink
 }
 
 export default services

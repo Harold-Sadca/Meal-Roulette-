@@ -25,7 +25,8 @@ exports.createOne = async(req) => {
 exports.findUser = async(req) => {
   const {id} = req.user;
   try{
-    const user = await User.find({_id:id}).populate('foodFavourites').populate('drinkFavourites');
+    const user = await User.findById(id).populate('drinkFavourites').populate('foodFavourites');
+    console.log(user)
     return user;
   } catch(e) {
     console.log('Dude you screwed up while getting a user dumbass.');

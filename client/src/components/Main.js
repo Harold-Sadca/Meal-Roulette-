@@ -43,14 +43,15 @@ function Main () {
       // setLoadedRecipes(true)
     })
     services.getUser().then((res) => {
-      if(res[0].username) {
+      if(res.username) {
         dispatch(login())
-        dispatch(setUser(...res))
+        dispatch(setUser(res))
         // setLoadedUser(true)
         // console.log('useEffect ran')
       }
     })
   }, [])
+  console.log(currentUser)
 
   
 

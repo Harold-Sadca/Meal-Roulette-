@@ -26,10 +26,9 @@ function SurpriseMeal({recipe}) {
         const ing = `${drink['strMeasure'+i]} ${drink['strIngredient'+i]}`
         ingredients.push(ing.replace('\n\r', ''))
 
-      } else if (drink['strMeasure'+i] != null){
+      } else if (drink['strIngredient'+i] != null){
         const ing = `${drink['strIngredient'+i]}`
         ingredients.push(ing.replace('\n\r', ''))
-
       }
     }
     return ingredients
@@ -47,7 +46,7 @@ function SurpriseMeal({recipe}) {
     services.fetchDrink().then((res) => {
       const {strAlcoholic, strCategory, strDrink, strInstructions, strInstructionsDE, strInstructionsES, strInstructionsFR, strInstructionsIT} = res.drinks[0]
       const ingredients = extractIng(res.drinks[0])
-      const drink = {
+      const newDrink = {
         name: strDrink,
         category: strCategory,
         ingredients,
@@ -58,8 +57,12 @@ function SurpriseMeal({recipe}) {
         french: checkNull(strInstructionsFR, 'Baguette'),
         italian: checkNull(strInstructionsIT, 'Pasta')
       }
-      dispatch(setDrink(drink))
-      navigate('/drink')
+      services.saveDrink(newDrink).then((res) => {
+        dispatch(setDrink(newDrink))
+        navigate('/drink')
+        console.log(res)
+      })
+
     })
   }
 
@@ -67,10 +70,10 @@ function SurpriseMeal({recipe}) {
       <div className="surprise-meal">
         <span className="header">Want to leave it to chance?</span>
         <div className="generate">
-          <a href="" className="generate-btn" onClick={generateRandom}>Generate Me A Random Meal!</a>
-          <a href="" className="generate-btn" onClick={getDrink}>Generate Me A Random Drink!</a>
+          <a className="generate-btn" onClick={generateRandom}>Generate Me A Random Meal!</a>
+          <a className="generate-btn" onClick={getDrink}>Generate Me A Random Drink!</a>
         </div>
-        <Recipe recipe={random}/>
+        {/* <Recipe recipe={random}/> */}
       </div>
     )
 
