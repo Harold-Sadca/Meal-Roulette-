@@ -29,7 +29,9 @@ function Main () {
   const drink = useSelector(state => state.changeDrink)
   const[selected, setSelected] = useState()
   const [surprise, setSurprise] = useState()
+  const [hasLoaded, setHasLoaded] = useState(false)
   const dispatch = useDispatch()
+
 
   useEffect(() => {
     services.fetchRecipes().then((res) => {
@@ -39,14 +41,18 @@ function Main () {
       setSurprise(res[idx])
     })
     services.getUser().then((res) => {
-      if(res.username) {
+      if(res[0].username) {
         dispatch(login())
-        dispatch(setUser(res))
+        dispatch(setUser(...res))
+        console.log('finished fetching user')
       }
+      setHasLoaded(!hasLoaded)
+      
     })
   }, [])
+  console.log(hasLoaded, 'loaded', authenticated)
+  console.log(currentUser)
 
-  console.log(currentUser,authenticated, 'user')
   return (
     <>
     <Router>

@@ -1,4 +1,4 @@
-const {createOne, findAll, getUser} = require('../models/methods/userMethods')
+const {createOne, findAll, findUser} = require('../models/methods/userMethods')
 const passport = require('passport');
 
 exports.registerUser = async (req, res) => {
@@ -10,10 +10,19 @@ exports.registerUser = async (req, res) => {
 	}
 }
 
+exports.getUser = async (req, res) => {
+	try{
+		req.user = await findUser(req)
+		res.status(201).send(req.user)
+	} catch(e) {
+		res.status(400).send(JSON.stringify('Cannot find user'))
+	}
+}
+
 exports.loginUser = async (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) throw err;
-		if (!user) res.send("No User Exists");
+		if (!user) res.send(JSON.stringify("No User Exists"));
 		else {
 		  req.logIn(user, (err) => {
 			if (err) throw err;

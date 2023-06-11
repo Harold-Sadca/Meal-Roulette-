@@ -13,7 +13,7 @@ import {
 } from './NavbarElements';
 import { useDispatch, useSelector } from "react-redux";
 import services from './Services';
-import { login, logout, add, remove, init, setUser, removeUser } from "../redux/actions";
+import { logoutUser, removeUser } from "../redux/actions";
 //TODO:redo  
 const Navbar = () => {
   const authenticated = useSelector(state => state.authenticated)
@@ -23,7 +23,7 @@ const Navbar = () => {
   function logout () {
     services.logoutUser().then((res) => {
       if (res = 'Logged out') {
-        dispatch(logout())
+        dispatch(logoutUser())
         dispatch(removeUser())
       }
     })

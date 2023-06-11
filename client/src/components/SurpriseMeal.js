@@ -42,7 +42,6 @@ function SurpriseMeal({recipe}) {
       return `Sorry I don't speak ${lang}.`
     }
   }
-  console.log(drink)
 
   function getDrink() {
     services.fetchDrink().then((res) => {

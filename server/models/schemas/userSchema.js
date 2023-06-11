@@ -16,7 +16,8 @@ const userSchema = new Schema({
     required: true,
     unique:true
   },
-  favourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
+  foodFavourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
+  drinkFavourites: [{type: Schema.Types.ObjectId, ref: 'Recipe'}],
   personalRecipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
 });
 //passportLocalMongoose automatically adds username and password fields and makes sure that the username is unique.
@@ -30,7 +31,6 @@ userSchema.plugin(passportLocalMongoose);
 // };
 
 userSchema.statics.findEmail = async function (email) {
-  console.log(email);
   const foundEmail = await this.findOne({email});
   return foundEmail? true : false;
 };

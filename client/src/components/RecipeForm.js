@@ -52,42 +52,54 @@ function RecipeForm () {
       setCategory('')
     }
   }
-  // console.log(recipesR,'form')
-
-  return (
-    <div className="recipe-form-container">
-      <div className="header">Add New Recipe</div>
-      <div className="recipe-form">
-        <label className="name-input">
-          <span>Recipe Name:</span>
-          <div className="name-and-category">
-            <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
-            <select onChange={(event) => {valSetter(event)}} className="category-selection" id="category-selection" >
-              <option selected>Category</option>
-              <option value="starters">Starter</option>
-              <option value="mains">Mains</option>
-              <option value="desserts">Dessert</option>
-            </select>
+  if (authenticated) {
+    return (
+      <div className="recipe-form-container">
+        <div className="header">Add New Recipe</div>
+        <div className="recipe-form">
+          <label className="name-input">
+            <span>Recipe Name:</span>
+            <div className="name-and-category">
+              <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
+              <select onChange={(event) => {valSetter(event)}} className="category-selection" id="category-selection" >
+                <option selected>Category</option>
+                <option value="starters">Starter</option>
+                <option value="mains">Mains</option>
+                <option value="desserts">Dessert</option>
+              </select>
+            </div>
+          </label>
+          <div className="ingredients-instructions">
+            <label className="ingredients-input">
+              <span>Ingredients:</span>
+              <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Ingredients...'></textarea>
+            </label>
+            <label className="description-input">
+              <span>Description:</span>
+              <textarea id="description" value={description} onChange={(event) => {valSetter(event)}} type="text" name="description" placeholder='Description...'></textarea>
+            </label>
+            <label className="instructions-input">
+              <span>Instructions:</span>
+              <textarea id="steps" value={instructions} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Instructions...'></textarea>
+            </label>
           </div>
-        </label>
-        <div className="ingredients-instructions">
-          <label className="ingredients-input">
-            <span>Ingredients:</span>
-            <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Ingredients...'></textarea>
-          </label>
-          <label className="description-input">
-            <span>Description:</span>
-            <textarea id="description" value={description} onChange={(event) => {valSetter(event)}} type="text" name="description" placeholder='Description...'></textarea>
-          </label>
-          <label className="instructions-input">
-            <span>Instructions:</span>
-            <textarea id="steps" value={instructions} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Instructions...'></textarea>
-          </label>
+          <button className="create-recipe btn-submit" onClick={makeDrinkRecipe}>Submit Recipe</button>
         </div>
-        <button className="create-recipe btn-submit" onClick={makeDrinkRecipe}>Submit Recipe</button>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div>
+        <p className="unauthenticated-message">Please login to contribute to the website.
+          Otherwise, you are still free to check the recipes but can't post one.
+          Click the button below to login.
+        </p>
+        <button className="btn-submit">Take me to login page</button>
+      </div>
+    )
+  }
+
+
 }
 
 export default RecipeForm

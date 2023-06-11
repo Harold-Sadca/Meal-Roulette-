@@ -39,6 +39,8 @@ function LoginForm () {
           dispatch(login())
           dispatch(setUser(res))
           navigate(`/user-profile`)
+        } else {
+          console.log(res)
         }
       })
     }
