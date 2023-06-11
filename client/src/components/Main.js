@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, add, remove, init, setUser } from "../redux/actions";
 import SurpriseMeal from "./SurpriseMeal";
 import ShowSelected from "./ShowSelected";
-import Drink from "./Drinks";
+import Drink from "./Drink";
 
 
 

@@ -12,6 +12,8 @@ function RecipeForm () {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const recipes = useSelector(state => state.recipes)
+  const authenticated = useSelector(state => state.authenticated)
+  const currentUser = useSelector(state => state.currentUser)
   const dispatch = useDispatch()
 
   function valSetter (e) {
@@ -29,7 +31,7 @@ function RecipeForm () {
     }
   }
 
-  function makeRecipe() {
+  function makeDrinkRecipe() {
     if(!name || !instructions || !ingredients || !description || !category) {
       alert('Cant do that son!')
     } else {
@@ -82,7 +84,7 @@ function RecipeForm () {
             <textarea id="steps" value={instructions} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Instructions...'></textarea>
           </label>
         </div>
-        <button className="create-recipe btn-submit" onClick={makeRecipe}>Submit Recipe</button>
+        <button className="create-recipe btn-submit" onClick={makeDrinkRecipe}>Submit Recipe</button>
       </div>
     </div>
   )

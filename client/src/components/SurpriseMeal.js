@@ -22,19 +22,24 @@ function SurpriseMeal({recipe}) {
   function extractIng(drink) {
     const ingredients = []
     for(let i = 1; i < 16; i++) {
-      if (drink['strMeasure'+i] != null) {
+      if (drink['strMeasure'+i] != null && drink['strIngredient'+i] != null) {
         const ing = `${drink['strMeasure'+i]} ${drink['strIngredient'+i]}`
         ingredients.push(ing.replace('\n\r', ''))
+
+      } else if (drink['strMeasure'+i] != null){
+        const ing = `${drink['strIngredient'+i]}`
+        ingredients.push(ing.replace('\n\r', ''))
+
       }
     }
     return ingredients
   }
 
-  function checkNull(ins) {
+  function checkNull(ins, lang) {
     if(ins != null) {
       return ins
     } else {
-      return 'Unavailable'
+      return `Sorry I don't speak ${lang}.`
     }
   }
   console.log(drink)
@@ -49,10 +54,10 @@ function SurpriseMeal({recipe}) {
         ingredients,
         alcoholic: strAlcoholic,
         english: strInstructions,
-        deutsch: checkNull(strInstructionsDE),
-        spanish: checkNull(strInstructionsES),
-        french: checkNull(strInstructionsFR),
-        italian: checkNull(strInstructionsIT)
+        deutsch: checkNull(strInstructionsDE, 'Bratwurst'),
+        spanish: checkNull(strInstructionsES, 'Taco'),
+        french: checkNull(strInstructionsFR, 'Baguette'),
+        italian: checkNull(strInstructionsIT, 'Pasta')
       }
       dispatch(setDrink(drink))
       navigate('/drink')

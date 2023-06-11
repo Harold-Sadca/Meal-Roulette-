@@ -270,6 +270,8 @@ body {
   color: #000;
   background-clip: text;
   -webkit-background-clip: text;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  width: 80%;
 }
 
 .display-recipe-ingredients {
@@ -277,6 +279,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-size: 1.1em;
 
 }
 
@@ -285,6 +288,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-size: 1.1em;
 }
 
 .display-instructions-label, .display-ingredients-label {
@@ -792,3 +796,125 @@ span {
   margin: auto;
 }
 
+/* 
+<div className='drink-container' key={drink._id}>
+<div className="drink-details">
+  <div className="drink-name">{drink.name}</div>
+  <span>Instructions</span>
+  <div className="drink-ingredients">
+    {
+      drink.ingredients.map(res => <div>{res}</div>)
+    }
+  </div>
+  <div className="drink-instructions">
+    <span>Instructions</span>
+    <div className="language-select">
+        <select onChange={(event) => {languageSetter(event)}} className="drink-lang-select" id="drink-lang-select" >
+          <option selected>Select Language</option>
+          <option value="english">English</option>
+          <option value="deutsch">Deutsch</option>
+          <option value="spanish">Spanish</option>
+          <option value="french">French</option>
+          <option value="italian">Italian</option>
+        </select>
+        <p>{drink[language]}</p>
+    </div>
+  </div>
+</div>
+</div>
+*/
+
+    /* Drink CSS */
+
+.drink-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  height: 750px;
+  align-items: flex-start;
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.drink-name {
+  font-size: 2em;
+  font-weight: 600;
+  color: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  align-self: center;
+}
+
+.drink-details {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.drink-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+  font-size: 1.2em;
+}
+
+.drink-details span , .drink-instructions span {
+  font-weight: 500;
+  font-size: 1.3em;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 1em;
+}
+
+.drink-instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 75%;
+  margin-left: 1em;
+  font-size: 1.2em;
+}
+
+.language-select {
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.drink-lang-select {
+  width: 100%;
+}
+
+select{
+  width: 10%;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  background-color: rgb(255, 255, 255);
+  background-image: none;
+  /* border: 1px solid rgb(41, 18, 18); */
+}
+select>option{
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  background-color: rgb(247, 247, 247);
+  background-image: none;
+  font-size: 18px;
+  height: 50px;
+  padding: 15px;
+  /* border: 1px solid rgb(41, 18, 18); */
+}

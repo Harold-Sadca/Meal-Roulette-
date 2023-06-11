@@ -56,7 +56,7 @@ const Navbar = () => {
         </NavMenu>
         {currentUser ? (
             <>
-              <NavLink to='/profile' activeStyle>
+              <NavLink to='/user-profile' activeStyle>
                 Profile
               </NavLink>
               <NavBtn onClick={logout}>
