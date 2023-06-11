@@ -40,8 +40,11 @@ function Recipe ({recipe}) {
   if(current) {
     return (
       <>
-        <div className="display-recipe-container">
-          <div className="display-recipe-name">{recipe.name}</div>
+        <div key={recipe._id} className="display-recipe-container">
+          <div className="name-author">
+            <div className="display-recipe-name">{recipe.name}</div>
+            <div className="author">By: {recipe.author}</div>
+          </div>
           <div className="display-recipe-ingredients">
             <span className="display-ingredients-label">Ingredients:</span>
             <div className="display-ingredient-list">{recipe.ingredients.map(ing => <span>{ing}</span>)}</div>
