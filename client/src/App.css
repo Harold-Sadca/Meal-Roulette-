@@ -278,7 +278,7 @@ body {
   width: 80%;
   margin: auto;
   margin-top: 2em;
-  height: 750px;
+  /* height: 750px; */
   align-items: flex-start;
   border-radius: 10px;
 }
@@ -320,6 +320,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   font-size: 1.1em;
+  margin-bottom: 1em;
 }
 
 .display-instructions-label, .display-ingredients-label {
@@ -333,6 +334,114 @@ body {
   flex-direction: column;
   align-items: flex-start;
 }
+
+.add-meal-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
+}
+
+.add-meal {
+  width: 15em;
+  margin: none;
+  text-decoration:none;
+  font-size:1.5em;
+  color:#000000;
+  padding:10px 10px;
+  border:3px solid #000000;
+  position:relative;
+  border-radius: 10px;
+  width: 20%;
+}
+
+
+
+.add-meal::before,
+.add-meal::after {
+  content:" ";
+  position:absolute;
+  width:20px;
+  height:20px;
+  border:inherit;
+  transition:all .5s;
+}
+.add-meal::before {
+  top:-10px;
+  left:-10px;
+  border-width:3px 0 0 3px;
+}
+
+.add-meal::after {
+  bottom:-10px;
+  right:-10px;
+  border-width:0 3px 3px 0;
+}
+.add-meal:nth-child(even),
+.add-meal:nth-child(even) {
+  border:3px solid #ffffff;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* .add-meal:nth-child(even):hover::before,
+.add-meal:nth-child(even):hover::after {
+  background-color: rgba(0, 0, 0, 0.3);
+  width:calc(100% + 15px);
+  height:calc(100% + 15px);
+  border:3px solid #ffffff;
+  color:#ffffff;
+}
+
+.add-meal:nth-child(odd):hover::before,
+.add-meal:nth-child(odd):hover::after {
+  background-color: rgba(0, 0, 0, 0.3);
+  width:calc(100% + 15px);
+  height:calc(100% + 15px);
+  border:3px solid #ffffff;
+  color:#000000;
+} */
+
+.add-meal:hover::before,
+.add-meal:hover::after {
+  width:calc(100% + 15px);
+  height:calc(100% + 15px);
+  border:3px solid #ffffff;
+  color:#ffffff;
+}
+
+/* .generate {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+  background-color: rgba(243, 233, 233, 0.3);
+  border-radius: 10px;
+} */
+
+/* .generate {
+  width: 45%;
+  margin: auto;
+} */
+
+/* .generate-btn::before,
+.generate-btn::after{
+
+}
+.generate-btn::before{
+
+}
+.generate-btn::after{
+  bottom:-15px;
+  right:-15px;
+  border-width:0 3px 3px 0;
+}
+.generate-btn:hover::before,
+.generate-btn:hover::after{
+
+} */
 
 /* <div className="comment-container">
 <textarea className="comment-input"></textarea>
@@ -919,6 +1028,8 @@ span {
   align-items: flex-start;
   border-radius: 10px;
   padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .drink-name {
@@ -999,6 +1110,22 @@ select>option{
   height: 50px;
   padding: 15px;
   /* border: 1px solid rgb(41, 18, 18); */
+}
+
+.yay-or-nay {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 1em;
+  align-self: center;
+}
+
+.yay {
+  border-color:rgb(0, 225, 255);
+}
+
+.nay {
+  border-color:rgb(255, 0, 76);
 }
 
 /* Loading Screen CSS */

@@ -35,6 +35,7 @@ function Main () {
   const [loadedUser, setLoadedUser] = useState(false)
   const [user, setUserState] = useState()
   const dispatch = useDispatch()
+  console.log(recipes)
 
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function Main () {
     )
   } else {
     dispatch(pageLoaded())
-    console.log(user)
+
     return (
       <>
       <Router>

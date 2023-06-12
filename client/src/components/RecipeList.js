@@ -4,7 +4,7 @@ import Preview from "./Preview";
 //TODO:make it so it renders when navigating, clicking it 'Recipe' again is not ideal
 import { useSelector } from "react-redux";
 
-function RecipeList ({recipes, setSelected}) {
+function RecipeList ({recipes}) {
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
 

@@ -5,6 +5,7 @@ import services from "./Services"
 import { useDispatch, useSelector } from "react-redux"
 import { setDrink } from "../redux/actions"
 import { useNavigate } from "react-router-dom"
+import Drink from "./Drink"
 
 function SurpriseMeal({recipe}) {
   const [random, setRandom] = useState(recipe)
@@ -16,7 +17,8 @@ function SurpriseMeal({recipe}) {
 
   function generateRandom () {
     const idx = Math.floor(Math.random()*recipes.length)
-    setRandom(recipes[idx])
+    const id = recipes[idx]._id
+    navigate(`/recipe/${id}`)
   }
 
   function extractIng(drink) {
@@ -57,25 +59,24 @@ function SurpriseMeal({recipe}) {
         french: checkNull(strInstructionsFR, 'Baguette'),
         italian: checkNull(strInstructionsIT, 'Pasta')
       }
-      services.saveDrink(newDrink).then((res) => {
-        dispatch(setDrink(newDrink))
-        navigate(`/drink/${newDrink._id}`)
-        console.log(res)
-      })
-
+      dispatch(setDrink(newDrink))
+      navigate('/drink/1')
     })
   }
 
-    return(
-      <div className="surprise-meal">
-        <span className="header">Want to leave it to chance?</span>
-        <div className="generate">
-          <a className="generate-btn" onClick={generateRandom}>Generate Me A Random Meal!</a>
-          <a className="generate-btn" onClick={getDrink}>Generate Me A Random Drink!</a>
-        </div>
-        {/* <Recipe recipe={random}/> */}
+  // console.log(drink)
+
+  return(
+    <div className="surprise-meal">
+      <span className="header">Want to leave it to chance?</span>
+      <div className="generate">
+        <a className="generate-btn" onClick={generateRandom}>Generate Me A Random Meal!</a>
+        <a className="generate-btn" onClick={getDrink}>Generate Me A Random Drink!</a>
       </div>
-    )
+      {/* < Drink /> */}
+      {/* <Recipe recipe={random}/> */}
+    </div>
+  )
 
 
 }

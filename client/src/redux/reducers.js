@@ -26,15 +26,15 @@ const authenticated = (state=false, action) => {
 			return state;
 	}
 }
-
+const defaultUser = {username: 'Guest'}
 const currentUser = (state, action) => {
 	switch (action.type) {
 		case 'SET_USER':
 			return action.payload;
 		case 'REMOVE_USER':
-			return null;
+			return defaultUser;
 		default:
-			return null;
+			return defaultUser;
 	}
 }
 
@@ -47,21 +47,22 @@ const latest = (state, action) => {
 	}
 }
 
-const filteredByCat = (state, action) => {
+const filteredByCat = (state=[], action) => {
 	switch (action.type) {
 		case 'SET_CATEGORY':
 			return [...action.payload];
 		default:
-			return null
+			return state
 	}
 }
 
-const changeDrink = (state, action) => {
+const defaultDrink = {name: 'Water', ingredients: []}
+const changeDrink = (state=defaultDrink, action) => {
 	switch (action.type) {
 		case 'SET_DRINK':
 			return action.payload
 		default:
-			return null
+			return state
 	}
 }
 

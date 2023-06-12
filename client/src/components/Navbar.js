@@ -30,7 +30,6 @@ const Navbar = ({currentUser}) => {
       }
     })
   }
-  console.log(currentUser)
 
   if (!loadPage) {
     return <Loader />

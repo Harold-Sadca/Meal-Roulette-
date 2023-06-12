@@ -1,6 +1,8 @@
 //template for rendering a single drink
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
+import services from "./Services"
+import { setDrink } from "../redux/actions"
 
 
 function Drink() {
@@ -8,26 +10,65 @@ function Drink() {
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const drink = useSelector(state => state.changeDrink)
-  console.log(drink)
+  const dispatch = useDispatch()
   
   const [language, setLanguage] = useState('english')
+  function extractIng(drink) {
+    const ingredients = []
+    for(let i = 1; i < 16; i++) {
+      if (drink['strMeasure'+i] != null && drink['strIngredient'+i] != null) {
+        const ing = `${drink['strMeasure'+i]} ${drink['strIngredient'+i]}`
+        ingredients.push(ing.replace('\n\r', ''))
 
-  // name: strDrink,
-  // category: strCategory,
-  // ingredients,
-  // alcoholic: strAlcoholic,
-  // english: strInstructions,
-  // deutsch: checkNull(strInstructionsDE),
-  // spanish: checkNull(strInstructionsES),
-  // french: checkNull(strInstructionsFR),
-  // italian: checkNull(strInstructionsIT)
+      } else if (drink['strIngredient'+i] != null){
+        const ing = `${drink['strIngredient'+i]}`
+        ingredients.push(ing.replace('\n\r', ''))
+      }
+    }
+    return ingredients
+  }
+
+  function checkNull(ins, lang) {
+    if(ins != null) {
+      return ins
+    } else {
+      return `Sorry I don't speak ${lang}.`
+    }
+  }
+
+  function handleDrink (e) {
+    const id = e.target.id
+    if (id == 'yay') {
+      services.saveDrink(drink).then((res) => {
+        console.log(res)
+      })
+    } else if(id == 'nay') {
+      services.fetchDrink().then((res) => {
+        const {strAlcoholic, strCategory, strDrink, strInstructions, strInstructionsDE, strInstructionsES, strInstructionsFR, strInstructionsIT} = res.drinks[0]
+        const ingredients = extractIng(res.drinks[0])
+        const newDrink = {
+          name: strDrink,
+          category: strCategory,
+          ingredients,
+          alcoholic: strAlcoholic,
+          english: strInstructions,
+          deutsch: checkNull(strInstructionsDE, 'Bratwurst'),
+          spanish: checkNull(strInstructionsES, 'Taco'),
+          french: checkNull(strInstructionsFR, 'Baguette'),
+          italian: checkNull(strInstructionsIT, 'Pasta')
+        }
+        dispatch(setDrink(newDrink))
+      })
+    }
+  }
+
   function languageSetter(e) {
     setLanguage(e.target.value)
   }
 
 
   return (
-    <div className='drink-container' key={drink._id}>
+    <div className='drink-container' key={drink.name}>
       <div className="drink-name">{drink.name}</div>
       <div className="drink-details">
         <div className="drink-ingredients">
@@ -50,6 +91,10 @@ function Drink() {
               <p>{drink[language]}</p>
           </div>
         </div>
+      </div>
+      <div className="yay-or-nay">
+        <button className="generate-btn yay" id="yay" onClick={(e) => {handleDrink(e)}}>Yay!</button>
+        <button className="generate-btn nay" id="nay" onClick={(e) => {handleDrink(e)}} >Nay!</button>
       </div>
     </div>
   )

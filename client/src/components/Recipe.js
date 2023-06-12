@@ -53,6 +53,12 @@ function Recipe ({recipe}) {
             <span className="display-instructions-label">Instructions:</span>
             <div>{recipe.instructions}</div>
           </div>
+          <div className="add-meal-buttons">
+            <button className="add-meal" >Breakfast</button>
+            <button className="add-meal" >Lunch</button>
+            <button className="add-meal" >Dinner</button>
+            <button className="add-meal" >Favourite</button>
+        </div>
         </div>
         <div className="comment-form-container">
           <textarea value={comment} onChange={(e) => {commentHandler(e)}} className="comment-input"></textarea>
