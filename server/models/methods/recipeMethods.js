@@ -1,4 +1,5 @@
 const Recipe = require('../schemas/recipeSchema')
+const User = require('../schemas/userSchema')
 
 exports.findAll = async() => {
   try {
@@ -12,6 +13,9 @@ exports.findAll = async() => {
 exports.createOne = async(req) => {
   try{
     const newRecipe = await new Recipe(req.body);
+    const user = await User.findById(req.user.id)
+    user.personalRecipes.push(newRecipe._id)
+    await user.save()
     newRecipe.author = req.user.id;
     await newRecipe.save();
     return newRecipe;
@@ -29,6 +33,7 @@ exports.getRecipeByCat = async(req) => {
     console.log('Ohh man not this one again')
   }
 }
+
 
 exports.editOne = async(req) => {
   const {_id} = req.body;

@@ -9,7 +9,7 @@ const mainStore = createStore(reducers)
 function App() {
   return (
     <Provider store={mainStore}>
-      <div className="App">
+      <div className="App grayscale">
         <Main />
       </div>
     </Provider>

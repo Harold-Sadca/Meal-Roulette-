@@ -1,23 +1,30 @@
 .App {
   text-align: center;
   background-attachment: fixed;
-  background-image: url("../public/images/1412206.jpg");
   min-height: 100vh;
-  /* opacity: 0.8; */
-  /* display: flex;
-  overflow-y:hidden;
-  height:100vh;
+  opacity: 0.8;
   width: 80%;
   margin: auto;
-  flex-direction: column;
-  animation: Appscroll 60s linear infinite; */
 }
+
+/* .grayscale {
+  background: url("../public/images/1412206.jpg");
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(0%);
+  filter: gray;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+} */
 
 body {
-  background-color: #000;
+  background-image: url("../public/images/pexels-photo-616401.jpeg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.App::after {
+/* .App::after {
 	content: " ";
 	position: absolute;
 	left: 0;
@@ -33,7 +40,7 @@ body {
   background-repeat: repeat;
   background-size: cover;
   background-size: cover;
-}
+} */
 
 /* .App::before {
 	content: " ";
@@ -121,6 +128,7 @@ body {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.2);
   font-size: 1.5em;
+  border: none;
 }
 
 .description-input {
@@ -411,6 +419,8 @@ body {
   background-color: rgb(156, 255, 165);
   border-radius: 5px;
 }
+
+.comment-list-container
 
 /* <div className="signup-container">
 <div className="header">Sign Up</div>
@@ -773,6 +783,7 @@ span {
   height: 200px;
   border-radius: 10px;
   padding: 1em;
+  transition: 0.5s ease;
 }
 
 .recipe-preview-name {
@@ -782,6 +793,14 @@ span {
   width: 100%;
   align-self: flex-start;
 }
+
+.recipe-preview-container:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  transition: 0.5s ease;
+  cursor: pointer;
+  }
 
 .recipe-preview-container:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.2);
@@ -812,6 +831,8 @@ span {
   flex-direction: row;
   width: 80%;
   margin: auto;
+  background-color: rgba(243, 233, 233, 0.3);
+  border-radius: 10px;
 }
 
 /* .generate {
@@ -1235,3 +1256,106 @@ background-position: right center , 17px center , 0px center;
 0%{  transform: rotate(-5deg)  }
 100%{  transform: rotate(10deg)  }
 } */
+
+
+/* 
+    <div className="profile-container">{currentUser ? (
+        <>
+        <span className="profile-label">PROFILE</span>
+        <div className="user-profile">
+          <div className="user-details">
+            <div className="username">{currentUser.username}</div>
+            <img className="user-profile-pic" src={currentUser.profilePic} alt={currentUser.profilePic}></img>
+          </div>
+          <div className="user-recipes">
+            <div className="user-food-favourites">{currentUser.foodFavourites.length}</div>
+            <div className="user-recipe">{currentUser.personalRecipes.length}</div>
+            <div className="user-drink-favourites">{currentUser.drinkFavourites.length}</div>
+          </div>
+        </div>
+        </>
+    ): (
+      <>
+        <span>COME ON MAN YOU CANNOT HAVE A PROFILE WITHOUT LOGGING IN</span>
+      </>
+
+    )
+      }
+    </div>
+*/
+
+/* User profile CSS */
+
+.profile-label {
+  font-size: 2em;
+}
+
+.profile-container {
+  background-color: rgba(243, 233, 233, 0.3);
+  width: 100%;
+  height: 100vh;
+}
+
+.user-profile {
+  
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.user-profile-pic {
+  width: 100%;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 1em;
+}
+
+.username {
+  font-size: 2em;
+}
+
+.user-recipes {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  justify-content: space-evenly;
+  padding: 1em;
+}
+
+.day-meal {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  border: 1px solid black;
+  padding: 1em;
+}
+
+.user-recipe,
+.user-food-favourites,
+.user-drink-favourites {
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.user-recipe span,
+.user-food-favourites span,
+.user-drink-favourites span {
+  font-size: 1.5em;
+  align-self: center;
+}
+
+.user-recipe .fav-name,
+.user-food-favourites .fav-name,
+.user-drink-favourites .fav-name {
+  font-size: 1.5em;
+  align-self: center;
+  font-size: 1.2em;
+  align-self: flex-start;
+}

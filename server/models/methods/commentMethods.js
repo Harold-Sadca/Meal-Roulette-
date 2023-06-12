@@ -12,9 +12,10 @@ const _id = req.params.id
 
 exports.createOne = async(req) => {
   const {comment, recipe} = req.body
+  const author = req.user.username
   // const {comment, recipe, author} = req.body use this after full authentication
   try{
-    const newComment = await new Comment({comment, recipe});
+    const newComment = await new Comment({comment, recipe, author});
     // const newRecipe = await new Recipe({comment, recipe, author}); use this after authorization is final
     await newComment.save();
     return newComment;

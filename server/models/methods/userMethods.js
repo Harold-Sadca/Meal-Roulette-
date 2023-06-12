@@ -25,11 +25,23 @@ exports.createOne = async(req) => {
 exports.findUser = async(req) => {
   const {id} = req.user;
   try{
-    const user = await User.findById(id).populate('drinkFavourites').populate('foodFavourites');
-    console.log(user)
+    const user = await User.findById(id).populate('drinkFavourites').populate('foodFavourites').populate('personalRecipes');
     return user;
   } catch(e) {
     console.log('Dude you screwed up while getting a user dumbass.');
+  }
+}
+
+exports.addMeal = async(req) => {
+  const {id} = req.user;
+  const {_id, mealTime} = req.body;
+  try{
+    const user = await User.findById(id)
+    user[mealTime].push(_id)
+    await user.save()
+    return user
+  } catch(e) {
+    console.log('Omega LUL another error')
   }
 }
 

@@ -60,7 +60,7 @@ function RecipeForm () {
           <label className="name-input">
             <span>Recipe Name:</span>
             <div className="name-and-category">
-              <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Name...' />
+              <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name"/>
               <select onChange={(event) => {valSetter(event)}} className="category-selection" id="category-selection" >
                 <option selected>Category</option>
                 <option value="starters">Starter</option>
@@ -72,15 +72,15 @@ function RecipeForm () {
           <div className="ingredients-instructions">
             <label className="ingredients-input">
               <span>Ingredients:</span>
-              <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Ingredients...'></textarea>
+              <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients"></textarea>
             </label>
             <label className="description-input">
               <span>Description:</span>
-              <textarea id="description" value={description} onChange={(event) => {valSetter(event)}} type="text" name="description" placeholder='Description...'></textarea>
+              <textarea id="description" value={description} onChange={(event) => {valSetter(event)}} type="text" name="description"></textarea>
             </label>
             <label className="instructions-input">
               <span>Instructions:</span>
-              <textarea id="steps" value={instructions} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Instructions...'></textarea>
+              <textarea id="steps" value={instructions} onChange={(event) => {valSetter(event)}} type="text" name="ingredients"></textarea>
             </label>
           </div>
           <button className="create-recipe btn-submit" onClick={makeDrinkRecipe}>Submit Recipe</button>
