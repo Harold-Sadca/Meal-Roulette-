@@ -65,13 +65,33 @@ const changeDrink = (state, action) => {
 	}
 }
 
+const selectedRecipe = (state, action) => {
+	switch (action.type) {
+		case 'CHANGE_RECIPE':
+			return action.payload
+		default:
+			return null
+	}
+}
+
+const loadPage = (state=false, action) => {
+	switch (action.type) {
+		case 'PAGE_LOADED':
+			return true
+		default:
+			return state
+	}
+}
+
 const reducers = combineReducers({
     recipes,
     authenticated,
     currentUser,
     latest,
     filteredByCat,
-		changeDrink
+		changeDrink,
+		selectedRecipe,
+		loadPage
 })
 
 export default reducers;

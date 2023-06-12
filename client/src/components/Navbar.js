@@ -14,10 +14,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import services from './Services';
 import { logoutUser, removeUser } from "../redux/actions";
+import Loader from './Loader';
 //TODO:redo  
-const Navbar = () => {
+const Navbar = ({currentUser}) => {
   const authenticated = useSelector(state => state.authenticated)
-  const currentUser = useSelector(state => state.currentUser)
+  // const currentUser = useSelector(state => state.currentUser)
+  const loadPage = useSelector(state => state.loadPage)
   const dispatch = useDispatch()
 
   function logout () {
@@ -28,60 +30,62 @@ const Navbar = () => {
       }
     })
   }
+  console.log(currentUser)
 
-  return (
-    <>
-      <Nav>
-        <Bars />
-  
-        <NavMenu>
-          <NavLink to='/home' activeStyle>
-            Home
-          </NavLink>
-          <NavLink to='/create-recipe' activeStyle>
-            Add Recipe
-          </NavLink>
-          {/* <NavLink to='/recipe' activeStyle>
-            Recipe
-          </NavLink> */}
-          <NavLink to='/surprise-me'  activeStyle>
-            Surprise Me
-          </NavLink>
-          <NavLink to='/recipes' activeStyle>
-            Recipes
-          </NavLink>
-
-          {/* Second Nav */}
-          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
-        </NavMenu>
-        {currentUser ? (
-            <>
-              <NavLink to='/user-profile' activeStyle>
-                Profile
-              </NavLink>
-              <NavBtn onClick={logout}>
-                <NavBtnLink>Logout</NavBtnLink>
-              </NavBtn>
-              <NavLink activeStyle>
-                Hello, {currentUser.username}
-                {/* Hello, {currentUser.username} */}
-              </NavLink>
-            </>
-        ): (
-          <>
-            <NavLink to='/sign-up' activeStyle>
-              Sign Up
+  if (!loadPage) {
+    return <Loader />
+  } else {
+    return (
+      <>
+        <Nav>
+          <Bars />
+          <NavMenu>
+            <NavLink to='/home' >
+              Home
             </NavLink>
-            <NavBtn>
-              <NavBtnLink to='/login'>Sign In</NavBtnLink>
-            </NavBtn>
-          </>
-
-        )
-          }
-      </Nav>
-    </>
-  );
+            <NavLink to='/create-recipe' >
+              Add Recipe
+            </NavLink>
+            {/* <NavLink to='/recipe' activeStyle>
+              Recipe
+            </NavLink> */}
+            <NavLink to='/surprise-me'  >
+              Surprise Me
+            </NavLink>
+            <NavLink to='/recipes' >
+              Recipes
+            </NavLink>
+            {/* Second Nav */}
+            {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+          </NavMenu>
+          {authenticated ? (
+              <>
+                <NavLink to='/user-profile' >
+                  Profile
+                </NavLink>
+                <NavBtn onClick={logout}>
+                  <NavBtnLink>Logout</NavBtnLink>
+                </NavBtn>
+                <NavLink activeStyle>
+                  Hello, {currentUser.username? (currentUser.username) : <span>Guest</span>}
+                  {/* Hello, {currentUser.username} */}
+                </NavLink>
+              </>
+          ): (
+            <>
+              <NavLink to='/sign-up' >
+                Sign Up
+              </NavLink>
+              <NavBtn>
+                <NavBtnLink to='/login'>Sign In</NavBtnLink>
+              </NavBtn>
+            </>
+          )
+            }
+        </Nav>
+      </>
+    );
+  }
 };
   
 export default Navbar;

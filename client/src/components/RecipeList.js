@@ -12,7 +12,7 @@ function RecipeList ({recipes, setSelected}) {
   return (
     <>
       {recipes.map((recipe) => {
-      return <Preview recipe={recipe} setSelected={setSelected}/>
+      return <Preview recipe={recipe}/>
     })}
     </>
 

@@ -40,3 +40,12 @@ export const setDrink = (drink) => ({
     type: 'SET_DRINK',
     payload: drink
 })
+
+export const setRecipe = (recipe) => ({
+    type: 'CHANGE_RECIPE',
+    payload: recipe
+})
+
+export const pageLoaded = () => ({
+    type: 'PAGE_LOADED'
+})

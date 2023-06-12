@@ -60,8 +60,6 @@ app
   .use(passport.initialize())
   .use(passport.session())
   
-  
-
 
 //this is saying, user the LocalStrategy to authenticate and that authenticate is inside the User model.
 //the authenticate is not something we created, it was provided by passport.

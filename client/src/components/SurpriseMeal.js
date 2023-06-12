@@ -59,7 +59,7 @@ function SurpriseMeal({recipe}) {
       }
       services.saveDrink(newDrink).then((res) => {
         dispatch(setDrink(newDrink))
-        navigate('/drink')
+        navigate(`/drink/${newDrink._id}`)
         console.log(res)
       })
 

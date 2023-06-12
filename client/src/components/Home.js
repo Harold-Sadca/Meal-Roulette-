@@ -2,6 +2,7 @@ import services from "./Services"
 import { useDispatch, useSelector } from "react-redux";
 import { setcategory } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 // import { login, logout, add, remove, init, setUser } from "../redux/actions";
 
 
@@ -11,7 +12,7 @@ function Home({isAuthenticated}) {
   const navigate = useNavigate()
 
   const filteredByCat = useSelector(state => state.filteredByCat)
-
+  const loadPage = useSelector(state => state.loadPage)
   const recipes = useSelector(state => state.recipes)
 
   function sendCategory (e) {
@@ -22,40 +23,40 @@ function Home({isAuthenticated}) {
 
   }
   
-  if(isAuthenticated) {
+  if(!loadPage) {
     return(
       //TODO:logic on what to show if user is logged in.
-      <></>
+      <Loader />
     )
-  } else {
+  } else if(loadPage) {
     return(
       <div className="homepage-container">
         <div className="category-container starter">
-        <div class="btn-2">
+        <div className="btn-2">
             <a><span><div id="starters" onClick={sendCategory} className="category-name">Starters</div></span></a>
         </div>
           <div className="category-description">
             From simple and delicious soups and salads to more elaborate tarts and terrines,
            be inspired to start your meal with a taste sensation. See all starter recipes.
           </div>
-          <div class="btn-1">
+          <div className="btn-1">
             <a><span id="starters" onClick={sendCategory}>Check Starters</span></a>
           </div>
         </div>
         <div className="category-container mains">
-        <div class="btn-1">
+        <div className="btn-1">
             <a><span><div className="category-name" id="mains" onClick={sendCategory}>Mains</div></span></a>
         </div>
           <div className="category-description">
           Hundreds of main dish recipes. Choose from top-rated comfort food, healthy, and vegetarian options.
            Find your dinner star now!
           </div>
-          <div class="btn-2">
+          <div className="btn-2">
             <a><span id="mains" onClick={sendCategory}>Check Mains</span></a>
           </div>
         </div>
         <div className="category-container dessert">
-        <div class="btn-2">
+        <div className="btn-2">
             <a><span><div className="category-name" id="desserts" onClick={sendCategory}>Desserts</div></span></a>
         </div>
           <div className="category-description">
@@ -64,7 +65,7 @@ function Home({isAuthenticated}) {
             You should get your just dessert.
             {/* Treat yourself to some desserts. */}
           </div>
-          <div class="btn-1">
+          <div className="btn-1">
             <a><span id="desserts" onClick={sendCategory}>Check Desserts</span></a>
           </div>
         </div>

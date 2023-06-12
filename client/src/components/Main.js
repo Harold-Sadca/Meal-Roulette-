@@ -14,10 +14,11 @@ import Home from "./Home";
 import Footer from "./Footer";
 import Profile from "./Profile";
 import { useDispatch, useSelector } from "react-redux";
-import { login, init, setUser } from "../redux/actions";
+import { login, init, setUser ,setRecipe, pageLoaded} from "../redux/actions";
 import SurpriseMeal from "./SurpriseMeal";
 import ShowSelected from "./ShowSelected";
 import Drink from "./Drink";
+import Loader from "./Loader";
 
 
 
@@ -27,10 +28,12 @@ function Main () {
   const currentUser = useSelector(state => state.currentUser)
   const filteredByCat = useSelector(state => state.filteredByCat)
   const drink = useSelector(state => state.changeDrink)
-  const[selected, setSelected] = useState()
+  const selected = useSelector(state => state.setRecipe)
+  const loadPage = useSelector(state => state.loadPage)
   const [surprise, setSurprise] = useState()
-  // const [loadedRescipes, setLoadedRecipes] = useState(false)
-  // const [loadedUser, setLoadedUser] = useState(false)
+  const [loadedRescipes, setLoadedRecipes] = useState(false)
+  const [loadedUser, setLoadedUser] = useState(false)
+  const [user, setUserState] = useState()
   const dispatch = useDispatch()
 
 
@@ -38,85 +41,69 @@ function Main () {
     services.fetchRecipes().then((res) => {
       dispatch(init(res))
       const idx = Math.floor(Math.random()*res.length)
-      setSelected(res[idx])
+      dispatch(setRecipe(res[idx]))
       setSurprise(res[idx])
-      // setLoadedRecipes(true)
+      setLoadedRecipes(true)
     })
     services.getUser().then((res) => {
       if(res.username) {
         dispatch(login())
+        setUserState(res)
         dispatch(setUser(res))
-        // setLoadedUser(true)
-        // console.log('useEffect ran')
       }
+      setLoadedUser(true)
+      dispatch(pageLoaded())
+      
     })
   }, [])
-  console.log(currentUser)
 
-  
+  if(!loadedUser) {
+    return (
+      < Loader />
+    )
+  } else {
+    dispatch(pageLoaded())
+    console.log(user)
+    return (
+      <>
+      <Router>
+        <Navbar currentUser={user}/>
+        <Routes>
+          <Route path='/home' element={<Home />} />
+          <Route path='/login' element={<LoginForm />} />
+          <Route path='/create-recipe' element={<RecipeForm />} />
+          <Route path='/recipe/:id' element={<ShowSelected />} />
+          <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
+          <Route path='/recipes' element={<RecipeList recipes={recipes}/>} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/user-profile' element={<Profile currentUser={user}/>} />
+          <Route path='/drink/:id' element={<Drink />} />
+          <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
+        </Routes>
+      </Router>   
+      </>
+    )
+  }
 
-  // if(!loadedUser || !loadedRescipes) {
-  //   // return <span className="loader">Loading</span>
-  //   return (
-  //     <div class="circles">
-  //       <div class="circle1"></div>
-  //       <div class="circle2"></div>
-  //       <div class="circle3"></div>
-  //       <div class="circle4"></div>
-  //       <div class="circle5"></div>
-  //       <div class="circle6"></div>
-  //       <div class="circle7"></div>
-  //       <div class="circle8"></div>
-  //       <div class="circle9"></div>
-  //       <div class="circle10"></div>
-  //       <div class="circle11"></div>
-  //       <div class="circle12"></div>
-  //       <div class="circle13"></div>
-  //       <div class="circle14"></div>
-  //       <div class="circle15"></div>
-  //     </div>
-  //   )
-  // } else {
-  //   return (
-  //     <>
-  //     <Router>
-  //       <Navbar />
-  //       <Routes>
-  //         <Route path='/home' element={<Home />} />
-  //         <Route path='/login' element={<LoginForm />} />
-  //         <Route path='/create-recipe' element={<RecipeForm />} />
-  //         <Route path='/recipe/:id' element={<ShowSelected />} />
-  //         <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
-  //         <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
-  //         <Route path='/sign-up' element={<SignUp />} />
-  //         <Route path='/user-profile' element={<Profile />} />
-  //         <Route path='/drink' element={<Drink />} />
-  //         <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
-  //       </Routes>
-  //     </Router>   
-  //     </>
-  //   )
-  // }
-
-  return (
-    <>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/home' element={<Home />} />
-        <Route path='/login' element={<LoginForm />} />
-        <Route path='/create-recipe' element={<RecipeForm />} />
-        <Route path='/recipe/:id' element={<ShowSelected />} />
-        <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
-        <Route path='/recipes' element={<RecipeList recipes={recipes} setSelected={setSelected}/>} />
-        <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/user-profile' element={<Profile />} />
-        <Route path='/drink' element={<Drink drink={drink} />} />
-        <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
-      </Routes>
-    </Router>   
-    </>
-  )
+  // return (
+  //   <>
+  //   <Router>
+  //     <Navbar />
+  //     <Routes>
+  //       <Route path='/home' element={<Home />} />
+  //       <Route path='/login' element={<LoginForm />} />
+  //       <Route path='/create-recipe' element={<RecipeForm />} />
+  //       <Route path='/recipe/:id' element={<ShowSelected />} />
+  //       <Route path='/surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
+  //       <Route path='/recipes' element={<RecipeList recipes={recipes} />} />
+  //       <Route path='/sign-up' element={<SignUp />} />
+  //       <Route path='/user-profile' element={<Profile />} />
+  //       <Route path='/drink/:id' element={<Drink drink={drink} />} />
+  //       <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
+  //     </Routes>
+  //   </Router>   
+  //   </>
+  // )
 }
 
 export default Main

@@ -35,7 +35,7 @@ function LoginForm () {
       services.loginUser(user).then((res) => {
         setUsername('')
         setPassword('')
-        if(res == "Successfully Authenticated") {
+        if(res.username) {
           dispatch(login())
           dispatch(setUser(res))
           navigate(`/user-profile`)
