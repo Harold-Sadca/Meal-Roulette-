@@ -9,6 +9,7 @@ import services from "./Services";
 
 // function Profile({currentUser}) {
 function Profile() {
+  // const [recipes setRecipes]
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const drink = useSelector(state => state.changeDrink)
@@ -33,12 +34,13 @@ function Profile() {
   console.log(useSelector(state => state.currentUser))
 
   function removeRecipe (e, recipeType, path) {
-    dispatch(pageReloading())
+    // dispatch(pageReloading())
     const _id = e.target.id;
     const filtered = currentUser[path].filter((el) => el._id != _id)
     services.removeFavourite({_id}, path).then((res) => {
       currentUser[path] = filtered
-      dispatch(pageLoaded())
+      // dispatch(pageLoaded())
+      navigate(`/user-profile`)
     })
   }
 
