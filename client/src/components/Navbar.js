@@ -65,7 +65,7 @@ const Navbar = ({currentUser}) => {
                 <NavBtn onClick={logout}>
                   <NavBtnLink>Logout</NavBtnLink>
                 </NavBtn>
-                <NavLink activeStyle>
+                <NavLink >
                   Hello, {currentUser.username? (currentUser.username) : <span>Guest</span>}
                   {/* Hello, {currentUser.username} */}
                 </NavLink>

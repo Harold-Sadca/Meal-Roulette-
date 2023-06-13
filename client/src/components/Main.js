@@ -21,7 +21,7 @@ import Drink from "./Drink";
 import Loader from "./Loader";
 
 
-
+//NOTE: navigate reloads the main page but does not run the useEffect
 function Main () {
   const recipes = useSelector(state => state.recipes)
   const authenticated = useSelector(state => state.authenticated)
@@ -33,9 +33,8 @@ function Main () {
   const [surprise, setSurprise] = useState()
   const [loadedRescipes, setLoadedRecipes] = useState(false)
   const [loadedUser, setLoadedUser] = useState(false)
-  const [user, setUserState] = useState()
+  // const [user, setUserState] = useState()
   const dispatch = useDispatch()
-  console.log(recipes)
 
 
   useEffect(() => {
@@ -48,27 +47,28 @@ function Main () {
     })
     services.getUser().then((res) => {
       if(res.username) {
-        dispatch(login())
-        setUserState(res)
+        // console.log(res)
         dispatch(setUser(res))
+        dispatch(login())
+        console.log(currentUser)
+        // setUserState(res)
       }
       setLoadedUser(true)
       dispatch(pageLoaded())
-      
     })
   }, [])
 
-  if(!loadedUser) {
+  if(!loadPage) {
     return (
       < Loader />
     )
   } else {
-    dispatch(pageLoaded())
-
+    // dispatch(pageLoaded())
     return (
       <>
       <Router>
-        <Navbar currentUser={user}/>
+        <Navbar currentUser={currentUser}/>
+        {/* <Navbar currentUser={user}/> */}
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route path='/login' element={<LoginForm />} />
@@ -77,7 +77,8 @@ function Main () {
           <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
           <Route path='/recipes' element={<RecipeList recipes={recipes}/>} />
           <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/user-profile' element={<Profile currentUser={user}/>} />
+          {/* <Route path='/user-profile' element={<Profile currentUser={user}/>} /> */}
+          <Route path='/user-profile' element={<Profile/>} />
           <Route path='/drink/:id' element={<Drink />} />
           <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />
         </Routes>

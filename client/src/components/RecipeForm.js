@@ -4,6 +4,7 @@ import { useState } from "react";
 import services from "./Services";
 import { useDispatch, useSelector } from "react-redux";
 import { add} from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 //TODO:styling
 function RecipeForm () {
   const [name, setName] = useState('');
@@ -15,6 +16,7 @@ function RecipeForm () {
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function valSetter (e) {
     const id = e.target.id
@@ -44,12 +46,13 @@ function RecipeForm () {
       }
       services.addRecipe(newRecipe).then((res) => {
         dispatch(add(res))
+        setName('')
+        setInstructions('')
+        setIngredients('')
+        setDescription('')
+        setCategory('')
+        // navigate(`/recipe/${res._id}`)
       })
-      setName('')
-      setInstructions('')
-      setIngredients('')
-      setDescription('')
-      setCategory('')
     }
   }
   if (authenticated) {

@@ -185,7 +185,7 @@ body {
 }
 
 .instructions-input textarea {
-  color: #c0f57a;
+  color: #000000;
   width: 100%;
   resize: none;
   border-radius: 5px;
@@ -223,6 +223,10 @@ body {
 }
 
 /* Generic Buttons CSS */
+
+button {
+  cursor: pointer;
+}
 
 .btn-submit {
   padding: 10px;
@@ -703,9 +707,12 @@ body {
   margin: auto;
   align-self: center;
   justify-self: center;
-  font-size: 1.2em;
-  color: #ffffff;
-  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  font-size: 1.3em;
+  color: #000000;
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.5em;
+  border-radius: 5px;
 }
 
 .starter {
@@ -934,6 +941,21 @@ span {
 </div> */
 
 /* Surprise Meal CSS */
+
+.surprise-meal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.surprise-meal .header {
+  display: flex;
+  margin-top: 3em;
+  padding: auto;
+}
 
 .generate {
   display: flex;
@@ -1388,7 +1410,7 @@ background-position: right center , 17px center , 0px center;
 /* 
     <div className="profile-container">{currentUser ? (
         <>
-        <span className="profile-label">PROFILE</span>
+        <span id="recipe-label" className="profile-label">PROFILE</span>
         <div className="user-profile">
           <div className="user-details">
             <div className="username">{currentUser.username}</div>
@@ -1413,6 +1435,8 @@ background-position: right center , 17px center , 0px center;
 
 /* User profile CSS */
 
+
+
 .profile-label {
   font-size: 2em;
 }
@@ -1432,6 +1456,7 @@ background-position: right center , 17px center , 0px center;
 
 .user-profile-pic {
   width: 100%;
+  border-radius: 1rem;
 }
 
 .user-details {
@@ -1457,8 +1482,8 @@ background-position: right center , 17px center , 0px center;
   display: flex;
   flex-direction: column;
   width: 35%;
-  border: 1px solid black;
   padding: 1em;
+  justify-content: space-around;
 }
 
 .user-recipe,
@@ -1473,7 +1498,8 @@ background-position: right center , 17px center , 0px center;
 
 .user-recipe span,
 .user-food-favourites span,
-.user-drink-favourites span {
+.user-drink-favourites span,
+#plan-label ,.meal {
   font-size: 1.5em;
   align-self: center;
 }
@@ -1481,8 +1507,68 @@ background-position: right center , 17px center , 0px center;
 .user-recipe .fav-name,
 .user-food-favourites .fav-name,
 .user-drink-favourites .fav-name {
-  font-size: 1.5em;
   align-self: center;
-  font-size: 1.2em;
+  font-size: 1em;
+  font-weight: 500;
   align-self: flex-start;
+  margin-top: 0.5rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
+
+.breakfast,
+.lunch,
+.dinner {
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+#plan-label,
+#recipe-label {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  width: 80%;
+}
+
+.remove-fav {
+  align-self: flex-end;
+}
+
+.ingred {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* .meal {
+  align-self: flex-start;
+  margin-left: 1em;
+  font-size: 1;
+} */
+
+/* <div className="day-meal">
+<div className="breakfast">
+  <span id="plan-label">Breakfast Plans:</span>
+  {currentUser.breakfast.length ? (
+    currentUser.breakfast.map((el) => {
+      return <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
+    })
+  ) : <span>You dont have a plan for breakfast yet.</span>}
+</div>
+<div className="lunch">
+  <span id="plan-label">Lunch Plans:</span>
+    {currentUser.lunch.length ? (
+      currentUser.lunch.map((el) => {
+        return <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
+      })
+    ) : <span>You dont have a plan for lunch yet.</span>}
+</div>
+<div className="dinner">
+  <span id="plan-label">Dinner Plans:</span>
+    {currentUser.dinner.length ? (
+      currentUser.dinner.map((el) => {
+        return <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
+      })
+    ) : <span>You dont have a plan for dinner yet.</span>}
+</div>
+</div> */

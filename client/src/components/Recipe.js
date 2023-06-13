@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react"
 import services from "./Services"
+import { useNavigate } from "react-router-dom";
 
 function Recipe ({recipe}) {
   const [current, setCurrent] = useState(recipe)
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
+  const navigate = useNavigate()
 
   if (recipe != current) {
     setCurrent(recipe)
@@ -41,6 +43,7 @@ function Recipe ({recipe}) {
     const id = e.target.id
     const {_id} = recipe
     services.saveFoodRecipe({_id}, id).then((res) => {
+      //use redux to reset the user to the response then navigate to the profile page
       console.log(res)
     })
   }
@@ -55,7 +58,9 @@ function Recipe ({recipe}) {
           </div>
           <div className="display-recipe-ingredients">
             <span className="display-ingredients-label">Ingredients:</span>
-            <div className="display-ingredient-list">{recipe.ingredients.map(ing => <span>{ing}</span>)}</div>
+            <div className="display-ingredient-list">{recipe.ingredients.map((ing) => {
+              return <a href={"https://www.google.com/search?q="+ing} target="_blank" className="ingred">{ing}</a>
+            })}</div>
           </div>
           <div className="display-instructions">
             <span className="display-instructions-label">Instructions:</span>

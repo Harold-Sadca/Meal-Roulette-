@@ -38,6 +38,23 @@ exports.findUser = async(req) => {
   }
 }
 
+exports.removeMeal = async(req) => {
+  const {id} = req.user;
+  const {_id} = req.body;
+  const {path} = req.params
+  try {
+    const user = await User.findById(id)
+    const newFav = user[path].filter((el) => {
+      return el._id != _id
+    })
+    user[path] = newFav
+    await user.save()
+    return user
+  } catch(e) {
+    console.log('This is no longer funny')
+  }
+}
+
 exports.addMeal = async(req) => {
   const {id} = req.user;
   const {_id} = req.body;

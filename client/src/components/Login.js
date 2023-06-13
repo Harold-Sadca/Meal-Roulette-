@@ -2,8 +2,9 @@
 import { useState } from "react";
 import services from "./Services";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, add, remove, setUser } from "../redux/actions";
+import { login, pageReloading, setUser, pageLoaded } from "../redux/actions";
 import { useNavigate, useRoutes } from "react-router-dom";
+
 
 
 function LoginForm () {
@@ -11,6 +12,7 @@ function LoginForm () {
   const [password, setPassword] = useState('')
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
+  const loadPage = useSelector(state => state.loadPage)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -24,6 +26,8 @@ function LoginForm () {
   }
 
   function loginFunction(e) {
+    //reset the loadPage to false here so the page doesnt load until the fetch request is finished
+    dispatch(pageReloading())
     e.preventDefault();
     if(!username || !password) {
       alert('Cant do that son!')
@@ -33,6 +37,8 @@ function LoginForm () {
         password
       }
       services.loginUser(user).then((res) => {
+        //set the loadPage to true again so that the pages shows
+        dispatch(pageLoaded())
         setUsername('')
         setPassword('')
         if(res.username) {

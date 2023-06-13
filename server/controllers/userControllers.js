@@ -1,4 +1,4 @@
-const {createOne, findAll, findUser, addMeal} = require('../models/methods/userMethods')
+const {createOne, findAll, findUser, addMeal, removeMeal} = require('../models/methods/userMethods')
 const passport = require('passport');
 
 exports.registerUser = async (req, res) => {
@@ -20,11 +20,19 @@ exports.getUser = async (req, res) => {
 }
 
 exports.addMeal = async (req, res) => {
-	console.log('controller')
 	try {
 		req.user = await addMeal(req);
 		res.status(201).send(req.user)
 	} catch (e){
+		res.status(400).send(e.message)
+	}
+}
+
+exports.removeMeal = async (req, res) => {
+	try {
+		req.user = await removeMeal(req)
+		res.status(201).send(req.user)
+	} catch(e) {
 		res.status(400).send(e.message)
 	}
 }

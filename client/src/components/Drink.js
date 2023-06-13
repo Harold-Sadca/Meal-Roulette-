@@ -2,7 +2,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import services from "./Services"
-import { setDrink } from "../redux/actions"
+import { setDrink ,setUser, pageReloading, pageLoaded} from "../redux/actions"
+import { useNavigate } from "react-router-dom"
 
 
 function Drink() {
@@ -11,6 +12,7 @@ function Drink() {
   const currentUser = useSelector(state => state.currentUser)
   const drink = useSelector(state => state.changeDrink)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   
   const [language, setLanguage] = useState('english')
   function extractIng(drink) {
@@ -39,8 +41,11 @@ function Drink() {
   function handleDrink (e) {
     const id = e.target.id
     if (id == 'yay') {
+      dispatch(pageReloading())
       services.saveDrink(drink).then((res) => {
-        console.log(res)
+        dispatch(setUser(res))
+        dispatch(pageLoaded())
+        navigate(`/user-profile`)
       })
     } else if(id == 'nay') {
       services.fetchDrink().then((res) => {
@@ -74,7 +79,7 @@ function Drink() {
         <div className="drink-ingredients">
         <span>Ingredients</span>
           {
-            drink.ingredients.map(res => <div>{res}</div>)
+            drink.ingredients.map(res => <a href={"https://www.google.com/search?q="+res} target="_blank" className="ingred">{res}</a>)
           }
         </div>
         <div className="drink-instructions">

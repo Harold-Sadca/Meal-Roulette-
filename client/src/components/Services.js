@@ -146,6 +146,17 @@ function saveFoodRecipe (id, path) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
+function removeFavourite(id, path) {
+  return fetch(`${PORT}/remove-favourite/${path}`, {
+    method: "POST",
+    body: JSON.stringify(id),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: "include"
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
 const services = {
   fetchRecipes,
   addRecipe,
@@ -160,7 +171,8 @@ const services = {
   fetchRecipeByCat,
   fetchDrink,
   saveDrink,
-  saveFoodRecipe
+  saveFoodRecipe,
+  removeFavourite
 }
 
 export default services

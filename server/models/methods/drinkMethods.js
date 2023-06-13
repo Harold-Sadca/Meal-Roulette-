@@ -8,7 +8,7 @@ exports.createOne = async (req) => {
     user.drinkFavourites.push(newDrink._id)
     await user.save()
     await newDrink.save()
-    return newDrink
+    return user
   } catch (e) {
     console.log('Another error, you gotta be shitting me', e)
   }

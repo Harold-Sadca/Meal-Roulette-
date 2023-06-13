@@ -49,3 +49,7 @@ export const setRecipe = (recipe) => ({
 export const pageLoaded = () => ({
     type: 'PAGE_LOADED'
 })
+
+export const pageReloading = () => ({
+    type: 'PAGE_RELOADING'
+})

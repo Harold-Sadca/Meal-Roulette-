@@ -26,15 +26,25 @@ const authenticated = (state=false, action) => {
 			return state;
 	}
 }
-const defaultUser = {username: 'Guest'}
-const currentUser = (state, action) => {
+const defaultUser = {
+	username: 'Guest',
+	profilePic: 'https://m.media-amazon.com/images/I/515EOVqRexL._AC_UF894,1000_QL80_.jpg',
+	foodFavourites:[],
+	personalRecipes:[],
+	drinkFavourites:[],
+	breakfast:[],
+	lunch:[],
+	dinner: []
+
+}
+const currentUser = (state=defaultUser, action) => {
 	switch (action.type) {
 		case 'SET_USER':
 			return action.payload;
 		case 'REMOVE_USER':
 			return defaultUser;
 		default:
-			return defaultUser;
+			return state;
 	}
 }
 
@@ -79,6 +89,8 @@ const loadPage = (state=false, action) => {
 	switch (action.type) {
 		case 'PAGE_LOADED':
 			return true
+		case 'PAGE_RELOADING':
+			return false
 		default:
 			return state
 	}

@@ -68,7 +68,7 @@ function SurpriseMeal({recipe}) {
 
   return(
     <div className="surprise-meal">
-      <span className="header">Want to leave it to chance?</span>
+      <span className="header" id="meal-header">Want to leave it to chance?</span>
       <div className="generate">
         <a className="generate-btn" onClick={generateRandom}>Generate Me A Random Meal!</a>
         <a className="generate-btn" onClick={getDrink}>Generate Me A Random Drink!</a>
