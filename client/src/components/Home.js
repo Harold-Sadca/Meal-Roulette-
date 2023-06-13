@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setcategory } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-// import { login, logout, add, remove, init, setUser } from "../redux/actions";
 
 
 function Home({isAuthenticated}) {
@@ -25,7 +24,6 @@ function Home({isAuthenticated}) {
   
   if(!loadPage) {
     return(
-      //TODO:logic on what to show if user is logged in.
       <Loader />
     )
   } else if(loadPage) {

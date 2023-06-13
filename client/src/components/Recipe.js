@@ -11,6 +11,7 @@ function Recipe ({recipe}) {
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
   const currentUser = useSelector(state => state.currentUser)
+  const authenticated = useSelector(state => state.authenticated)
   const navigate = useNavigate()
   const dispatch = useDispatch
 
@@ -75,12 +76,15 @@ function Recipe ({recipe}) {
             <span className="display-instructions-label">Instructions:</span>
             <div>{recipe.instructions}</div>
           </div>
-          <div className="add-meal-buttons">
-            <button className="add-meal" id="breakfast" onClick={(e) => {handleSave(e)}}>Breakfast</button>
-            <button className="add-meal" id="lunch" onClick={(e) => {handleSave(e)}}>Lunch</button>
-            <button className="add-meal" id="dinner" onClick={(e) => {handleSave(e)}}>Dinner</button>
-            <button className="add-meal" id="foodFavourites" onClick={(e) => {handleSave(e)}}>Favourite</button>
-        </div>
+          {authenticated ? (
+            <div className="add-meal-buttons">
+              <button className="add-meal" id="breakfast" onClick={(e) => {handleSave(e)}}>Breakfast</button>
+              <button className="add-meal" id="lunch" onClick={(e) => {handleSave(e)}}>Lunch</button>
+              <button className="add-meal" id="dinner" onClick={(e) => {handleSave(e)}}>Dinner</button>
+              <button className="add-meal" id="foodFavourites" onClick={(e) => {handleSave(e)}}>Favourite</button>
+            </div>
+          ) :<div>Login to start planning your meals.</div>
+          }
         </div>
         <div className="comment-form-container">
           <textarea value={comment} onChange={(e) => {commentHandler(e)}} className="comment-input"></textarea>

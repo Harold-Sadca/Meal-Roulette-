@@ -539,8 +539,6 @@ button {
   border-radius: 5px;
 }
 
-.comment-list-container
-
 /* <div className="signup-container">
 <div className="header">Sign Up</div>
 <form className="signup-form" onSubmit={(e) => {submitUser(e)}}>
@@ -715,10 +713,12 @@ button {
   justify-self: center;
   font-size: 1.3em;
   color: #000000;
-  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  /* text-shadow: rgb(255, 255, 255) 1px 0 10px; */
+  /* text-shadow: -0.5px 0 rgba(255, 255, 255 ,.5), 0 0.5px rgba(255, 255, 255, .5), 0.5px 0 rgba(255, 255, 255, .5), 0 -0.5px rgba(252, 250, 250, .5); */
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.5em;
   border-radius: 5px;
+  font-weight: 600;
 }
 
 .starter {
@@ -1609,3 +1609,5 @@ background-position: right center , 17px center , 0px center;
     ) : <span>You dont have a plan for dinner yet.</span>}
 </div>
 </div> */
+
+/* Not logged in CSS */

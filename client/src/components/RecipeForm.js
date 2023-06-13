@@ -93,7 +93,7 @@ function RecipeForm () {
   } else {
     return (
       <div>
-        <p className="unauthenticated-message">Please login to contribute to the website.
+        <p className="header">Please login to contribute to the website.
           Otherwise, you are still free to check the recipes but can't post one.
           Click the button below to login.
         </p>
