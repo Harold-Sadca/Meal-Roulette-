@@ -20,6 +20,7 @@ exports.getUser = async (req, res) => {
 }
 
 exports.addMeal = async (req, res) => {
+	console.log('controller')
 	try {
 		req.user = await addMeal(req);
 		res.status(201).send(req.user)

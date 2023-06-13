@@ -37,6 +37,14 @@ function Recipe ({recipe}) {
     })
   }
 
+  function handleSave(e) {
+    const id = e.target.id
+    const {_id} = recipe
+    services.saveFoodRecipe({_id}, id).then((res) => {
+      console.log(res)
+    })
+  }
+
   if(current) {
     return (
       <>
@@ -54,10 +62,10 @@ function Recipe ({recipe}) {
             <div>{recipe.instructions}</div>
           </div>
           <div className="add-meal-buttons">
-            <button className="add-meal" >Breakfast</button>
-            <button className="add-meal" >Lunch</button>
-            <button className="add-meal" >Dinner</button>
-            <button className="add-meal" >Favourite</button>
+            <button className="add-meal" id="breakfast" onClick={(e) => {handleSave(e)}}>Breakfast</button>
+            <button className="add-meal" id="lunch" onClick={(e) => {handleSave(e)}}>Lunch</button>
+            <button className="add-meal" id="dinner" onClick={(e) => {handleSave(e)}}>Dinner</button>
+            <button className="add-meal" id="foodFavourites" onClick={(e) => {handleSave(e)}}>Favourite</button>
         </div>
         </div>
         <div className="comment-form-container">

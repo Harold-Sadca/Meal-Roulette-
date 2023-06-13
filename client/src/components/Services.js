@@ -135,6 +135,17 @@ function saveDrink(drink) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
+function saveFoodRecipe (id, path) {
+  return fetch(`${PORT}/add-meal/${path}`, {
+    method: "POST",
+    body: JSON.stringify(id),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: "include"
+  }).then(res => res.json()).then(parsedRes => parsedRes)
+}
+
 const services = {
   fetchRecipes,
   addRecipe,
@@ -148,7 +159,8 @@ const services = {
   getUser,
   fetchRecipeByCat,
   fetchDrink,
-  saveDrink
+  saveDrink,
+  saveFoodRecipe
 }
 
 export default services
