@@ -22,6 +22,12 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow:   scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 /* .App::after {
@@ -1052,6 +1058,7 @@ span {
   padding: 1em;
   border: 1px solid rgba(0, 0, 0, 0.3);
   position: relative;
+  background-size: cover;
 }
 
 .drink-name {
@@ -1436,27 +1443,29 @@ background-position: right center , 17px center , 0px center;
 /* User profile CSS */
 
 
-
-.profile-label {
-  font-size: 2em;
-}
-
 .profile-container {
   background-color: rgba(243, 233, 233, 0.3);
   width: 100%;
   height: 100vh;
 }
 
+.profile-label {
+  font-size: 2em;
+}
+
 .user-profile {
-  
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 100%;
+  
 }
 
 .user-profile-pic {
-  width: 100%;
-  border-radius: 1rem;
+  width: 20em;
+  height: 20em;
+  border-radius: 50%;
+  align-self: center;
 }
 
 .user-details {
@@ -1464,10 +1473,20 @@ background-position: right center , 17px center , 0px center;
   flex-direction: column;
   width: 30%;
   padding: 1em;
+  height: 100%;
+}
+
+.more-info {
+  font-size: 1.3em;
+  margin-top: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 1em;
 }
 
 .username {
   font-size: 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 1em;
 }
 
 .user-recipes {
@@ -1494,27 +1513,41 @@ background-position: right center , 17px center , 0px center;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: flex-start;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 
-.user-recipe span,
-.user-food-favourites span,
-.user-drink-favourites span,
-#plan-label ,.meal {
+#recipe-label,
+#plan-label {
+  align-self: center;
+  font-size: 2em;
+}
+
+.fav-name-con {
+  display: flex;
+  align-self: center;
   font-size: 1.5em;
-  align-self: center;
-}
-
-.user-recipe .fav-name,
-.user-food-favourites .fav-name,
-.user-drink-favourites .fav-name {
-  align-self: center;
-  font-size: 1em;
   font-weight: 500;
   align-self: flex-start;
   margin-top: 0.5rem;
-  width: 100%;
+  width: 90%;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.fav-name,
+.meal {
+  font-size: 25px;
+  align-self: flex-start;
+  height: 1em;
+  flex-wrap: wrap;
+  overflow:hidden;
+  /* text-overflow: ellipsis ellipsis; */
+  /* text-overflow: '...'; */
 }
 
 .breakfast,
@@ -1523,6 +1556,8 @@ background-position: right center , 17px center , 0px center;
   height: 33%;
   display: flex;
   flex-direction: column;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 
 #plan-label,
@@ -1532,13 +1567,15 @@ background-position: right center , 17px center , 0px center;
 }
 
 .remove-fav {
-  align-self: flex-end;
+  height: 100%;
 }
 
 .ingred {
   text-decoration: none;
   color: #000000;
 }
+
+
 
 /* .meal {
   align-self: flex-start;

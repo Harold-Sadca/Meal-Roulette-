@@ -49,7 +49,8 @@ exports.removeMeal = async(req) => {
     })
     user[path] = newFav
     await user.save()
-    return user
+    //this is returning an unpopulated user
+    return newFav
   } catch(e) {
     console.log('This is no longer funny')
   }
@@ -63,7 +64,7 @@ exports.addMeal = async(req) => {
     const user = await User.findById(id)
     user[time].push(_id)
     await user.save()
-    return user
+    return req.body
   } catch(e) {
     console.log('Omega LUL another error')
   }

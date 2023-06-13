@@ -47,15 +47,14 @@ function Main () {
     })
     services.getUser().then((res) => {
       if(res.username) {
-        // console.log(res)
         dispatch(setUser(res))
         dispatch(login())
         console.log(currentUser)
-        // setUserState(res)
       }
       setLoadedUser(true)
       dispatch(pageLoaded())
     })
+    console.log('use ran')
   }, [])
 
   if(!loadPage) {

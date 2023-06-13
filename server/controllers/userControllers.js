@@ -21,8 +21,8 @@ exports.getUser = async (req, res) => {
 
 exports.addMeal = async (req, res) => {
 	try {
-		req.user = await addMeal(req);
-		res.status(201).send(req.user)
+		const result = await addMeal(req);
+		res.status(201).send(result)
 	} catch (e){
 		res.status(400).send(e.message)
 	}
@@ -30,8 +30,8 @@ exports.addMeal = async (req, res) => {
 
 exports.removeMeal = async (req, res) => {
 	try {
-		req.user = await removeMeal(req)
-		res.status(201).send(req.user)
+		const result = await removeMeal(req)
+		res.status(201).send(result)
 	} catch(e) {
 		res.status(400).send(e.message)
 	}

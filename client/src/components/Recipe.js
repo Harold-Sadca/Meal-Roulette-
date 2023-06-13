@@ -3,12 +3,16 @@
 import { useState, useEffect } from "react"
 import services from "./Services"
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {setUser} from "../redux/actions"
 
 function Recipe ({recipe}) {
   const [current, setCurrent] = useState(recipe)
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
+  const currentUser = useSelector(state => state.currentUser)
   const navigate = useNavigate()
+  const dispatch = useDispatch
 
   if (recipe != current) {
     setCurrent(recipe)
@@ -44,8 +48,13 @@ function Recipe ({recipe}) {
     const {_id} = recipe
     services.saveFoodRecipe({_id}, id).then((res) => {
       //use redux to reset the user to the response then navigate to the profile page
+      // dispatch(setUser(res))
       console.log(res)
+      currentUser[id].push(recipe)
+      navigate(`/user-profile`)
+      
     })
+    
   }
 
   if(current) {

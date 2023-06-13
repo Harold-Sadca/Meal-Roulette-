@@ -43,7 +43,7 @@ function Drink() {
     if (id == 'yay') {
       dispatch(pageReloading())
       services.saveDrink(drink).then((res) => {
-        dispatch(setUser(res))
+        currentUser.drinkFavourites.push(res)
         dispatch(pageLoaded())
         navigate(`/user-profile`)
       })

@@ -1,7 +1,7 @@
 //user profile page template
 //contents: user info, user favourites, user recipes
 //TODO:everything
-import { setDrink, setRecipe, setUser } from "../redux/actions"
+import { pageLoaded, pageReloading, setDrink, setRecipe, setUser } from "../redux/actions"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useRoutes } from "react-router-dom";
 import Loader from "./Loader";
@@ -33,10 +33,12 @@ function Profile() {
   console.log(useSelector(state => state.currentUser))
 
   function removeRecipe (e, recipeType, path) {
+    dispatch(pageReloading())
     const _id = e.target.id;
     const filtered = currentUser[path].filter((el) => el._id != _id)
     services.removeFavourite({_id}, path).then((res) => {
-      dispatch(setUser(res))
+      currentUser[path] = filtered
+      dispatch(pageLoaded())
     })
   }
 
@@ -53,42 +55,45 @@ function Profile() {
           <span className="profile-label">PROFILE</span>
           <div className="user-profile">
             <div className="user-details">
-              <img className="user-profile-pic" src={currentUser.profilePic} alt={currentUser.profilePic}></img>
+              <img className="user-profile-pic" src={currentUser.profilePic} alt={currentUser.profilePic}></img> {/* dont be stupid...dont do this */}
               <div className="username">{currentUser.username}</div>
+              <div className="more-info">Contact: {currentUser.email}</div>
+              <div className="more-info">Reputation: 0</div>
+              <div className="more-info">Recipes: {currentUser.personalRecipes.length}</div>
             </div>
             <div className="user-recipes">
               <div className="user-food-favourites">
                 <span id="recipe-label">Favourite Foods:</span>
                 {currentUser.foodFavourites.length ? (
                       currentUser.foodFavourites.map((el) => {
-                        return <span>
+                        return <span className="fav-name-con">
                           <span className="fav-name" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
                           <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'foodFavourites')}}>X</button>
                           </span>
                       })
-                    ) : <span>You dont have any favourite recipe yet.</span>}
+                    ) : <span className="meal">You dont have any favourite recipe yet.</span>}
               </div>
               <div className="user-recipe">
                 <span id="recipe-label">Personal Recipes:</span>
                   {currentUser.personalRecipes.length ? (
                       currentUser.personalRecipes.map((el) => {
-                        return <span>
+                        return <span className="fav-name-con">
                           <span className="fav-name" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
                           <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'personalRecipes')}}>X</button>
                           </span>
                       })
-                    ) : <span>You have not written any recipe yet.</span>}
+                    ) : <span className="meal">You have not written any recipe yet.</span>}
               </div>
               <div className="user-drink-favourites">
                 <span id="recipe-label">Favourite Drinks:</span>
                   {currentUser.drinkFavourites.length ? (
                     currentUser.drinkFavourites.map((el) => {
-                      return <span>
+                      return <span className="fav-name-con">
                         <span className="fav-name" key={el._id} id={el._id}  onClick={(e) => {openRecipe(e, 'drink')}}>{el.name}</span>
                         <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'drink', 'drinkFavourites')}}>X</button>
                         </span>
                     })
-                  ) : <span>You dont have any favourite drink yet.</span>}
+                  ) : <span className="meal">You dont have any favourite drink yet.</span>}
               </div>
             </div>
             <div className="day-meal">
@@ -96,34 +101,34 @@ function Profile() {
                 <span id="plan-label">Breakfast Plans:</span>
                 {currentUser.breakfast.length ? (
                   currentUser.breakfast.map((el) => {
-                    return <span>
+                    return <span className="fav-name-con">
                       <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
                       <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'breakfast')}}>X</button>
                       </span>
                   })
-                ) : <span>You dont have a plan for breakfast yet.</span>}
+                ) : <span className="meal">You dont have a plan for breakfast yet.</span>}
               </div>
               <div className="lunch">
                 <span id="plan-label">Lunch Plans:</span>
                   {currentUser.lunch.length ? (
                     currentUser.lunch.map((el) => {
-                      return <span>
+                      return <span className="fav-name-con">
                       <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
                       <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'lunch')}}>X</button>
                       </span>
                     })
-                  ) : <span>You dont have a plan for lunch yet.</span>}
+                  ) : <span className="meal">You dont have a plan for lunch yet.</span>}
               </div>
               <div className="dinner">
                 <span id="plan-label">Dinner Plans:</span>
                   {currentUser.dinner.length ? (
                     currentUser.dinner.map((el) => {
-                      return <span>
+                      return <span className="fav-name-con">
                       <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
                       <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'dinner')}}>X</button>
                       </span>
                     })
-                  ) : <span>You dont have a plan for dinner yet.</span>}
+                  ) : <span className="meal">You dont have a plan for dinner yet.</span>}
               </div>
             </div>
           </div>
