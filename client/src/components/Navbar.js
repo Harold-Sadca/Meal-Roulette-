@@ -1,8 +1,7 @@
 //navbar template, handles navbar nagivation
 
 
-import React, { useState } from 'react';
-import { useNavigate, useRoutes } from "react-router-dom";
+import React from 'react';
 import {
   Nav,
   NavLink,
@@ -14,11 +13,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import services from './Services';
 import { logoutUser, removeUser } from "../redux/actions";
-import Loader from './Loader';
-//TODO:redo  
+import Loader from './Loader'; 
 const Navbar = ({currentUser}) => {
   const authenticated = useSelector(state => state.authenticated)
-  // const currentUser = useSelector(state => state.currentUser)
   const loadPage = useSelector(state => state.loadPage)
   const dispatch = useDispatch()
 
@@ -34,6 +31,7 @@ const Navbar = ({currentUser}) => {
   if (!loadPage) {
     return <Loader />
   } else {
+    //navbar template was from w3schools...
     return (
       <>
         <Nav>
@@ -45,17 +43,12 @@ const Navbar = ({currentUser}) => {
             <NavLink to='/create-recipe' >
               Add Recipe
             </NavLink>
-            {/* <NavLink to='/recipe' activeStyle>
-              Recipe
-            </NavLink> */}
             <NavLink to='/surprise-me'  >
               Surprise Me
             </NavLink>
             <NavLink to='/recipes' >
               Recipes
             </NavLink>
-            {/* Second Nav */}
-            {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
           </NavMenu>
           {authenticated ? (
               <>
@@ -67,7 +60,6 @@ const Navbar = ({currentUser}) => {
                 </NavBtn>
                 <NavLink >
                   Hello, {currentUser.username? (currentUser.username) : <span>Guest</span>}
-                  {/* Hello, {currentUser.username} */}
                 </NavLink>
               </>
           ): (

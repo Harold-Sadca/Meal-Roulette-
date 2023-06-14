@@ -6,21 +6,19 @@ const _id = req.params.id
     const comments = await Comment.find({recipe:_id});
     return comments;
   } catch(e) {
-    console.log('Dude you screwed up while getting the comments dumbass.');
+    console.log('Man these error are no longer funny.', e.message);
   }
 }
 
 exports.createOne = async(req) => {
   const {comment, recipe} = req.body
   const author = req.user.username
-  // const {comment, recipe, author} = req.body use this after full authentication
   try{
     const newComment = await new Comment({comment, recipe, author});
-    // const newRecipe = await new Recipe({comment, recipe, author}); use this after authorization is final
     await newComment.save();
     return newComment;
   } catch(e) {
-    console.log('Dude you screwed up while posting a dumbass.');
+    console.log('Are you really this bad dude???', e.message);
   }
 }
 

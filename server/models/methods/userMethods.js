@@ -5,20 +5,18 @@ exports.findAll = async() => {
     const users = await User.find({});
     return users;
   } catch(e) {
-    console.log('Dude you screwed up while getting all the users dumbass.');
+    console.log('Why cant you retrieve all the users???', e.message);
   }
 }
 
 exports.createOne = async(req) => {
-  // console.log(req.body)
   const {email, username, password} = req.body
   try{
     const newUser = new User({email, username});
-    //we dont need to worry about hashing because passport will be taking care of it for us
     const registeredUser = await User.register(newUser, password)
     return registeredUser
   } catch(e) {
-    console.log('Dude you screwed up while registering a user dumbass.');
+    console.log('You dont wanna see this while creating a user but its a error.', e.message);
   }
 }
 
@@ -34,7 +32,7 @@ exports.findUser = async(req) => {
     .populate('dinner');
     return user;
   } catch(e) {
-    console.log('Dude you screwed up while getting a user dumbass.');
+    console.log('Ohh man do I have to come up with another message.', e.message);
   }
 }
 
@@ -52,7 +50,7 @@ exports.removeMeal = async(req) => {
     //this is returning an unpopulated user
     return newFav
   } catch(e) {
-    console.log('This is no longer funny')
+    console.log('This is no longer funny', e.message)
   }
 }
 
@@ -66,7 +64,7 @@ exports.addMeal = async(req) => {
     await user.save()
     return req.body
   } catch(e) {
-    console.log('Omega LUL another error')
+    console.log('Omega LUL another error', e.message)
   }
 }
 

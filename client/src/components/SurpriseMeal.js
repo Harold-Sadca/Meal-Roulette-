@@ -1,16 +1,11 @@
 //template to render random recipe
-import { useState } from "react"
-import Recipe from "./Recipe"
 import services from "./Services"
 import { useDispatch, useSelector } from "react-redux"
 import { setDrink } from "../redux/actions"
 import { useNavigate } from "react-router-dom"
-import Drink from "./Drink"
 
 function SurpriseMeal({recipe}) {
-  const [random, setRandom] = useState(recipe)
   const recipes = useSelector(state => state.recipes)
-  const drink = useSelector(state => state.changeDrink)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -64,17 +59,15 @@ function SurpriseMeal({recipe}) {
     })
   }
 
-  // console.log(drink)
-
   return(
     <div className="surprise-meal">
       <span className="header" id="meal-header">Want to leave it to chance?</span>
       <div className="generate">
         <a className="generate-btn" onClick={generateRandom}>Generate Me A Random Meal!</a>
         <a className="generate-btn" onClick={getDrink}>Generate Me A Random Drink!</a>
+        {/* the one below is a nice to have but not finished yet */}
+        {/* <a className="generate-btn" onClick={() => {navigate('/menu-generator')}}>Eating Out? Generate From The Menu!</a> */}
       </div>
-      {/* < Drink /> */}
-      {/* <Recipe recipe={random}/> */}
     </div>
   )
 

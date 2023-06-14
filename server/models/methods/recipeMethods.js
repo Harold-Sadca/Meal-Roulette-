@@ -6,7 +6,7 @@ exports.findAll = async() => {
     const recipes = await Recipe.find({}).populate('author');
     return recipes;
   } catch(e) {
-    console.log('Dude you screwed up while getting all the recipes dumbass.');
+    console.log('OMEGA LUL your find all recipe function did not work...XD...', e.message);
   }
 }
 
@@ -18,9 +18,10 @@ exports.createOne = async(req) => {
     await user.save()
     newRecipe.author = req.user.id;
     await newRecipe.save();
-    return newRecipe;
+    const resRecipe = await Recipe.findById(newRecipe._id).populate('author', 'username')
+    return resRecipe;
   } catch(e) {
-    console.log('Dude you screwed up while creating a recipe dumbass.');
+    console.log('Dude your messing up in the create recipe try harder.', e.message);
   }
 }
 
@@ -30,7 +31,7 @@ exports.getRecipeByCat = async(req) => {
     const recipes = await Recipe.find({category})
     return recipes
   } catch(e) {
-    console.log('Ohh man not this one again')
+    console.log('Ohh man not this one again', e.message)
   }
 }
 
@@ -38,10 +39,10 @@ exports.getRecipeByCat = async(req) => {
 exports.editOne = async(req) => {
   const {_id} = req.body;
   try{
-    const recipe = await Recipe.findOneAndUpdate({_id}, {...req.body});
+    const recipe = await Recipe.findOneAndUpdate({_id}, {...req.body}).populate('author', 'username');
     return recipe
   } catch(e) {
-    console.log('Dude you screwed up while updating a recipe dumbass.');
+    console.log('Ohh man I did not know editing a recipe is hard.', e.message);
   }
 }
 
@@ -51,6 +52,6 @@ exports.deleteOne = async(req) => {
     const res = await Recipe.deleteOne({_id})
     return res;
   } catch(e) {
-    console.log('Dude you screwed up while deleting a recipe dumbass.');
+    console.log('Dude deleting a recipe is easy if you do it right.', e.message);
   }
 }

@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react"
 import services from "./Services"
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {setUser} from "../redux/actions"
+import { useSelector } from "react-redux";
 
 function Recipe ({recipe}) {
   const [current, setCurrent] = useState(recipe)
@@ -13,7 +12,6 @@ function Recipe ({recipe}) {
   const currentUser = useSelector(state => state.currentUser)
   const authenticated = useSelector(state => state.authenticated)
   const navigate = useNavigate()
-  const dispatch = useDispatch
 
   if (recipe != current) {
     setCurrent(recipe)
@@ -48,8 +46,6 @@ function Recipe ({recipe}) {
     const id = e.target.id
     const {_id} = recipe
     services.saveFoodRecipe({_id}, id).then((res) => {
-      //use redux to reset the user to the response then navigate to the profile page
-      // dispatch(setUser(res))
       console.log(res)
       currentUser[id].push(recipe)
       navigate(`/user-profile`)
@@ -64,7 +60,7 @@ function Recipe ({recipe}) {
         <div key={recipe._id} className="display-recipe-container">
           <div className="name-author">
             <div className="display-recipe-name">{recipe.name}</div>
-            {/* <div className="author">By: {recipe.author.username}</div> */}
+            <div className="author">By: {recipe.author.username}</div>
           </div>
           <div className="display-recipe-ingredients">
             <span className="display-ingredients-label">Ingredients:</span>

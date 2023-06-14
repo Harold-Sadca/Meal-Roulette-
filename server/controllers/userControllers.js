@@ -42,10 +42,9 @@ exports.loginUser = async (req, res, next) => {
 		if (err) throw err;
 		if (!user) res.send(JSON.stringify("No User Exists"));
 		else {
-		  req.logIn(user, (err) => {
+		  req.logIn(user, async (err) => {
 			if (err) throw err;
-			// res.redirect('/recipe')
-			// res.send(JSON.stringify("Successfully Authenticated"));
+			req.user = await findUser(req)
 			res.status(200).send(req.user)
 		  });
 		}
@@ -62,7 +61,6 @@ exports.logoutUser = async (req, res, next) => {
 }
 
 exports.userProfile = async (req, res) => {
-	// console.log(req.isAuthenticated())
 	try {
 		const user = await getUser(req);
 		res.status(201).send(user)

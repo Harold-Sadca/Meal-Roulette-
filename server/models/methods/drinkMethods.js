@@ -10,6 +10,6 @@ exports.createOne = async (req) => {
     await newDrink.save()
     return newDrink
   } catch (e) {
-    console.log('Another error, you gotta be shitting me', e)
+    console.log('Another error, you gotta be shitting me', e.message)
   }
 }

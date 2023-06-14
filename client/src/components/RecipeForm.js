@@ -5,16 +5,14 @@ import services from "./Services";
 import { useDispatch, useSelector } from "react-redux";
 import { add} from "../redux/actions";
 import { useNavigate } from "react-router-dom";
-//TODO:styling
+
 function RecipeForm () {
   const [name, setName] = useState('');
   const [instructions, setInstructions] = useState('');
   const [ingredients, setIngredients] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
-  const recipes = useSelector(state => state.recipes)
   const authenticated = useSelector(state => state.authenticated)
-  const currentUser = useSelector(state => state.currentUser)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -106,24 +104,3 @@ function RecipeForm () {
 }
 
 export default RecipeForm
-
-// return (
-//   <div className="recipe-form-container">
-//     <div className="header">Add New Recipe</div>
-//     <div className="recipe-form">
-//       <label className="name-input">
-//         <span>Recipe Name:</span>
-//         <input id="name" value={name} onChange={(event) => {valSetter(event)}} type="text" name="name" placeholder='Insert a name...' />
-      // </label>
-      // <div className="ingredients-input">
-      //   <span>Ingredients:</span>
-      //   <textarea id="ingredients" value={ingredients} onChange={(event) => {valSetter(event)}} type="text" name="ingredients" placeholder='Insert ingredients...'></textarea>
-      // </div>
-      // <label className="steps-input">
-      //   <span>Steps:</span>
-      //   <textarea id="steps" value={steps} onChange={(event) => {valSetter(event)}} type="text" name="steps" placeholder='Insert steps'></textarea>
-      // </label>
-//       <button className="create-recipe" onClick={makeRecipe}>Submit Recipe</button>
-//     </div>
-//   </div>
-// )

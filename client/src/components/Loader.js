@@ -1,4 +1,5 @@
 //loading screen
+//yeah this one was from the web
 
 function Loader () {
   return (

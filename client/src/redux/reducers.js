@@ -96,6 +96,15 @@ const loadPage = (state=false, action) => {
 	}
 }
 
+const menuNums = (state=0, action) => {
+	switch (action.type) {
+		case 'ADD_INPUT':
+			return state++
+		default:
+			return state
+	}
+}
+
 const reducers = combineReducers({
     recipes,
     authenticated,
@@ -104,7 +113,8 @@ const reducers = combineReducers({
     filteredByCat,
 		changeDrink,
 		selectedRecipe,
-		loadPage
+		loadPage,
+		menuNums
 })
 
 export default reducers;

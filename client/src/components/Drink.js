@@ -2,13 +2,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import services from "./Services"
-import { setDrink ,setUser, pageReloading, pageLoaded} from "../redux/actions"
+import { setDrink , pageReloading, pageLoaded} from "../redux/actions"
 import { useNavigate } from "react-router-dom"
 
 
 function Drink() {
 
-  const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const drink = useSelector(state => state.changeDrink)
   const dispatch = useDispatch()
@@ -79,7 +78,7 @@ function Drink() {
         <div className="drink-ingredients">
         <span>Ingredients</span>
           {
-            drink.ingredients.map(res => <a href={"https://www.google.com/search?q="+res} target="_blank" className="ingred">{res}</a>)
+            drink.ingredients.map(res => <a key={res} href={"https://www.google.com/search?q="+res} target="_blank" className="ingred">{res}</a>)
           }
         </div>
         <div className="drink-instructions">

@@ -33,27 +33,17 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
       httpOnly: true,
-      // secure: true,
       expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
       maxAge: 1000 * 60 * 60 * 24 * 7
   },
   credentials: true
 }
-// {
-//   secret,
-//   resave: true,
-//   saveUninitialized: true,
-//   cookie: { 
-//     secure: true,
-//     httpOnly: false,
-//     sameSite: 'strict',
-//     maxAge: 6000000 }}
 
 app
   .use(cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
+    credentials: true,
 }))
   .use(bodyParser.json())
   .use(session(sessionConfig))
@@ -61,24 +51,16 @@ app
   .use(passport.session())
   
 
-//this is saying, user the LocalStrategy to authenticate and that authenticate is inside the User model.
-//the authenticate is not something we created, it was provided by passport.
-//passport will also automatically add 'isAuthenticated()' in the request which is a boolean that would reflect if they are logged in or not.
 passport.use(new LocalStrategy(User.authenticate()));
-//this is the instruction for passport to serialize a user or how do we store a user in the session
-// passport.serializeUser(User.serializeUser())
-// passport.serializeUser(function(user, done) {return done(null, user._id); })
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function(user, callback) {
   process.nextTick(function() {
-    return cb(null, {
+    return callback(null, {
       id: user._id,
       username: user.username,
     });
   });
 });
-//not to get the user out of the session
-// passport.deserializeUser(User.deserializeUser())
-// passport.deserializeUser(function(id, done){return done(null, getUserById(id))})
+
 passport.deserializeUser(function(user, cb) {
   process.nextTick(function() {
     return cb(null, user);

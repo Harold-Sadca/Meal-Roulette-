@@ -982,10 +982,10 @@ span {
   text-decoration:none;
   font-size:25px;
   color:#000000;
-  /* color:#3e1fad; */
   padding:20px 50px;
   border:3px solid #000000;
-  /* border:3px solid #3e1fad; */
+  position:relative;
+  /* margin: 1em; this is for when adding a the new feature */
   position:relative;
   margin: 3em;
 }
@@ -1612,4 +1612,17 @@ background-position: right center , 17px center , 0px center;
 </div>
 </div> */
 
-/* Not logged in CSS */
+/* Generate Menu CSS */
+
+.menu-options-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-input{
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+}

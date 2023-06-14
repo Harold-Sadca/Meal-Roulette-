@@ -12,8 +12,6 @@ function Profile() {
   // const [recipes setRecipes]
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
-  const drink = useSelector(state => state.changeDrink)
-  const selected = useSelector(state => state.setRecipe)
   const loadPage = useSelector(state => state.loadPage)
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -26,19 +24,16 @@ function Profile() {
       dispatch(setDrink(...userDrink))
     } else if(recipeType == 'recipe') {
       const userFood = currentUser.personalRecipes.filter((el) => el._id == id)
-      // dispatch(setRecipe(...userFood))
     }
     navigate(`/${recipeType}/${id}`)
   }
   console.log(useSelector(state => state.currentUser))
 
   function removeRecipe (e, recipeType, path) {
-    // dispatch(pageReloading())
     const _id = e.target.id;
     const filtered = currentUser[path].filter((el) => el._id != _id)
     services.removeFavourite({_id}, path).then((res) => {
       currentUser[path] = filtered
-      // dispatch(pageLoaded())
       navigate(`/user-profile`)
     })
   }
@@ -49,12 +44,11 @@ function Profile() {
       < Loader />
     )
   } else if (loadPage) {
-    console.log(currentUser)
     return (
-      <div className="profile-container">{authenticated ? (
+      <div key={'profile'} className="profile-container">{authenticated ? (
           <>
-          <span className="profile-label">PROFILE</span>
-          <div className="user-profile">
+          <span key={currentUser.username} className="profile-label">PROFILE</span>
+          <div key={currentUser.username} className="user-profile">
             <div className="user-details">
               <img className="user-profile-pic" src={currentUser.profilePic} alt={currentUser.profilePic}></img> {/* dont be stupid...dont do this */}
               <div className="username">{currentUser.username}</div>

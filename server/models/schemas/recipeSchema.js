@@ -7,7 +7,6 @@ const recipeSchema = new Schema({
   instructions: String,
   category: String,
   description: String,
-  // categories: [{type: Schema.Types.ObjectId, ref: 'Category', default: 'None'}],
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'

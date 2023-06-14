@@ -1,4 +1,4 @@
-import services from "./Services"
+
 import { useDispatch, useSelector } from "react-redux";
 import { setcategory } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,6 @@ function Home({isAuthenticated}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const filteredByCat = useSelector(state => state.filteredByCat)
   const loadPage = useSelector(state => state.loadPage)
   const recipes = useSelector(state => state.recipes)
 

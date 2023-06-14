@@ -19,15 +19,14 @@ import SurpriseMeal from "./SurpriseMeal";
 import ShowSelected from "./ShowSelected";
 import Drink from "./Drink";
 import Loader from "./Loader";
+import MenuGenerator from "./MenuGenerator";
 
 
 //NOTE: navigate reloads the main page but does not run the useEffect
 function Main () {
   const recipes = useSelector(state => state.recipes)
-  const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const filteredByCat = useSelector(state => state.filteredByCat)
-  const drink = useSelector(state => state.changeDrink)
   const selected = useSelector(state => state.setRecipe)
   const loadPage = useSelector(state => state.loadPage)
   const [surprise, setSurprise] = useState()
@@ -62,12 +61,10 @@ function Main () {
       < Loader />
     )
   } else {
-    // dispatch(pageLoaded())
     return (
       <>
       <Router>
         <Navbar currentUser={currentUser}/>
-        {/* <Navbar currentUser={user}/> */}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
@@ -77,7 +74,6 @@ function Main () {
           <Route path='surprise-me' element={<SurpriseMeal recipe={selected}/>}/>
           <Route path='/recipes' element={<RecipeList recipes={recipes}/>} />
           <Route path='/sign-up' element={<SignUp />} />
-          {/* <Route path='/user-profile' element={<Profile currentUser={user}/>} /> */}
           <Route path='/user-profile' element={<Profile/>} />
           <Route path='/drink/:id' element={<Drink />} />
           <Route path='/:category/recipes' element={<RecipeList recipes={filteredByCat}/>} />

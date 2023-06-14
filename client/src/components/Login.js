@@ -1,18 +1,15 @@
 //template for login page
 import { useState } from "react";
 import services from "./Services";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login, pageReloading, setUser, pageLoaded } from "../redux/actions";
-import { useNavigate, useRoutes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 function LoginForm () {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
-  const authenticated = useSelector(state => state.authenticated)
-  const currentUser = useSelector(state => state.currentUser)
-  const loadPage = useSelector(state => state.loadPage)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -26,7 +23,6 @@ function LoginForm () {
   }
 
   function loginFunction(e) {
-    //reset the loadPage to false here so the page doesnt load until the fetch request is finished
     dispatch(pageReloading())
     e.preventDefault();
     if(!username || !password) {
@@ -37,7 +33,6 @@ function LoginForm () {
         password
       }
       services.loginUser(user).then((res) => {
-        //set the loadPage to true again so that the pages shows
         dispatch(pageLoaded())
         setUsername('')
         setPassword('')
@@ -54,7 +49,7 @@ function LoginForm () {
 
 
   return (
-    <div className="login-form-container">
+    <div key={'form'} className="login-form-container">
       <div className="header">Login</div>
       <form className="login-form" onSubmit={(e) => {loginFunction(e)}}>
         <label className="username-input">

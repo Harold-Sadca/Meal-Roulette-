@@ -7,7 +7,6 @@ const router = express.Router();
 router.post('/register', registerUser)
 router.post('/login', loginUser)
 router.get('/user', authenticate, getUser)
-// router.post('/login',passport.authenticate('local', {session: true}), loginUser)
 router.get('/logout', authenticate, logoutUser)
 router.get('/profile/:id', authenticate, userProfile)
 router.post('/add-meal/:time', addMeal)

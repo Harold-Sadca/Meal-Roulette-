@@ -1,5 +1,4 @@
 //useless for now
-//TODO:styling
 function ShowRecipe ({recipe}) {
 
   return (

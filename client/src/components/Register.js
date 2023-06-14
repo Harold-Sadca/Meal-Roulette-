@@ -3,10 +3,8 @@
 import { useState } from "react";
 import services from "./Services";
 import { useSelector } from "react-redux";
-//TODO:styling
+
 function SignUp () {
-  const authenticated = useSelector(state => state.authenticated)
-  const currentUser = useSelector(state => state.currentUser)
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');

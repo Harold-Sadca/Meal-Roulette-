@@ -116,9 +116,6 @@ function getUser() {
     credentials: "include"
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
-// fetch for drinks
-// https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
-// https://www.thecocktaildb.com/api/json/v1/1/random.php
 
 function fetchDrink() {
   return fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php').then(res => res.json()).then(parsedRes => parsedRes)
