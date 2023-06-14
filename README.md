@@ -1,16 +1,15 @@
 # Meal-Roulette-
 
 
-Confit Garlic Mash
-10 Portions
-1250g Peeled Chippies Choice Potatoes
-250g Unsalted Butter
-150g Confit Garlic Oil
-Method:
-Slice the potatoes into equal thickness before cooking it
-–
-simmer it rather than boiling. Once
-cooked, drain
-and let it dry out in a hot area. Once dry, whip it in a machine with the butter before
-adding the confit garlic oil then check it for seasoning.
-Serve it with garlic chives
+Meal Roulette!
+An app to plan meals for the day by browsing existing recipes or creating your own recipe...
+Created recipes will be available for other users to save one their favourites, add on the meal plan - breakfast, lunch, dinner...
+Its called Roulette! as it can generate a random food recipe or optionally drink recipe as well...
+
+
+GETTING STARTED
+Start by running npm install in in the client folder and lastly in the server folder...
+The server runs on port 3001 and the client on port 3000...
+Dabatase uses mongoDB so make sure to have that as well...
+
+Happy Hacking!!!
