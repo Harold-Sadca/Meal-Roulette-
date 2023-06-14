@@ -44,7 +44,7 @@ function LoginForm () {
         if(res.username) {
           dispatch(login())
           dispatch(setUser(res))
-          navigate(`/user-profile`)
+          navigate(`/home`)
         } else {
           console.log(res)
         }

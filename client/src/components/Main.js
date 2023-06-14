@@ -69,6 +69,7 @@ function Main () {
         <Navbar currentUser={currentUser}/>
         {/* <Navbar currentUser={user}/> */}
         <Routes>
+          <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/login' element={<LoginForm />} />
           <Route path='/create-recipe' element={<RecipeForm />} />

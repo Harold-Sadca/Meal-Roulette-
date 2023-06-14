@@ -26,9 +26,10 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+  width: 0px;
+  display: none;
 }
+
 
 /* .App::after {
 	content: " ";
@@ -1511,11 +1512,12 @@ background-position: right center , 17px center , 0px center;
   height: 33%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: flex-start;
-  overflow-y:scroll;
-  overflow-x:hidden;
+  overflow-x:scroll;
+  /* scrollbar-width: none; */
 }
+
+
 
 #recipe-label,
 #plan-label {
@@ -1543,7 +1545,7 @@ background-position: right center , 17px center , 0px center;
 .meal {
   font-size: 25px;
   align-self: flex-start;
-  height: 1em;
+  height: 1.2em;
   flex-wrap: wrap;
   overflow:hidden;
   /* text-overflow: ellipsis ellipsis; */
@@ -1556,8 +1558,8 @@ background-position: right center , 17px center , 0px center;
   height: 33%;
   display: flex;
   flex-direction: column;
-  overflow-y:scroll;
-  overflow-x:hidden;
+  /* overflow-y:scroll; */
+  overflow-x:scroll;
 }
 
 #plan-label,

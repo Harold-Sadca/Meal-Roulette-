@@ -51,7 +51,7 @@ function RecipeForm () {
         setIngredients('')
         setDescription('')
         setCategory('')
-        // navigate(`/recipe/${res._id}`)
+        navigate(`/recipe/${res._id}`)
       })
     }
   }

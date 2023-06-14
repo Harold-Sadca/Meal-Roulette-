@@ -26,7 +26,6 @@ function Profile() {
       dispatch(setDrink(...userDrink))
     } else if(recipeType == 'recipe') {
       const userFood = currentUser.personalRecipes.filter((el) => el._id == id)
-      console.log(userFood)
       // dispatch(setRecipe(...userFood))
     }
     navigate(`/${recipeType}/${id}`)
