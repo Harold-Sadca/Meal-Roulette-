@@ -5,6 +5,8 @@
   opacity: 0.8;
   width: 80%;
   margin: auto;
+  background-color: #555;
+  padding: 2em;
 }
 
 /* .grayscale {
@@ -17,12 +19,13 @@
 } */
 
 body {
-  background-image: url("../public/images/pexels-photo-616401.jpeg");
+  /* background-image: url("../public/images/pexels-photo-616401.jpeg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
   overflow:   scroll;
+  background-color: #000;
 }
 
 ::-webkit-scrollbar {
@@ -289,7 +292,6 @@ button {
   width: 80%;
   margin: auto;
   margin-top: 2em;
-  /* height: 750px; */
   align-items: flex-start;
   border-radius: 10px;
 }
@@ -308,8 +310,6 @@ button {
   align-self: center;
   font-size: 1.5em;
   font-weight: 500;
-  /* background-image: linear-gradient(to left, #000000, #ffffff); */
-  /* color: transparent; */
   color: #000;
   background-clip: text;
   -webkit-background-clip: text;
@@ -362,7 +362,7 @@ button {
   font-size:1.5em;
   color:#000000;
   padding:10px 10px;
-  border:3px solid #000000;
+  border:1px solid #000000;
   position:relative;
   border-radius: 10px;
   width: 20%;
@@ -382,82 +382,30 @@ button {
 .add-meal::before {
   top:-10px;
   left:-10px;
-  border-width:3px 0 0 3px;
+  border-width:1px 0 0 1px;
 }
 
 .add-meal::after {
   bottom:-10px;
   right:-10px;
-  border-width:0 3px 3px 0;
+  border-width:0 1px 1px 0;
 }
 .add-meal:nth-child(even),
 .add-meal:nth-child(even) {
-  border:3px solid #ffffff;
-  background-color: #000000;
+  border:1px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #ffffff;
 }
 
-/* .add-meal:nth-child(even):hover::before,
-.add-meal:nth-child(even):hover::after {
-  background-color: rgba(0, 0, 0, 0.3);
-  width:calc(100% + 15px);
-  height:calc(100% + 15px);
-  border:3px solid #ffffff;
-  color:#ffffff;
-}
-
-.add-meal:nth-child(odd):hover::before,
-.add-meal:nth-child(odd):hover::after {
-  background-color: rgba(0, 0, 0, 0.3);
-  width:calc(100% + 15px);
-  height:calc(100% + 15px);
-  border:3px solid #ffffff;
-  color:#000000;
-} */
 
 .add-meal:hover::before,
 .add-meal:hover::after {
   width:calc(100% + 15px);
   height:calc(100% + 15px);
-  border:3px solid #ffffff;
+  border:1px solid #ffffff;
   color:#ffffff;
 }
 
-/* .generate {
-  display: flex;
-  flex-direction: row;
-  width: 80%;
-  margin: auto;
-  background-color: rgba(243, 233, 233, 0.3);
-  border-radius: 10px;
-} */
-
-/* .generate {
-  width: 45%;
-  margin: auto;
-} */
-
-/* .generate-btn::before,
-.generate-btn::after{
-
-}
-.generate-btn::before{
-
-}
-.generate-btn::after{
-  bottom:-15px;
-  right:-15px;
-  border-width:0 3px 3px 0;
-}
-.generate-btn:hover::before,
-.generate-btn:hover::after{
-
-} */
-
-/* <div className="comment-container">
-<textarea className="comment-input"></textarea>
-<button className="post-comment">Post</button>
-</div> */
 /* Comments CSS */
 .comment-form-container {
   display: flex;
@@ -475,7 +423,7 @@ button {
   resize: none;
   border-radius: 5px;
   height: 250px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255 0.3);
 }
 
 .post-comment {
@@ -493,14 +441,6 @@ button {
 
 }
 
-/* <div className="comments-list">
-{comments.map((com) => {
-  return <div>
-    <p className="comment">{com.comment}</p>
-    <span className="comment-author">{com.author}</span>
-  </div>
-})}
-</div> */
 
 /* Comment CSS */
 
@@ -540,26 +480,7 @@ button {
   border-radius: 5px;
 }
 
-/* <div className="signup-container">
-<div className="header">Sign Up</div>
-<form className="signup-form" onSubmit={(e) => {submitUser(e)}}>
-  <label className="username-input">
-  <span>Username:</span>
-    <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
-  </label>
-  <div className="password-input">
-    <span>Password:</span>
-    <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
-  </div>
-  <div className="email-input">
-    <span>Email:</span>
-    <input id="email" value={email} onChange={(event) => {valSetter(event)}} type="Email" name="Email" placeholder='Email...' />
-  </div>
-  <button className="create" type="submit"> Sign Up </button>
-</form>
-</div> */
-
-/* Sign Up CSS */
+/* Sign Up CSS and Login */
 .signup-container {
   width: 25%;
   margin: 20px auto;
@@ -570,7 +491,6 @@ button {
   justify-content: center;
 }
 
-.header {}
 
 .signup-form {
   padding: 10px;
@@ -603,139 +523,8 @@ button {
   font-size: 1em;
 }
 
-.password-input {}
 
-.password-input span {}
-
-#password {}
-
-.email-input {}
-
-.email-input span {}
-
-#email {}
-
-/* 
-    <div className="login-form-container">
-      <div className="header">Login</div>
-      <form className="login-form" onSubmit={(e) => {login(e)}}>
-        <label className="username-input">
-        <span>Username:</span>
-          <input id="username" value={username} onChange={(event) => {valSetter(event)}} type="text" name="username" placeholder='Username...' />
-        </label>
-        <div className="password-input">
-          <span>Password:</span>
-          <input id="password" value={password} onChange={(event) => {valSetter(event)}} type="password" name="password" placeholder='Password...' />
-        </div>
-        <button className="create" type="submit"> Login </button>
-      </form>
-    </div>
-*/
-
-/* Login CSS */
-
-.login-form {
-  padding: 10px;
-  height: 80%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.login-form-container{
-  width: 25%;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  height: 30em;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* <div className="homepage-container">
-<div className="category-container starter">
-  <div className="category-name">Starters</div>
-  <div className="category-description">
-    From simple and delicious soups and salads to more elaborate tarts and terrines,
-   be inspired to start your meal with a taste sensation. See all starter recipes.
-   </div>
-</div>
-<div className="category-container mains">
-  <div className="category-name">Mains</div>
-  <div className="category-description">
-  Hundreds of main dish recipes. Choose from top-rated comfort food, healthy, and vegetarian options.
-   Find your dinner star now!
-  </div>
-</div>
-<div className="category-container desserts">
-  <div className="category-name">Desserts</div>
-  <div className="category-description">
-    Why stop after the mains?
-    Always end it on a high note I always say.
-    You should get your just dessert.
-  </div>
-</div>
-</div> */
-
-/* Homepage CSS */
-
-.homepage-container {
-  display: flex;
-  flex-direction: row;
-  min-height: 90vh;
-  align-items: center;
-}
-
-.category-container {
-  margin: 0 0.5em;
-  height: 40em;
-  width: 33%;
-  background-size: 100%;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.category-name {
-  font-weight: 500;
-  font-size: 2em;
-
-}
-
-.category-description {
-  display: flex;
-  width: 60%;
-  margin: auto;
-  align-self: center;
-  justify-self: center;
-  font-size: 1.3em;
-  color: #000000;
-  /* text-shadow: rgb(255, 255, 255) 1px 0 10px; */
-  /* text-shadow: -0.5px 0 rgba(255, 255, 255 ,.5), 0 0.5px rgba(255, 255, 255, .5), 0.5px 0 rgba(255, 255, 255, .5), 0 -0.5px rgba(252, 250, 250, .5); */
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 0.5em;
-  border-radius: 5px;
-  font-weight: 600;
-}
-
-.starter {
-  background-image: url("../public/images/starter-bg.jfif");
-  filter: grayscale(50%);
-}
-
-.mains {
-  background-image: url("../public/images/mains-bg.jfif");
-}
-
-.dessert {
-  background-image: url("../public/images/temp-bg.jfif");
-}
-
-/* CSS */
+/* CSS Buttons */
 
 .btn-1,
 .btn-2 {
@@ -889,11 +678,6 @@ span {
   transform: translateY(2px);
 }
 
-/* <div id = {recipe._id} key={recipe._id} className="recipe-preview-container">
-<div id = {recipe._id} onClick={(e) => { clickHandler()}} className="recipe-preview-name">{recipe.name}</div>
-<div id = {recipe._id} onClick={(e) => { clickHandler()}} className="recipe-preview-description">{recipe.description}</div>
-</div> */
-
 /* Recipe Preview CSS */
 
 .recipe-preview-container {
@@ -937,15 +721,6 @@ span {
 .recipe-preview-description{
   font-size: 1.2em;
 }
-
-/* <div className="surprise-meal">
-<span className="header">Want to leave it to chance?</span>
-<div className="generate-buttons">
-  <button className="generate btn-submit" onClick={generateRandom}>Generate Me A Random Meal!</button>
-  <button className="generate btn-submit" onClick={generateRandom}>Generate Me A Random Drink!</button>
-</div>
-<Recipe recipe={random}/>
-</div> */
 
 /* Surprise Meal CSS */
 
@@ -1016,105 +791,6 @@ span {
   color:#ffffff;
 }
 
-/* 
-<div className='drink-container' key={drink._id}>
-<div className="drink-details">
-  <div className="drink-name">{drink.name}</div>
-  <span>Instructions</span>
-  <div className="drink-ingredients">
-    {
-      drink.ingredients.map(res => <div>{res}</div>)
-    }
-  </div>
-  <div className="drink-instructions">
-    <span>Instructions</span>
-    <div className="language-select">
-        <select onChange={(event) => {languageSetter(event)}} className="drink-lang-select" id="drink-lang-select" >
-          <option selected>Select Language</option>
-          <option value="english">English</option>
-          <option value="deutsch">Deutsch</option>
-          <option value="spanish">Spanish</option>
-          <option value="french">French</option>
-          <option value="italian">Italian</option>
-        </select>
-        <p>{drink[language]}</p>
-    </div>
-  </div>
-</div>
-</div>
-*/
-
-    /* Drink CSS */
-
-.drink-container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 80%;
-  margin: auto;
-  margin-top: 2em;
-  height: 750px;
-  align-items: flex-start;
-  border-radius: 10px;
-  padding: 1em;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  position: relative;
-  background-size: cover;
-}
-
-.drink-name {
-  font-size: 2em;
-  font-weight: 600;
-  color: black;
-  background-clip: text;
-  -webkit-background-clip: text;
-  align-self: center;
-}
-
-.drink-details {
-  display: flex;
-  flex-direction: row;
-  width: 80%;
-  margin: 10px auto;
-}
-
-.drink-ingredients {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 25%;
-  font-size: 1.2em;
-}
-
-.drink-details span , .drink-instructions span {
-  font-weight: 500;
-  font-size: 1.3em;
-  width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  margin-bottom: 1em;
-}
-
-.drink-instructions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 75%;
-  margin-left: 1em;
-  font-size: 1.2em;
-}
-
-.language-select {
-  width: 100%;
-  border-radius: 5px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.drink-lang-select {
-  width: 100%;
-}
 
 select{
   width: 10%;
@@ -1128,7 +804,6 @@ select{
   color: #555;
   background-color: rgb(255, 255, 255);
   background-image: none;
-  /* border: 1px solid rgb(41, 18, 18); */
 }
 select>option{
   font-size: 18px;
@@ -1139,7 +814,6 @@ select>option{
   font-size: 18px;
   height: 50px;
   padding: 15px;
-  /* border: 1px solid rgb(41, 18, 18); */
 }
 
 .yay-or-nay {
@@ -1414,203 +1088,6 @@ background-position: right center , 17px center , 0px center;
 100%{  transform: rotate(10deg)  }
 } */
 
-
-/* 
-    <div className="profile-container">{currentUser ? (
-        <>
-        <span id="recipe-label" className="profile-label">PROFILE</span>
-        <div className="user-profile">
-          <div className="user-details">
-            <div className="username">{currentUser.username}</div>
-            <img className="user-profile-pic" src={currentUser.profilePic} alt={currentUser.profilePic}></img>
-          </div>
-          <div className="user-recipes">
-            <div className="user-food-favourites">{currentUser.foodFavourites.length}</div>
-            <div className="user-recipe">{currentUser.personalRecipes.length}</div>
-            <div className="user-drink-favourites">{currentUser.drinkFavourites.length}</div>
-          </div>
-        </div>
-        </>
-    ): (
-      <>
-        <span>COME ON MAN YOU CANNOT HAVE A PROFILE WITHOUT LOGGING IN</span>
-      </>
-
-    )
-      }
-    </div>
-*/
-
-/* User profile CSS */
-
-
-.profile-container {
-  background-color: rgba(243, 233, 233, 0.3);
-  width: 100%;
-  height: 100vh;
-}
-
-.profile-label {
-  font-size: 2em;
-}
-
-.user-profile {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
-  
-}
-
-.user-profile-pic {
-  width: 20em;
-  height: 20em;
-  border-radius: 50%;
-  align-self: center;
-}
-
-.user-details {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  padding: 1em;
-  height: 100%;
-}
-
-.more-info {
-  font-size: 1.3em;
-  margin-top: 1em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  padding: 1em;
-}
-
-.username {
-  font-size: 2em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  margin-top: 1em;
-}
-
-.user-recipes {
-  display: flex;
-  flex-direction: column;
-  width: 35%;
-  justify-content: space-evenly;
-  padding: 1em;
-}
-
-.day-meal {
-  display: flex;
-  flex-direction: column;
-  width: 35%;
-  padding: 1em;
-  justify-content: space-around;
-}
-
-.user-recipe,
-.user-food-favourites,
-.user-drink-favourites {
-  height: 33%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow-x:scroll;
-  /* scrollbar-width: none; */
-}
-
-
-
-#recipe-label,
-#plan-label {
-  align-self: center;
-  font-size: 2em;
-}
-
-.fav-name-con {
-  display: flex;
-  align-self: center;
-  font-size: 1.5em;
-  font-weight: 500;
-  align-self: flex-start;
-  margin-top: 0.5rem;
-  width: 90%;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 10px;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.fav-name,
-.meal {
-  font-size: 25px;
-  align-self: flex-start;
-  height: 1.2em;
-  flex-wrap: wrap;
-  overflow:hidden;
-  /* text-overflow: ellipsis ellipsis; */
-  /* text-overflow: '...'; */
-}
-
-.breakfast,
-.lunch,
-.dinner {
-  height: 33%;
-  display: flex;
-  flex-direction: column;
-  /* overflow-y:scroll; */
-  overflow-x:scroll;
-}
-
-#plan-label,
-#recipe-label {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  width: 80%;
-}
-
-.remove-fav {
-  height: 100%;
-}
-
-.ingred {
-  text-decoration: none;
-  color: #000000;
-}
-
-
-
-/* .meal {
-  align-self: flex-start;
-  margin-left: 1em;
-  font-size: 1;
-} */
-
-/* <div className="day-meal">
-<div className="breakfast">
-  <span id="plan-label">Breakfast Plans:</span>
-  {currentUser.breakfast.length ? (
-    currentUser.breakfast.map((el) => {
-      return <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-    })
-  ) : <span>You dont have a plan for breakfast yet.</span>}
-</div>
-<div className="lunch">
-  <span id="plan-label">Lunch Plans:</span>
-    {currentUser.lunch.length ? (
-      currentUser.lunch.map((el) => {
-        return <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-      })
-    ) : <span>You dont have a plan for lunch yet.</span>}
-</div>
-<div className="dinner">
-  <span id="plan-label">Dinner Plans:</span>
-    {currentUser.dinner.length ? (
-      currentUser.dinner.map((el) => {
-        return <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-      })
-    ) : <span>You dont have a plan for dinner yet.</span>}
-</div>
-</div> */
 
 /* Generate Menu CSS */
 

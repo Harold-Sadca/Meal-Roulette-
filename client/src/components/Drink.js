@@ -4,6 +4,7 @@ import { useState } from "react"
 import services from "./Services"
 import { setDrink , pageReloading, pageLoaded} from "../redux/actions"
 import { useNavigate } from "react-router-dom"
+import '../css/drink.css'
 
 
 function Drink() {

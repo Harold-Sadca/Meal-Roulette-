@@ -1,15 +1,15 @@
 //user profile page template
 //contents: user info, user favourites, user recipes
 //TODO:everything
-import { pageLoaded, pageReloading, setDrink, setRecipe, setUser } from "../redux/actions"
+import { setDrink} from "../redux/actions"
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useRoutes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import services from "./Services";
+import ProfileSection from "./ProfileSection";
+import '../css/profile.css'
 
-// function Profile({currentUser}) {
 function Profile() {
-  // const [recipes setRecipes]
   const authenticated = useSelector(state => state.authenticated)
   const currentUser = useSelector(state => state.currentUser)
   const loadPage = useSelector(state => state.loadPage)
@@ -37,8 +37,6 @@ function Profile() {
       navigate(`/user-profile`)
     })
   }
-
-
   if(!loadPage) {
     return (
       < Loader />
@@ -57,73 +55,15 @@ function Profile() {
               <div className="more-info">Recipes: {currentUser.personalRecipes.length}</div>
             </div>
             <div className="user-recipes">
-              <div className="user-food-favourites">
-                <span id="recipe-label">Favourite Foods:</span>
-                {currentUser.foodFavourites.length ? (
-                      currentUser.foodFavourites.map((el) => {
-                        return <span className="fav-name-con">
-                          <span className="fav-name" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-                          <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'foodFavourites')}}>X</button>
-                          </span>
-                      })
-                    ) : <span className="meal">You dont have any favourite recipe yet.</span>}
+            <div className="day-plan">
+                <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'breakfast'} type={'breakfast'} recipe={'recipe'} />
+                <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'lunch'} type={'lunch'} recipe={'recipe'} />
+                <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'dinner'} type={'dinner'} recipe={'recipe'} />
               </div>
-              <div className="user-recipe">
-                <span id="recipe-label">Personal Recipes:</span>
-                  {currentUser.personalRecipes.length ? (
-                      currentUser.personalRecipes.map((el) => {
-                        return <span className="fav-name-con">
-                          <span className="fav-name" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-                          <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'personalRecipes')}}>X</button>
-                          </span>
-                      })
-                    ) : <span className="meal">You have not written any recipe yet.</span>}
-              </div>
-              <div className="user-drink-favourites">
-                <span id="recipe-label">Favourite Drinks:</span>
-                  {currentUser.drinkFavourites.length ? (
-                    currentUser.drinkFavourites.map((el) => {
-                      return <span className="fav-name-con">
-                        <span className="fav-name" key={el._id} id={el._id}  onClick={(e) => {openRecipe(e, 'drink')}}>{el.name}</span>
-                        <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'drink', 'drinkFavourites')}}>X</button>
-                        </span>
-                    })
-                  ) : <span className="meal">You dont have any favourite drink yet.</span>}
-              </div>
-            </div>
-            <div className="day-meal">
-              <div className="breakfast">
-                <span id="plan-label">Breakfast Plans:</span>
-                {currentUser.breakfast.length ? (
-                  currentUser.breakfast.map((el) => {
-                    return <span className="fav-name-con">
-                      <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-                      <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'breakfast')}}>X</button>
-                      </span>
-                  })
-                ) : <span className="meal">You dont have a plan for breakfast yet.</span>}
-              </div>
-              <div className="lunch">
-                <span id="plan-label">Lunch Plans:</span>
-                  {currentUser.lunch.length ? (
-                    currentUser.lunch.map((el) => {
-                      return <span className="fav-name-con">
-                      <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-                      <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'lunch')}}>X</button>
-                      </span>
-                    })
-                  ) : <span className="meal">You dont have a plan for lunch yet.</span>}
-              </div>
-              <div className="dinner">
-                <span id="plan-label">Dinner Plans:</span>
-                  {currentUser.dinner.length ? (
-                    currentUser.dinner.map((el) => {
-                      return <span className="fav-name-con">
-                      <span className="meal" key={el._id} id={el._id} onClick={(e) => {openRecipe(e, 'recipe')}}>{el.name}</span>
-                      <button id={el._id} className="remove-fav" onClick={(e)=> {removeRecipe(e, 'recipe', 'dinner')}}>X</button>
-                      </span>
-                    })
-                  ) : <span className="meal">You dont have a plan for dinner yet.</span>}
+              <div className="fave">
+                <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'favourite'} type={'foodFavourites'} recipe={'recipe'} />
+                <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'personal'} type={'personalRecipes'} recipe={'recipe'} />
+                <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'drink'} type={'drinkFavourites'} recipe={'drink'} />
               </div>
             </div>
           </div>
@@ -132,7 +72,6 @@ function Profile() {
         <>
           <span>COME ON MAN YOU CANNOT HAVE A PROFILE WITHOUT LOGGING IN</span>
         </>
-  
       )
         }
       </div>

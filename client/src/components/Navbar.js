@@ -1,23 +1,15 @@
 //navbar template, handles navbar nagivation
-
-
-import React from 'react';
-import {
-  Nav,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
-} from './NavbarElements';
 import { useDispatch, useSelector } from "react-redux";
 import services from './Services';
 import { logoutUser, removeUser } from "../redux/actions";
 import Loader from './Loader'; 
+import '../css/navbar.css'
+import { useNavigate } from "react-router-dom";
 const Navbar = ({currentUser}) => {
   const authenticated = useSelector(state => state.authenticated)
   const loadPage = useSelector(state => state.loadPage)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function logout () {
     services.logoutUser().then((res) => {
@@ -28,53 +20,54 @@ const Navbar = ({currentUser}) => {
     })
   }
 
+  function handleNav(e) {
+    navigate(e.target.id)
+  }
+
   if (!loadPage) {
     return <Loader />
   } else {
-    //navbar template was from w3schools...
     return (
-      <>
-        <Nav>
-          <Bars />
-          <NavMenu>
-            <NavLink to='/home' >
+        <div className="navbar-main">
+          <div className="navbar-options">
+            <div className="navbar-el" onClick={(e) => {handleNav(e)}} id='/home' >
               Home
-            </NavLink>
-            <NavLink to='/create-recipe' >
+            </div>
+            <div className="navbar-el" onClick={(e) => {handleNav(e)}} id='/create-recipe' >
               Add Recipe
-            </NavLink>
-            <NavLink to='/surprise-me'  >
+            </div>
+            <div className="navbar-el" onClick={(e) => {handleNav(e)}} id='/surprise-me'  >
               Surprise Me
-            </NavLink>
-            <NavLink to='/recipes' >
+            </div>
+            <div className="navbar-el" onClick={(e) => {handleNav(e)}} id='/recipes' >
               Recipes
-            </NavLink>
-          </NavMenu>
+            </div>
+          
           {authenticated ? (
               <>
-                <NavLink to='/user-profile' >
+                <div className="navbar-el"  onClick={(e) => {handleNav(e)}} id='/user-profile' >
                   Profile
-                </NavLink>
-                <NavBtn onClick={logout}>
-                  <NavBtnLink>Logout</NavBtnLink>
-                </NavBtn>
-                <NavLink >
+                </div>
+                <button className="log-btn" onClick={logout}>
+                  Logout
+                </button>
+                <div className="navbar-el" style={{cursor:'default'}}  >
                   Hello, {currentUser.username? (currentUser.username) : <span>Guest</span>}
-                </NavLink>
+                </div>
               </>
           ): (
             <>
-              <NavLink to='/sign-up' >
+              <div className="navbar-el" onClick={(e) => {handleNav(e)}} id='/sign-up' >
                 Sign Up
-              </NavLink>
-              <NavBtn>
-                <NavBtnLink to='/login'>Sign In</NavBtnLink>
-              </NavBtn>
+              </div>
+              <button className="log-btn" onClick={(e) => {handleNav(e)}} id='/login'>
+                Sign In
+              </button>
             </>
           )
             }
-        </Nav>
-      </>
+          </div>
+        </div>
     );
   }
 };

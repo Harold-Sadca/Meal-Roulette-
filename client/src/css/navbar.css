@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+.navbar-main {
+  width: 100%;
+  margin: auto;
+  font-family: Lato, sans-serif;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+  padding-bottom: 1.2em;
+}
+
+.navbar-options {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 1.4em;
+  color: white;
+}
+
+.navbar-el {
+  cursor: pointer;
+}
+
+.navbar-el:hover{
+  color: #95a5a6;
+}
+
+.log-btn {
+  width: 6em;
+  height: 2.5em;
+  border-radius: 5px;
+}
