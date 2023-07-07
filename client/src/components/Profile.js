@@ -1,6 +1,3 @@
-//user profile page template
-//contents: user info, user favourites, user recipes
-//TODO:everything
 import { setDrink} from "../redux/actions"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

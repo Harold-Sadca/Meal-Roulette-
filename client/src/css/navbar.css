@@ -13,7 +13,7 @@
   flex-direction: row;
   justify-content: space-around;
   font-size: 1.4em;
-  color: white;
+  color: var(--secondary-color);
 }
 
 .navbar-el {
@@ -21,7 +21,7 @@
 }
 
 .navbar-el:hover{
-  color: #95a5a6;
+  color: var(--secondary-color);
 }
 
 .log-btn {

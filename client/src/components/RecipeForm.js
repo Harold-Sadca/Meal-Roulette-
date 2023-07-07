@@ -1,5 +1,7 @@
 //creating the recipe template
 
+import '../css/recipe-form.css'
+
 import { useState } from "react";
 import services from "./Services";
 import { useDispatch, useSelector } from "react-redux";

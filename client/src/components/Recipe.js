@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import services from "./Services"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import '../css/recipe-display.css'
 
 function Recipe ({recipe}) {
   const [current, setCurrent] = useState(recipe)
@@ -35,11 +36,12 @@ function Recipe ({recipe}) {
       comment:comment,
       recipe: recipe._id
     }
-    
-    services.postComment(newComment).then((res) => {
-      setComments([...comments, res])
-      setComment('')
-    })
+    if (newComment.comment) {
+      services.postComment(newComment).then((res) => {
+        setComments([...comments, res])
+        setComment('')
+      })
+    }
   }
 
   function handleSave(e) {
@@ -65,7 +67,7 @@ function Recipe ({recipe}) {
           <div className="display-recipe-ingredients">
             <span className="display-ingredients-label">Ingredients:</span>
             <div className="display-ingredient-list">{recipe.ingredients.map((ing) => {
-              return <a href={"https://www.google.com/search?q="+ing} target="_blank" className="ingred">{ing}</a>
+              return <a href={"https://www.google.com/search?q="+ing} target="blank" className="ingred">{ing}</a>
             })}</div>
           </div>
           <div className="display-instructions">

@@ -35,26 +35,17 @@
   align-self: center;
   justify-self: center;
   font-size: 1.3em;
-  color: #000000;
+  color: var(--secondary-color);
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.5em;
   border-radius: 5px;
   font-weight: 600;
 }
 
-/* .starter {
-  background-image: url("../../public/images/starter-bg.jfif");
-  filter: grayscale(50%);
-}
-
-.mains {
-  background-image: url("../../public/images/mains-bg.jfif");
-}
-
-.desserts {
-  background-image: url("../../public/images/temp-bg.jfif");
-} */
-
 .btn-1:nth-child(odd) {
   align-self: flex-end;
+}
+
+.home-btn {
+  background-color: var(--accent-color);
 }

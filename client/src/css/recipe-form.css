@@ -1,0 +1,141 @@
+.recipe-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: auto;
+  padding: 2em;
+  border-radius: 10px;
+  color: var(--secondary-color);
+}
+
+.create-recipe {
+  margin-top: 10px;
+}
+
+.header {
+  font-size: 2em;
+  font-weight: 600;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.name-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.name-input span {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.name-input input {
+  width: 100%;
+  height: 2em;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 1.5em;
+  border: none;
+}
+
+.description-input {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  align-items: flex-start;
+}
+
+.ingredients-input, .description-input {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  align-items: flex-start;
+}
+
+.description-input {
+  margin-left: 15px;
+}
+
+.ingredients-input textarea, .description-input textarea {
+  width: 100%;
+  height: 90%;
+  border-radius: 5px;
+  resize: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 1.5em;
+  color: #000;
+}
+
+.ingredients-input span, .description-input span {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.instructions-input {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+  align-items: flex-start;
+  margin-left: 15px;
+}
+
+.instructions-input span {
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.instructions-input textarea {
+  color: #000000;
+  width: 100%;
+  resize: none;
+  border-radius: 5px;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 1.5em;
+  /* text-shadow: rgb(255, 255, 255) 1px 0 10px; */
+  
+}
+
+.ingredients-instructions {
+  display: flex;
+  height: 500px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-and-category {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.name-and-category input {
+  width: 75%;
+  align-self: flex-start;
+  margin-right: 1em;
+}
+
+.category-selection {
+  width: 25%;
+  border-radius: 5px;
+  text-align: center;
+}
