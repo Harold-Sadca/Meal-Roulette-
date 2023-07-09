@@ -5,8 +5,9 @@ function ProfileSection({removeRecipe, openRecipe, typemessage, type, recipe}){
   const currentUser = useSelector(state => state.currentUser)
 
   return(
-    <div className="user-food-favourites"id="recipe-label">{typemessage} Foods:
-    <span >
+    <div className="user-food-favourites">
+    <span id="recipe-label">{typemessage} Foods:</span>
+    <span className="content" >
       {currentUser[type].length ? (
             currentUser[type].map((el) => {
               return <span className="fav-name-con">

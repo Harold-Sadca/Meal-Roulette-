@@ -1,9 +1,13 @@
+
 .profile-container {
-  background-color: rgba(243, 233, 233, 0.3);
   width: 100%;
   height: 100vh;
   border-radius: 10px;
-  margin-top: 2em;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-label {
@@ -15,63 +19,32 @@
   flex-direction: row;
   width: 100%;
   height: 100%;
-  margin-top: 2em;
+  margin-top: 1em;
   flex-wrap: wrap;
-  
-}
-
-.user-profile-pic {
-  width: 20em;
-  height: 20em;
-  border-radius: 50%;
-  align-self: center;
-}
-
-.user-details {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  padding: 1em;
-  height: 100%;
-}
-
-.more-info {
-  font-size: 1.3em;
-  margin-top: 1em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  padding: 1em;
-}
-
-.username {
-  font-size: 2em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  margin-top: 1em;
+  justify-content: center;
+  color: white;
 }
 
 .user-recipes {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 60%;
-  justify-content: space-evenly;
   padding: 1em;
-  height: 80%;
-  border: 1px solid black;
+  height: 100%;
+  justify-content: center;
+  background-color: var(--secondary-color) ;
 }
 
-.day-plan {
-  border: 1px solid black;
-}
-
-.fave {
-  border: 1px solid black;
-}
 
 .user-food-favourites {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow-x:scroll;
   width: 100%;
+}
+
+.content {
+  overflow-x:scroll;
 }
 
 
@@ -84,10 +57,8 @@
 
 .fav-name-con {
   display: flex;
-  align-self: center;
   font-size: 1.5em;
   font-weight: 500;
-  align-self: flex-start;
   margin-top: 0.5rem;
   width: 90%;
   align-items: flex-start;
@@ -95,13 +66,11 @@
   padding: 10px;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .fav-name,
 .meal {
   font-size: 25px;
-  align-self: flex-start;
   height: 1.2em;
   flex-wrap: wrap;
   overflow:hidden;
@@ -113,7 +82,6 @@
   height: 33%;
   display: flex;
   flex-direction: column;
-  overflow-x:scroll;
 }
 
 #plan-label,
@@ -127,9 +95,18 @@
   width: 35px;
   border-radius: 50%;
   background-color: transparent;
+  border: 1px solid black;
 }
 
 .remove-fav:hover {
   background-color: rgb(255, 255, 255);
+  border: none;
 }
 
+.day-plan,
+.fave {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

@@ -42,15 +42,8 @@ function Profile() {
     return (
       <div key={'profile'} className="profile-container">{authenticated ? (
           <>
-          <span key={currentUser.username} className="profile-label">PROFILE</span>
+          <span key={currentUser.username} className="profile-label">{currentUser.username}</span>
           <div key={currentUser.username} className="user-profile">
-            <div className="user-details">
-              <img className="user-profile-pic" src={currentUser.profilePic} alt={currentUser.profilePic}></img> {/* dont be stupid...dont do this */}
-              <div className="username">{currentUser.username}</div>
-              <div className="more-info">Contact: {currentUser.email}</div>
-              <div className="more-info">Reputation: 0</div>
-              <div className="more-info">Recipes: {currentUser.personalRecipes.length}</div>
-            </div>
             <div className="user-recipes">
             <div className="day-plan">
                 <ProfileSection removeRecipe={removeRecipe} openRecipe={openRecipe} typemessage={'breakfast'} type={'breakfast'} recipe={'recipe'} />
