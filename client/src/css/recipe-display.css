@@ -7,7 +7,8 @@
   margin-top: 2em;
   align-items: flex-start;
   border-radius: 10px;
-  color: var(--secondary-color);
+  color: white;
+  background-color: var(--secondary-color);
 }
 
 .name-author {
@@ -18,7 +19,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 80%;
   align-self: center;
-  color: var(--secondary-color);
+
 }
 
 .display-recipe-name {
@@ -68,11 +69,12 @@
   justify-content: space-around;
   width: 100%;
   margin: auto;
+  margin-bottom: 2rem;
 }
 
 .ingred {
   text-decoration: none;
-  color: var(--secondary-color);
+  color: white;
 }
 
 .add-meal {
