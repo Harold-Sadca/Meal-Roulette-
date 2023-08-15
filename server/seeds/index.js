@@ -5,21 +5,22 @@ const User = require('../models/schemas/userSchema')
 
 
 const database = async () => {
-  mongoose.connect('mongodb://127.0.0.1:27017/meal-roulette',{
+  await mongoose.connect('mongodb://127.0.0.1:27017/meal-roulette', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
+  });
+
   const db = mongoose.connection;
   db.on("error", console.error.bind(console, "connection error:"));
-  db.once("open", () => {
-  console.log("Database connected");
+  db.once("open", async () => {
+    db.dropDatabase()
+    console.log("Database connected.");
+    for(let recipe of mockRecipes) {
+      await Recipe.create(recipe)
+    }
+    console.log("Database seeding complete.")
+    db.close();
   });
-  await Recipe.deleteMany({});
-  await User.deleteMany({})
-  for (let i = 0; i < 5; i++) {
-    Recipe.create(mockRecipes[i])
-  }
-}
-
+};
 
 database()
