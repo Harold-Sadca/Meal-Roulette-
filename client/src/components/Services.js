@@ -1,7 +1,7 @@
 const PORT = 'http://localhost:3001'
 
 
-function fetchRecipes () {
+async function fetchRecipes () {
   return fetch(`${PORT}/recipe`,{
     method: "GET",
     credentials: "include"
@@ -10,7 +10,7 @@ function fetchRecipes () {
           .then(parsedRes => parsedRes)
 }
 
-function fetchRecipeByCat (cat) {
+async function fetchRecipeByCat (cat) {
   return fetch(`${PORT}/get-recipes/${cat}`,{
     method: "GET",
     credentials: "include"
@@ -19,7 +19,7 @@ function fetchRecipeByCat (cat) {
           .then(parsedRes => parsedRes)
 }
 
-function addRecipe(recipe) {
+async function addRecipe(recipe) {
   return fetch(`${PORT}/create-recipe`, {
     method: "POST",
     body: JSON.stringify(recipe),
@@ -30,7 +30,7 @@ function addRecipe(recipe) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function editRecipe(recipe) {
+async function editRecipe(recipe) {
   const method = {
     method: "PUT",
     body: JSON.stringify(recipe),
@@ -42,7 +42,7 @@ function editRecipe(recipe) {
   return fetch(`${PORT}/recipe`, method)
 }
 
-function deleteRecipe(recipe) {
+async function deleteRecipe(recipe) {
   const method = {
     method: "DELETE",
     body: JSON.stringify(recipe),
@@ -54,7 +54,7 @@ function deleteRecipe(recipe) {
   return fetch(`${PORT}/recipe`, method)
 }
 
-function registerUser (user) {
+async function registerUser (user) {
   return fetch(`${PORT}/register`, {
     method: "POST",
     body: JSON.stringify(user),
@@ -65,7 +65,7 @@ function registerUser (user) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function loginUser (user) {
+async function loginUser (user) {
   return fetch(`${PORT}/login`, {
     method: "POST",
     body: JSON.stringify(user),
@@ -76,7 +76,7 @@ function loginUser (user) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function logoutUser () {
+async function logoutUser () {
   return fetch(`${PORT}/logout`, {
     method: "GET",
     headers: {
@@ -86,7 +86,7 @@ function logoutUser () {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function getComments (id) {
+async function getComments (id) {
   return fetch(`${PORT}/${id}/comments`, {
     method: "GET",
     headers: {
@@ -96,7 +96,7 @@ function getComments (id) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function postComment (comment) {
+async function postComment (comment) {
   return fetch(`${PORT}/post-comment`, {
     method: "POST",
     body: JSON.stringify(comment),
@@ -107,7 +107,7 @@ function postComment (comment) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function getUser() {
+async function getUser() {
   return fetch(`${PORT}/user`, {
     method: "GET",
     headers: {
@@ -117,11 +117,11 @@ function getUser() {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function fetchDrink() {
+async function fetchDrink() {
   return fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php').then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function saveDrink(drink) {
+async function saveDrink(drink) {
   return fetch(`${PORT}/drink`, {
     method: "POST",
     body: JSON.stringify(drink),
@@ -132,7 +132,7 @@ function saveDrink(drink) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function saveFoodRecipe (id, path) {
+async function saveFoodRecipe (id, path) {
   return fetch(`${PORT}/add-meal/${path}`, {
     method: "POST",
     body: JSON.stringify(id),
@@ -143,7 +143,7 @@ function saveFoodRecipe (id, path) {
   }).then(res => res.json()).then(parsedRes => parsedRes)
 }
 
-function removeFavourite(id, path) {
+async function removeFavourite(id, path) {
   return fetch(`${PORT}/remove-favourite/${path}`, {
     method: "POST",
     body: JSON.stringify(id),
