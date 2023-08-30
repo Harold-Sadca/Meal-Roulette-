@@ -9,8 +9,8 @@ exports.findAll = async() => {
   }
 }
 
-exports.createOne = async(req) => {
-  const {email, username, password} = req.body
+exports.createUser = async(user) => {
+  const {email, username, password} = user
   try{
     const newUser = new User({email, username});
     const registeredUser = await User.register(newUser, password)

@@ -10,13 +10,13 @@ exports.findAll = async() => {
   }
 }
 
-exports.createOne = async(req) => {
+exports.createOne = async(recipe, id) => {
   try{
-    const newRecipe = await new Recipe(req.body);
-    const user = await User.findById(req.user.id)
+    const newRecipe = new Recipe(recipe);
+    const user = await User.findById(id)
     user.personalRecipes.push(newRecipe._id)
     await user.save()
-    newRecipe.author = req.user.id;
+    newRecipe.author = id;
     await newRecipe.save();
     const resRecipe = await Recipe.findById(newRecipe._id).populate('author', 'username')
     return resRecipe;
@@ -27,6 +27,7 @@ exports.createOne = async(req) => {
 
 exports.getRecipeByCat = async(req) => {
   const {category} = req.params
+  console.log(category)
   try {
     const recipes = await Recipe.find({category})
     return recipes

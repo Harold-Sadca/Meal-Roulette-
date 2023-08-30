@@ -1,9 +1,11 @@
-const {createOne, findAll, findUser, addMeal, removeMeal} = require('../models/methods/userMethods')
+const {createUser, findAll, findUser, addMeal, removeMeal} = require('../models/methods/userMethods')
 const passport = require('passport');
 
 exports.registerUser = async (req, res) => {
 	try {
-		const newUser = await createOne(req);
+		const {email, username, password} = req.body
+		const user = {email, username, password}
+		const newUser = await createUser(user);
 		res.status(201).send(newUser);
 	} catch(e) {
 		res.status(400).send('Cannot register.')

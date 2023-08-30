@@ -11,7 +11,9 @@ exports.getAllRecipes = async (req, res) => {
 
 exports.createRecipe = async (req,res) => {
   try {
-    const result = await createOne(req)
+    const recipe = req.body
+    const id = req.user.id
+    const result = await createOne(recipe, id)
     res.status(201).send(result)
   } catch(e) {
     res.status(400).send(JSON.stringify('Bad Request'))

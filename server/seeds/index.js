@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const mockRecipes = require('./recipe-helper')
 const Recipe = require('../models/schemas/recipeSchema')
-const User = require('../models/schemas/userSchema')
+const {createUser} = require('../models/methods/userMethods');
+const {createOne} = require('../models/methods/recipeMethods')
+
+const mockUser = {
+  email: 'email@email.com', username: 'user1', password: 'password1'
+}
 
 
 const database = async () => {
@@ -15,8 +20,10 @@ const database = async () => {
   db.once("open", async () => {
     db.dropDatabase()
     console.log("Database connected.");
+    const user = await createUser(mockUser)
+    console.log(user._id)
     for(let recipe of mockRecipes) {
-      await Recipe.create(recipe)
+      await createOne(recipe, user._id)
     }
     console.log("Database seeding complete.")
     db.close();
