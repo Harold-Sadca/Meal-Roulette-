@@ -22,7 +22,7 @@
   margin-top: 1em;
   flex-wrap: wrap;
   justify-content: center;
-  color: white;
+  color: var(--text-colour);
 }
 
 .user-recipes {
@@ -106,15 +106,15 @@
 .btn-plus {
   width: 30px;
   height: 30px;
-  background: var(--secondary-colour);
+  background: var(--background-colour);
   color: var(--text-colour);
   font-size: large;
   cursor: pointer;
-  border: 2px solid var(--primary-colour);
+  border: 2px solid var(--accent-colour);
 }
 
 .btn-plus:hover {
-  background-color: var(--primary-colour);
+  background-color: var(--accent-colour);
   color: var(--background-colour);
   border: 2px solid var(--background-colour);
   transition: ease-in-out 1s;
