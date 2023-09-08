@@ -5,9 +5,9 @@
   margin: auto;
   padding: 2em;
   border-radius: 10px;
-  color: white;
+  color: var(--text-colour);
   margin-top: 2rem;
-  background-color: var(--secondary-color);
+  background-color: var(--background-colour);
 }
 
 .create-recipe {
@@ -64,7 +64,7 @@
   width: 20%;
   height: 100%;
   align-items: flex-start;
-  color: white;
+  color: var(--text-colour);
 }
 
 .description-input {
@@ -141,5 +141,5 @@
 #ingredients,
 #description,
 #steps {
-  color: white;
+  color: var(--text-colour);
 }

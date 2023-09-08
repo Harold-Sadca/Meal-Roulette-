@@ -7,8 +7,8 @@
   margin-top: 2em;
   align-items: flex-start;
   border-radius: 10px;
-  color: white;
-  background-color: var(--secondary-color);
+  color: var(--text-colour);
+  background-color: var(--background-colour);
 }
 
 .name-author {
@@ -74,7 +74,7 @@
 
 .ingred {
   text-decoration: none;
-  color: white;
+  color: var(--text-colour);
 }
 
 .add-meal {

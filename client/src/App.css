@@ -1,7 +1,12 @@
 :root {
-  --main-color: #FFFFFF;
-  --secondary-color: #78AB46;
-  --accent-color: #FF6F61;
+  --primary-colour: #ff6f61; /* Main accent color for headers and important elements */
+  --secondary-colour: #7ea3af; /* Secondary color for buttons and highlights */
+  --background-colour: #f0f0f0; /* Background color for cards, forms, and sections */
+  --text-colour: #333333; /* Text color for content, headings, and descriptions */
+  --accent-colour: #78ab46; /* Accent color for icons, borders, and focus states */
+  --main-background-colour: #ffffff; /* Main background color for the entire app */
+  --tertiary-colour: #ffcc33; /* For call-to-action buttons, links, or icons */
+  --success-colour: #4caf50; /* To indicate success, like when a user performs a positive action */
 }
 
 .App {
@@ -10,13 +15,13 @@
   min-height: 100vh;
   width: 80%;
   margin: auto;
-  background-color: var(--main-color);
+  background-color: var(--main-background-colour);
   padding: 2em;
 }
 
 body {
   overflow:   scroll;
-  background-color: #000;
+  background-color: #78ab46;
 }
 
 ::-webkit-scrollbar {
@@ -46,14 +51,14 @@ button {
 .btn-submit {
   padding: 10px;
   font-size: 20px;
-  color: whitesmoke;
+  color: var(--text-colour);
   font-weight: bold;
   width: 100%;
   height: 60px;
   border-radius: 5px;
   border: none;
   text-align: center;
-  background-color: var(--accent-color);
+  background-color: var(--background-colour);
   transition: 0.5s;
 }
 
@@ -198,13 +203,14 @@ footer a,
 .btn-1 a,
 .btn-2 a {
   text-decoration: none;
-  border: 2px solid #010100;
+  border: 2px solid var(--tertiary-colour);
   padding: 15px;
   color: #000;
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
   display: inline-block;
+  background-color: var(--tertiary-colour);
 }
 
 span {
@@ -255,7 +261,7 @@ span {
 /* Button 2 styles */
 
 .btn-2 a {
-  color: #ffffff;
+  color: var(--tertiary-colour);
   transition: all 0.5s ease-in-out;
 }
 
@@ -387,7 +393,7 @@ span {
   align-items: center;
   justify-content: center;
   height: 80vh;
-  color: var(--secondary-color);
+  color: var(--text-colour);
 }
 
 .surprise-meal .header {
