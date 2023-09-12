@@ -78,14 +78,6 @@
   overflow:hidden;
 }
 
-.breakfast,
-.lunch,
-.dinner {
-  height: 33%;
-  display: flex;
-  flex-direction: column;
-}
-
 #plan-label,
 #recipe-label {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);

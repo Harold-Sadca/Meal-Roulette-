@@ -58,16 +58,15 @@ button {
   border-radius: 5px;
   border: none;
   text-align: center;
-  background-color: var(--background-colour);
+  background-color: var(--secondary-colour);
   transition: 0.5s;
 }
 
-.btn-submit:hover,
-.add-meal:hover {
+.btn-submit:hover {
   color: var(--accent-color);
   background-color: white;
   border:1px solid var(--accent-color);
-  box-shadow: 0 0 15px var(--accent-color);
+  box-shadow: 0 0 15px var(--secondary-colour);
   transition: 0.5s;
   border-radius: 15px;
 }
