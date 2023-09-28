@@ -20,7 +20,7 @@ User Profiles: Create a personalized user profile to save your favorite recipes.
 
 Run `npm i` on both client and server folder.
 
-Run `npm run seeds` on the client folder to populate with mock data.
+Run `npm run seeds` on the server folder to populate with mock data.
 
 Run `npm start` on the client folder and `nodemon index.js` on the server folder.
 
